@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.justlift.user.dao.UserDAO">
+ 	<select id="existingLoginId" parameterType="string" resultType="int">
+ 		SELECT
+ 			COUNT(1)
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId`=#{userId}
+ 	</select>
+ 	<insert id="insertUser" parameterType="map">
+ 		INSERT INTO `user`
+		(
+			`loginId`
+			, `password`
+			, `name`
+			, `email`
+			,`phoneNumber`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{userId}
+			, #{userPw}
+			, #{name}
+			
+			, #{email}
+			, #{phoneNumber}
+			, NOW()
+			, NOW()
+		)
+ 		
+ 	</insert>
+ 	<select id="selectUserByUserIdandPassword" parameterType="map" resultType="com.justlift.user.model.User">
+ 		SELECT
+			`id` 
+			,`loginId`
+			, `password`
+			, `name`
+			, `email`
+			, `phoneNumber`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`user`
+		WHERE 
+			`loginId`=#{loginId}
+			and `password`=#{password}
+ 	</select>
+ </mapper>
