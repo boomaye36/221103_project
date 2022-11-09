@@ -13,10 +13,10 @@ public class AdminBO {
 	private AdminDAO adminDAO;
 	@Autowired
 	private FileManagerService fileManagerService;
-	public int addGym(String userLoginId, String name, int categoryId, String location, String phoneNumber, String introduce, double rank, MultipartFile file) {
+	public int addGym(String name, int categoryId, String location, String phoneNumber, String introduce, double rank, MultipartFile file) {
 		String imagePath = null;
 		if (file != null) {
-			imagePath = fileManagerService.saveFile(userLoginId, file);
+			imagePath = fileManagerService.saveFile( file);
 		}
 		return adminDAO.insertGym(name, categoryId, location, phoneNumber, introduce, rank, imagePath);
 	}

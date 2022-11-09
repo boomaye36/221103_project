@@ -3,18 +3,16 @@ package com.justlift.admin;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.justlift.admin.bo.AdminBO;
 
-@Controller
+@RestController
 @RequestMapping("/admin")
 public class AdminRestController {
 	@Autowired
@@ -22,18 +20,17 @@ public class AdminRestController {
 	@PostMapping("/admin_gym")
 	
 	public Map<String, Object> addGym(
-			@RequestParam("name") String name,
-			@RequestParam("categoryId") int categoryId,
+		@RequestParam("name") String name,
+		@RequestParam("categoryId") int categoryId,
 			@RequestParam("location") String location,
 			@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("introduce") String introduce,
 			@RequestParam("rank") double rank,
-			@RequestParam(value="file", required=false) MultipartFile file,
-			HttpSession session){
-		String userLoginId = (String)session.getAttribute("userLoginId");
+			@RequestParam(value="file", required=false) MultipartFile file
+			){
+		//String userLoginId = (String)session.getAttribute("userLoginId");
 		Map<String, Object> result = new HashMap<>();
-		
-		int row = adminBO.addGym(userLoginId, name, categoryId, location, phoneNumber, introduce, rank, file);
+		int row = adminBO.addGym( name, categoryId, location, phoneNumber, introduce, rank, file);
 		if (row > 0) {
 			result.put("code", 100); // 성공
 			result.put("result", "success");

@@ -9,4 +9,8 @@ public class AdminController {
 	public String adminGym() {
 		return "admin/gym";
 	}
+	@RequestMapping("/admin_trainer_view")
+	public String adminTrainer() {
+		return "admin/trainer";
+	}
 }

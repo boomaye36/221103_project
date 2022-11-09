@@ -19,9 +19,9 @@ public class FileManagerService {
 	
 	// input: 멀티파트 파일, userLoginId
 	// output: 이미지 패스
-	public String saveFile(String userLoginId, MultipartFile file) {
+	public String saveFile( MultipartFile file) {
 		// 파일 디렉토리 예) palang_16205468764/sun.png
-		String directoryName = userLoginId + "_" + System.currentTimeMillis() + "/"; //palang_16205468764/
+		String directoryName =  "_" + System.currentTimeMillis() + "/"; //palang_16205468764/
 		String filePath = FILE_UPLOAD_PATH + directoryName; //"D:\\송현근\\memo\\workspace\\images/palang_16205468764/" 
 		
 		File directory = new File(filePath);

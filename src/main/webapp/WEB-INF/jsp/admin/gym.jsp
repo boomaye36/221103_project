@@ -37,7 +37,7 @@
 		</div>
 		<div class="d-flex align-items-center mt-3">
 			<label for="categoryId" class="gymname"  ><b>체육관 카테고리 </b> </label>	
-			<input type="text" id="categoryId" name="categoryId" class="form-control" placeholder="내용을 입력해주세요. ">
+			<input type="number" id="categoryId" name="categoryId" class="form-control" placeholder="내용을 입력해주세요. ">
 		</div>
 		<div class="d-flex align-items-center mt-3">
 			<label for="location" class="gymname"  ><b>체육관 위치 </b> </label>	
@@ -85,21 +85,19 @@ $(document).ready(
 				'change',
 				function(e) {
 					//alert("change");
-					let fileName = e.target.files[0].name; // ex) cat-g4c8e76014_640.jpg
+					let fileName = e.target.files[0].name; 
 					//alert(fileName);
 					let ext = fileName.split('.').pop().toLowerCase();
 
-					// 확장자 유효성 확인
 					if (fileName.split('.').length < 2
 							|| (ext != 'gif' && ext != 'png'
 									&& ext != 'jpg' && ext != 'jpeg')) {
 						alert("이미지 파일만 업로드 할 수 있습니다.");
-						$(this).val(''); // 파일 태그에 실제 파일 제거
-						$('#fileName').text(''); // 파일 이름 비우기
+						$(this).val(''); 
+						$('#fileName').text(''); 
 						return;
 					}
 
-					// 상자에 업로드 된 이름 노출
 					$('#fileName').text(fileName);
 				});
 		$('#insertBtn').on('click', function(e){
@@ -110,24 +108,24 @@ $(document).ready(
 			let introduce = $('#introduce').val().trim();
 			let rank = $('#rank').val().trim();
 			let phoneNumber = $('#phoneNumber').val().trim();
-			
-			if (name=''){
+			//alert(categoryId);
+			if (name==''){
 				alert("이름을 입력하세요 ");
 				return false;
 			}
-			if (categoryId=''){
+			if (categoryId==''){
 				alert("카테고리를 입력하세요 ");
 				return false;
 			}
-			if (location=''){
+			if (location==''){
 				alert("주소를 입력하세요 ");
 				return false;
 			}
-			if (phoneNumber=''){
+			if (phoneNumber==''){
 				alert("전화번호를 입력하세요 ");
 				return false;
 			}
-			if (introduce=''){
+			if (introduce==''){
 				alert("소개를 입력하세요 ");
 				return false;
 			}
@@ -142,9 +140,10 @@ $(document).ready(
 			formData.append("name", name);
 			formData.append("categoryId", categoryId);
 			formData.append("location", location);
+			formData.append("phoneNumber", phoneNumber);
+
 			formData.append("introduce", introduce);
 			formData.append("rank", rank);
-			formData.append("phoneNumber", phoneNumber);
 			formData.append("file", $('#file')[0].files[0]);
 			$.ajax({
 				type : "post",
@@ -158,15 +157,16 @@ $(document).ready(
 				,
 				success : function(data) {
 					if (data.code == 100) {
-						location.reload();
+						alert("추가되었습니다");
+						location.href="https://naver.com"
 					} 
 					 else {
 						alert(data.errorMessage);
 					}
 				},
-				error : function(e) {
-					alert("관리자에게 문의해주세요.");
-				}
+				//error : function(e) {
+					//alert("관리자에게 문의해주세요.");
+				//}
 			});
 		});
 			
