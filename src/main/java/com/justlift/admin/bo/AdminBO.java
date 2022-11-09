@@ -20,4 +20,12 @@ public class AdminBO {
 		}
 		return adminDAO.insertGym(name, categoryId, location, phoneNumber, introduce, rank, imagePath);
 	}
+	
+	public int addTrainer(String name, int gymId,  String phoneNumber, String introduce, double rank, MultipartFile file) {
+		String imagePath = null;
+		if (file != null) {
+			imagePath = fileManagerService.saveFile( file);
+		}
+		return adminDAO.insertTrainer(name, gymId, phoneNumber, introduce, rank, imagePath);
+	}
 }

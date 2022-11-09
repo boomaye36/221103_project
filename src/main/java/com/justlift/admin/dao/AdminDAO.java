@@ -15,4 +15,12 @@ public interface AdminDAO {
 			@Param("rank") double rank,
 			@Param("imagePath") String imagePath
 			);
+
+	public int insertTrainer(
+			@Param("name")String name, 
+			@Param("gymId")int gymId, 
+			@Param("phoneNumber")String phoneNumber,
+			@Param("introduce")String introduce, 
+			@Param("rank")double rank,
+			@Param("imagePath")String imagePath);
 }

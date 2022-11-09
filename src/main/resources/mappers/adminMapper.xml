@@ -30,4 +30,30 @@
  			,NOW()
  		)
  	</insert>
+ 	
+ 	<insert id="insertTrainer" parameterType="map">
+ 		INSERT INTO `trainer`
+ 		(
+ 			`name`
+ 			,`gymId`
+ 			,`phoneNumber`
+
+ 			,`introduce`
+ 			,`rank`
+ 			,`image`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+ 			,#{gymId}
+ 			,#{phoneNumber}
+ 			,#{introduce}
+ 			,#{rank}
+ 			,#{imagePath}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 	</insert>
  </mapper>

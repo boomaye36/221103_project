@@ -40,5 +40,27 @@ public class AdminRestController {
 		}
 	return result;
 	}
+@PostMapping("/admin_trainer")
+	
+	public Map<String, Object> addTrainer(
+		@RequestParam("name") String name,
+		@RequestParam("gymId") int categoryId,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("introduce") String introduce,
+			@RequestParam("rank") double rank,
+			@RequestParam(value="file", required=false) MultipartFile file
+			){
+		//String userLoginId = (String)session.getAttribute("userLoginId");
+		Map<String, Object> result = new HashMap<>();
+		int row = adminBO.addTrainer( name, categoryId, phoneNumber, introduce, rank, file);
+		if (row > 0) {
+			result.put("code", 100); // 성공
+			result.put("result", "success");
+		}else {
+			result.put("code", 400);
+			result.put("errorMessage", "트레이너 저장에 실패했습니다. 관리자에게 문의하세요.");
+		}
+	return result;
+	}
 	
 }
