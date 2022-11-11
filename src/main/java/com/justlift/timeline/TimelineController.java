@@ -14,4 +14,10 @@ public class TimelineController {
 		model.addAttribute("viewName", "timeline/timeline");
 		return "template/layout";
 	}
+	@RequestMapping("/timeline_mypage_view")
+	public String timelineMypageView(Model model) {
+		model.addAttribute("viewName", "timeline/mypage");
+			return "template/layout";
+	}
+	
 }
