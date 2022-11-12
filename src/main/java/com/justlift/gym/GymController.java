@@ -34,14 +34,19 @@ public class GymController {
 			
 			// 마지막 페이지 (next g방향의 끝)인가?
 			// 제일 작은 숫자(postId)와 nextId가 같으면 마지막 페이지이다.
-			if (postBO.isLastPage(nextId, userId)) {
+			if (gymBO.isLastPage(nextId, categoryId)) {
 				nextId = 0;
 			}
 			// 앞 페이지 (prev 방향의 끝)인가?
 			// 제일 큰 숫자 (postId)와 prevId가 같으면 앞페이지이다.
-			if (postBO.isLastPage(prevId, userId)) {
+			if (gymBO.isLastPage(prevId, categoryId)) {
 				prevId = 0;
 			}
 		} 
+		model.addAttribute("prevId", prevId); // 가져온 포스트 중 가장 앞쪽(큰 id)
+		model.addAttribute("nextId", nextId); // 가져온 포스트 중 가장 뒷쪽(작은 id)
+		model.addAttribute("viewName", "gym/gymList");
+		model.addAttribute("gymList", gymList);
+		return "template/layout";
 	}
 }

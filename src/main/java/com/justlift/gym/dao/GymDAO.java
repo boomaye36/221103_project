@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.justlift.gym.model.Category;
 import com.justlift.gym.model.Gym;
 
 public interface GymDAO {
@@ -14,9 +15,10 @@ public interface GymDAO {
 			@Param("direction") String direction, 
 			@Param("limit") int limit);
 	
-	public int selectPostIdByUserIdAndSort(
+	public int selectPostIdByCategoryIdAndSort(
 			@Param("categoryId") int categoryId,
 			@Param("sort")String sort);
 
-
+	public Category selectCategoryNameByCategoryId(
+			@Param("categoryId")int categoryId);
 }

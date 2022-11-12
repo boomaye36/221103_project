@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.justlift.gym.dao.GymDAO;
+import com.justlift.gym.model.Category;
 import com.justlift.gym.model.Gym;
 
 @Service
@@ -33,10 +34,17 @@ public class GymBO {
 		// 첫페이지일 때는 standardId가 null, 다음일 때는 값이 있음
 		return gymDAO.selectGymListByLocationAndCategory(categoryId, location, standardId, direction, POST_MAX_SIZE);
 	}
-	public boolean isLastPage(int nextId, int userId) { //next 방향의 끝인가?
+	public boolean isLastPage(int nextId, int categoryId) { //next 방향의 끝인가?
 		// nextId와 제일 작은 id가 같은가?
-		int postId = postDAO.selectPostIdByUserIdAndSort(userId, "ASC");
+		int postId = gymDAO.selectPostIdByCategoryIdAndSort(categoryId, "ASC");
 		return postId == nextId; // 같으면 마지막 페이지
+	}
+	public boolean isFirstPage(int prevId, int categoryId) {
+		int postId = gymDAO.selectPostIdByCategoryIdAndSort(categoryId, "DESC");
+		return postId == prevId;
+	}
+	public Category getCategoryNameByCategoryId(int categoryId) {
+		return gymDAO.selectCategoryNameByCategoryId(categoryId);
 	}
 	
 }

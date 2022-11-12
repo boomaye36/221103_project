@@ -57,10 +57,10 @@
 			<%-- 모달 창 안에 내용 넣기 --%>
 			<div class="text-center">
 				<div class="my-3 border-bottom">
-					<a class="m-3 modaltext" href="/timeline/timeline_workout_view" id="healthBtn" data-category-id="1">헬스 </a><br>
-					<a class="m-3 modaltext" href="/timeline/timeline_workout_view" id="pilatesTtn" data-category-id="3">필라테스 </a><br>
-					<a class="m-3 modaltext" href="/timeline/timeline_workout_view" id="crossfitBtn" data-category-id="4">크로스핏 </a><br>
-					<a class="m-3 modaltext" href="/timeline/timeline_workout_view" id="yogaBtn" data-category-id="2">요가 </a>
+					<a class="m-3 modaltext" href="/gym/gym_view" id="healthBtn" data-category-id="1">헬스 </a><br>
+					<a class="m-3 modaltext" href="/gym/gym_view" id="pilatesTtn" data-category-id="3">필라테스 </a><br>
+					<a class="m-3 modaltext" href="/gym/gym_view" id="crossfitBtn" data-category-id="4">크로스핏 </a><br>
+					<a class="m-3 modaltext" href="/gym/gym_view" id="yogaBtn" data-category-id="2">요가 </a>
 				</div>
 				<div class="py-3">
 					<%-- data-dismiss="modal" 모달창 닫힘 --%>
@@ -103,7 +103,7 @@
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
 				});
-				$('#modal #pilatesTtn').on('click', function(e){
+				$('#modal #pilatesBtn').on('click', function(e){
 					e.preventDefault();
 					//let categoryId = 3;
 					let categoryId = $(this).data('category-id');
