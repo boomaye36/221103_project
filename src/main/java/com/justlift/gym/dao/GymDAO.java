@@ -21,4 +21,6 @@ public interface GymDAO {
 
 	public Category selectCategoryNameByCategoryId(
 			@Param("categoryId")int categoryId);
+
+	public int selectGymListByLocationAndCategoryId(int categoryId, String location);
 }

@@ -46,5 +46,8 @@ public class GymBO {
 	public Category getCategoryNameByCategoryId(int categoryId) {
 		return gymDAO.selectCategoryNameByCategoryId(categoryId);
 	}
+	public int getGymListByLocationAndCategoryId(int categoryId, String location) {
+		return gymDAO.selectGymListByLocationAndCategoryId(categoryId, location);
+	}
 	
 }

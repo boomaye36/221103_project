@@ -22,13 +22,15 @@ public class GymController {
 	public String gymView(Model model, HttpSession session,
 			@RequestParam(value="prevId", required=false) Integer prevIdParam,
 			@RequestParam(value="nextId", required=false) Integer nextIdParam
+			//@RequestParam(value="categoryId") int categoryId,
+			//@RequestParam(value="location", required=false) String location
 			) {
 		Integer categoryId = (Integer) session.getAttribute("categoryId");
 		String location = (String) session.getAttribute("location");
 		List<Gym> gymList = gymBO.getGymListByLocationAndCategory(categoryId, location, prevIdParam, nextIdParam);
 		int prevId = 0;
 		int nextId = 0;
-		if (gymList.isEmpty() == false) { //postList가 비어있을 때 에러 방지
+		if (gymList.isEmpty() == false) { //gymList가 비어있을 때 에러 방지
 			prevId = gymList.get(0).getId();
 			nextId = gymList.get(gymList.size() - 1).getId();
 			

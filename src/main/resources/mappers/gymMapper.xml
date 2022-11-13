@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.justlift.gym.dao">
+<mapper namespace="com.justlift.gym.dao.GymDAO">
 	<select id="selectPostIdByCategoryIdAndSort" parameterType="map"
 		resultType="int">
 		SELECT
@@ -34,11 +34,29 @@
 	</select>
 	<select id="selectCategoryNameByCategoryId" parameterType="map" resultType="com.justlift.gym.model.Category">
 		SELECT
-			`category`
+			*
 		FROM
 			`category`
 		WHERE
+			`id`=#{categoryId}
+	</select>
+	<select id="selectGymListByLocationAndCategoryId" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		SELECT
+			`id`
+			,`name`
+			,`categoryId`
+			,`location`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`gym`
+		WHERE
 			`categoryId`=#{categoryId}
+			AND `location`=#{location}
 	</select>
 
 </mapper>

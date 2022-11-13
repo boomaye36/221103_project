@@ -58,7 +58,7 @@
 			<div class="text-center">
 				<div class="my-3 border-bottom">
 					<a class="m-3 modaltext" href="/gym/gym_view" id="healthBtn" data-category-id="1">헬스 </a><br>
-					<a class="m-3 modaltext" href="/gym/gym_view" id="pilatesTtn" data-category-id="3">필라테스 </a><br>
+					<a class="m-3 modaltext" href="/gym/gym_view" id="pilatesBtn" data-category-id="3">필라테스 </a><br>
 					<a class="m-3 modaltext" href="/gym/gym_view" id="crossfitBtn" data-category-id="4">크로스핏 </a><br>
 					<a class="m-3 modaltext" href="/gym/gym_view" id="yogaBtn" data-category-id="2">요가 </a>
 				</div>
@@ -102,26 +102,64 @@
 					//let categoryId = 1;
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
+					$.ajax({
+						type:"post",
+						url:"/gym/create",
+						data:{"location" : location,
+							"categoryId" : categoryId},
+						success:function(data){
+							if(data.code == 100){
+								location.href="/gym/gym_view";
+							}
+						},error : function(e){
+							alert("다시 시도해주세요 ");
+						}
+					});
 				});
 				$('#modal #pilatesBtn').on('click', function(e){
 					e.preventDefault();
 					//let categoryId = 3;
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
+					$.ajax({
+						type:"post",
+						url:"/gym/create",
+						data:{"location" : location,
+							"categoryId" : categoryId},
+						success:function(data){
+							if(data.code == 100){
+								location.href="/gym/gym_view";
+							}
+						},error : function(e){
+							alert("다시 시도해주세요 ");
+						}
+					});
 				});
 				$('#modal #crossfitBtn').on('click', function(e){
 					e.preventDefault();
 					//let categoryId = 4;
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
+					$.ajax({
+						type:"post",
+						url:"/gym/create",
+						data:{"location" : location,
+							"categoryId" : categoryId},
+						success:function(data){
+							if(data.code == 100){
+								location.href="/gym/gym_view";
+							}
+						},error : function(e){
+							alert("다시 시도해주세요 ");
+						}
+					});
 				});
 				$('#modal #yogaBtn').on('click', function(e){
 					e.preventDefault();
 					//let categoryId = 2;
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
-				});
-				$.ajax({
+					$.ajax({
 					type:"post",
 					url:"/gym/create",
 					data:{"location" : location,
@@ -133,6 +171,8 @@
 					},error : function(e){
 						alert("다시 시도해주세요 ");
 					}
+				});
+				
 				});
 			});
 </script>
