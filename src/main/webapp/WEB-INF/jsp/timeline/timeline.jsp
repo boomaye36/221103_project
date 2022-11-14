@@ -7,22 +7,21 @@
 		<div class="mt-5 d-flex justify-content-center align-items-center">
 			<h2>지역을 선택하세요</h2>
 			<select class="ml-5 " id="selectedRegion" name="selectedRegion">
-				<option value="gangnam"
-					<c:if test="${selectedRegion==gangnam}">selected </c:if >>강남구
+				<option value="gangnam">강남구
 				</option>
 				<option value="seocho"
-					<c:if test="${selectedRegion==seocho}">selected </c:if >>서초구
+					>서초구
 				</option>
 				<option value="songpa"
-					<c:if test="${selectedRegion==songpa}">selected </c:if >>송파구
+					>송파구
 				</option>
 				<option value="kwanak"
-					<c:if test="${selectedRegion==kwanak}">selected </c:if >>관악구</option>
+					>관악구</option>
 				<option value="yongsan"
-					<c:if test="${selectedRegion==yongsan}">selected </c:if >>용산구
+					>용산구
 				</option>
 				<option value="mapo"
-					<c:if test="${selectedRegion==mapo}">selected </c:if >>마포구
+					>마포구
 				</option>
 
 			</select>
@@ -74,8 +73,10 @@
 <script>
 	$(document).ready(
 			function() {
-				let location = $('#selectedRegion').val().trim();
-				//alert(location);
+				$('select[name=selectedRegion]').change(function(){
+					let location = $(this).val();
+					alert(location);
+				
 				/* $('#mypageBtn').on('click', function(){
 					//e.preventDefault();
 					let 
@@ -87,7 +88,7 @@
 						"/static/img/running_machine.jpeg" ];
 				let currentIndex = 0;
 
-				/* setInterval(function() {
+					setInterval(function() {
 					//console.log(currentIndex);
 					currentIndex++;
 					$('#bannerImg').attr('src', bannerList[currentIndex]);
@@ -95,14 +96,16 @@
 					if (currentIndex >= bannerList.length) {
 						currentIndex = 0;
 					}
-				}, 3000); */
+				}, 3000); 
 				
 				$('#modal #healthBtn').on('click', function(e){
 					e.preventDefault();
+					//let location = $(this).val();
 					//let categoryId = 1;
+					//alert(location);
 					let categoryId = $(this).data('category-id');
 					//alert(categoryId);
-					$.ajax({
+					 $.ajax({
 						type:"post",
 						url:"/gym/create",
 						data:{"location" : location,
@@ -114,7 +117,7 @@
 						},error : function(e){
 							alert("다시 시도해주세요 ");
 						}
-					});
+					}); 
 				});
 				$('#modal #pilatesBtn').on('click', function(e){
 					e.preventDefault();
@@ -174,5 +177,6 @@
 				});
 				
 				});
+			});
 			});
 </script>

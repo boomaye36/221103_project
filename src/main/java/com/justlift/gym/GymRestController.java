@@ -30,6 +30,7 @@ private GymBO gymBO;
 		session.setAttribute("location", location);
 		session.setAttribute("categoryId", categoryId);
 		session.setAttribute("categoryName", category.getCategory());
+		System.out.println("categoryId = " + categoryId);
 		int count = gymBO.getGymListByLocationAndCategoryId(categoryId, location);
 		//List<Gym> ()
 		if (count > 0) {

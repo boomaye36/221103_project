@@ -35,12 +35,12 @@ public class GymController {
 			nextId = gymList.get(gymList.size() - 1).getId();
 			
 			// 마지막 페이지 (next g방향의 끝)인가?
-			// 제일 작은 숫자(postId)와 nextId가 같으면 마지막 페이지이다.
+			// 제일 작은 숫자(categoryId)와 nextId가 같으면 마지막 페이지이다.
 			if (gymBO.isLastPage(nextId, categoryId)) {
 				nextId = 0;
 			}
 			// 앞 페이지 (prev 방향의 끝)인가?
-			// 제일 큰 숫자 (postId)와 prevId가 같으면 앞페이지이다.
+			// 제일 큰 숫자 (categoryId)와 prevId가 같으면 앞페이지이다.
 			if (gymBO.isLastPage(prevId, categoryId)) {
 				prevId = 0;
 			}

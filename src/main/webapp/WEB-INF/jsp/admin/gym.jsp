@@ -158,7 +158,7 @@ $(document).ready(
 				success : function(data) {
 					if (data.code == 100) {
 						alert("추가되었습니다");
-						location.href="https://naver.com"
+						location.href="/admin/gym"
 					} 
 					 else {
 						alert(data.errorMessage);
