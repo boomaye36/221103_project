@@ -1,9 +1,10 @@
 package com.justlift.user.dao;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import com.justlift.user.model.User;
-
+@Repository
 public interface UserDAO {
 	public int existingLoginId(String userId);
 	

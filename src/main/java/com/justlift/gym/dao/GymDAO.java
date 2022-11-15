@@ -3,10 +3,11 @@ package com.justlift.gym.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import com.justlift.gym.model.Category;
 import com.justlift.gym.model.Gym;
-
+@Repository
 public interface GymDAO {
 	public List<Gym> selectGymListByLocationAndCategory(
 			@Param("categoryId") int categoryId,
@@ -22,7 +23,7 @@ public interface GymDAO {
 	public Category selectCategoryNameByCategoryId(
 			@Param("categoryId")int categoryId);
 
-	public int selectGymListByLocationAndCategoryId(
+	public List<Gym> selectGymListByLocationAndCategoryId(
 			@Param("categoryId")int categoryId,
 			@Param("location")String location);
 }

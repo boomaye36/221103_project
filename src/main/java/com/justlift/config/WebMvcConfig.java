@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.justlift.common.FileManagerService;
 import com.justlift.interceptor.PermissionInterceptor;
+//import com.justlift.interceptor.PermissionInterceptor;
 
 
 @Configuration
