@@ -22,5 +22,7 @@ public interface GymDAO {
 	public Category selectCategoryNameByCategoryId(
 			@Param("categoryId")int categoryId);
 
-	public int selectGymListByLocationAndCategoryId(int categoryId, String location);
+	public int selectGymListByLocationAndCategoryId(
+			@Param("categoryId")int categoryId,
+			@Param("location")String location);
 }

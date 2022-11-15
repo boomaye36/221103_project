@@ -21,12 +21,12 @@ public class GymController {
 	@RequestMapping("/gym_view")
 	public String gymView(Model model, HttpSession session,
 			@RequestParam(value="prevId", required=false) Integer prevIdParam,
-			@RequestParam(value="nextId", required=false) Integer nextIdParam
-			//@RequestParam(value="categoryId") int categoryId,
-			//@RequestParam(value="location", required=false) String location
+			@RequestParam(value="nextId", required=false) Integer nextIdParam,
+			@RequestParam(value="categoryId") int categoryId,
+			@RequestParam(value="location", required=false) String location
 			) {
-		Integer categoryId = (Integer) session.getAttribute("categoryId");
-		String location = (String) session.getAttribute("location");
+		//Integer categoryId = (Integer) session.getAttribute("categoryId");
+		//String location = (String) session.getAttribute("location");
 		List<Gym> gymList = gymBO.getGymListByLocationAndCategory(categoryId, location, prevIdParam, nextIdParam);
 		int prevId = 0;
 		int nextId = 0;

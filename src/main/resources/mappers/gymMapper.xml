@@ -30,7 +30,44 @@
 			`gym`
 		WHERE
 			`categoryId`=#{categoryId}
-			AND `location`=#{location}
+			AND 
+<if test="location == 'gangnam'">
+	`location` LIKE '%강남구%'
+</if>
+<if test="location == 'seocho'">
+	`location` LIKE '%서초구 %'
+</if>
+<if test="location == 'songpa'">
+	`location` LIKE '%송파구 %'
+</if>
+<if test="location == 'kwanak'">
+	`location` LIKE '%관악구 %'
+</if>
+<if test="location == 'yongsan'">
+	`location` LIKE '%용산구 %'
+</if>
+<if test="location == 'mapo'">
+	`location` LIKE '%마포구 %'
+</if>
+<if test="location == 'seongdong'">
+	`location` LIKE '%성동구 %'
+</if>
+<if test="direction == null">
+		ORDER BY `id` DESC
+		</if>
+		<if test="direction == 'next'">
+			<![CDATA[
+			AND `id` < #{standardId}
+			]]>
+		ORDER BY `id` DESC
+		</if>
+		<if test="direction == 'prev'">
+			<![CDATA[
+			AND `id` > #{standardId}
+			]]>
+		ORDER BY `id` ASC
+		</if>
+		LIMIT ${limit}
 	</select>
 	<select id="selectCategoryNameByCategoryId" parameterType="map" resultType="com.justlift.gym.model.Category">
 		SELECT
@@ -56,7 +93,28 @@
 			`gym`
 		WHERE
 			`categoryId`=#{categoryId}
-			AND `location`=#{location}
+			AND 
+<if test="location == 'gangnam'">
+	`location` LIKE '%강남구%'
+</if>
+<if test="location == 'seocho'">
+	`location` LIKE '%서초구 %'
+</if>
+<if test="location == 'songpa'">
+	`location` LIKE '%송파구 %'
+</if>
+<if test="location == 'kwanak'">
+	`location` LIKE '%관악구 %'
+</if>
+<if test="location == 'yongsan'">
+	`location` LIKE '%용산구 %'
+</if>
+<if test="location == 'mapo'">
+	`location` LIKE '%마포구 %'
+</if>
+<if test="location == 'seongdong'">
+	`location` LIKE '%성동구 %'
+</if>
 	</select>
 
 </mapper>
