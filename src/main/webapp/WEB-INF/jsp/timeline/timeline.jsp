@@ -69,72 +69,77 @@
 <script>
 	$(document).ready(
 			function() {
-				
-							
+
+				//alert(location);
+
+				let bannerList = [ "/static/img/barbell.jpeg",
+						"/static/img/medicine_ball.jpeg",
+						"/static/img/rope.jpeg",
+						"/static/img/running_machine.jpeg" ];
+				let currentIndex = 0;
+
+				setInterval(function() {
+					//console.log(currentIndex);
+					currentIndex++;
+					$('#bannerImg').attr('src', bannerList[currentIndex]);
+
+					if (currentIndex >= bannerList.length) {
+						currentIndex = 0;
+					}
+				}, 3000);
+
+				$('#modal #healthBtn').on(
+						'click',
+						function(e) {
+							e.preventDefault();
+							let location = $('#selectedRegion option:selected')
+									.val();
 							//alert(location);
+							let categoryId = $(this).data('category-id');
+							//alert(categoryId);
+							document.location.href = "/gym/gym_view?location="
+									+ location + "&categoryId=" + categoryId;
 
-							
+						});
+				$('#modal #pilatesBtn').on(
+						'click',
+						function(e) {
+							e.preventDefault();
+							let location = $('#selectedRegion option:selected')
+									.val();
+							//alert(location);
+							let categoryId = $(this).data('category-id');
+							//alert(categoryId);
+							document.location.href = "/gym/gym_view?location="
+									+ location + "&categoryId=" + categoryId;
 
-							let bannerList = [ "/static/img/barbell.jpeg",
-									"/static/img/medicine_ball.jpeg",
-									"/static/img/rope.jpeg",
-									"/static/img/running_machine.jpeg" ];
-							let currentIndex = 0;
+						});
+				$('#modal #crossfitBtn').on(
+						'click',
+						function(e) {
+							e.preventDefault();
+							let location = $('#selectedRegion option:selected')
+									.val();
+							//alert(location);
+							let categoryId = $(this).data('category-id');
+							//alert(categoryId);
+							document.location.href = "/gym/gym_view?location="
+									+ location + "&categoryId=" + categoryId;
 
-							setInterval(function() {
-								//console.log(currentIndex);
-								currentIndex++;
-								$('#bannerImg').attr('src',
-										bannerList[currentIndex]);
+						});
+				$('#modal #yogaBtn').on(
+						'click',
+						function(e) {
+							e.preventDefault();
+							let location = $('#selectedRegion option:selected')
+									.val();
+							//alert(location);
+							let categoryId = $(this).data('category-id');
+							//alert(categoryId);
+							document.location.href = "/gym/gym_view?location="
+									+ location + "&categoryId=" + categoryId;
 
-								if (currentIndex >= bannerList.length) {
-									currentIndex = 0;
-								}
-							}, 3000);
+						});
 
-							$('#modal #healthBtn').on('click', function(e) {
-								e.preventDefault();
-								let location = $('#selectedRegion option:selected').val();
-								//let categoryId = 1;
-								//alert(location);
-								let categoryId = $(this).data('category-id');
-								//alert(categoryId);
-								document.location.href="/gym/gym_view?location="+location+"&categoryId="+categoryId;
-								
-								
-							});
-							$('#modal #pilatesBtn').on('click', function(e) {
-								e.preventDefault();
-								let location = $('#selectedRegion option:selected').val();
-								//let categoryId = 1;
-								//alert(location);
-								let categoryId = $(this).data('category-id');
-								//alert(categoryId);
-								document.location.href="/gym/gym_view?location="+location+"&categoryId="+categoryId;
-								
-							});
-							$('#modal #crossfitBtn').on('click', function(e) {
-								e.preventDefault();
-								let location = $('#selectedRegion option:selected').val();
-								//let categoryId = 1;
-								//alert(location);
-								let categoryId = $(this).data('category-id');
-								//alert(categoryId);
-								document.location.href="/gym/gym_view?location="+location+"&categoryId="+categoryId;
-								
-							});
-							$('#modal #yogaBtn').on('click', function(e) {
-								e.preventDefault();
-								let location = $('#selectedRegion option:selected').val();
-								//let categoryId = 1;
-								//alert(location);
-								let categoryId = $(this).data('category-id');
-								//alert(categoryId);
-								document.location.href="/gym/gym_view?location="+location+"&categoryId="+categoryId;
-								
-								});
-
-						
-						
 			});
 </script>
