@@ -67,7 +67,7 @@
 			]]>
 		ORDER BY `id` ASC
 		</if>
-		LIMIT ${limit}
+		
 	</select>
 	<select id="selectCategoryNameByCategoryId" parameterType="map" resultType="com.justlift.gym.model.Category">
 		SELECT

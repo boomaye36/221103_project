@@ -15,14 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManagerService {
 	private Logger log = LoggerFactory.getLogger(FileManagerService.class);
 	//실제 이미지가 저장될 경로(서버)
-	public static final String FILE_UPLOAD_PATH = "/Users/songhyeongeun/Desktop/코딩/spring/221103_project/workspace/images ";
+	public static final String FILE_UPLOAD_PATH = "/Users/songhyeongeun/Desktop/코딩/spring/221103_project/workspace/221103_project/src/main/resources/static/post/";
 	
 	// input: 멀티파트 파일, userLoginId
 	// output: 이미지 패스
 	public String saveFile( MultipartFile file) {
 		// 파일 디렉토리 예) palang_16205468764/sun.png
 		String directoryName =  "_" + System.currentTimeMillis() + "/"; //palang_16205468764/
-		String filePath = FILE_UPLOAD_PATH + directoryName; //"D:\\송현근\\memo\\workspace\\images/palang_16205468764/" 
+		String filePath = FILE_UPLOAD_PATH + directoryName; 
 		
 		File directory = new File(filePath);
 		if(directory.mkdir() == false) {
@@ -31,8 +31,9 @@ public class FileManagerService {
 		//파일 업로드 : byte 단위로 업로드한다.
 		try {
 			byte[] bytes = file.getBytes();
-			Path path = Paths.get(filePath + file.getOriginalFilename()); // OriginalFilename은 사용자가 업로드한 파일 이름
+			Path path = Paths.get(filePath  + file.getOriginalFilename()); // OriginalFilename은 사용자가 업로드한 파일 이름
 			Files.write(path, bytes);
+			//System.out.println("path ###"+path);
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -40,10 +41,10 @@ public class FileManagerService {
 		}
 		// 성공 했으면 이미지 url path를 리턴한다. (WebMvConfig 에서 매핑한 이미지 path)
 		// http://localhost/images/palang_16205468764/sun.png
-		return "/images/" + directoryName + file.getOriginalFilename();
+		return "/post/" + directoryName +file.getOriginalFilename();
 	}
 	public void deleteFile(String imagePath) {
-		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", ""));
+		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/post/", ""));
 		if (Files.exists(path)) {
 			try {
 				Files.delete(path);
