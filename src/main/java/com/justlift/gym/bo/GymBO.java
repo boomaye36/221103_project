@@ -14,8 +14,8 @@ import com.justlift.gym.model.Gym;
 public class GymBO {
 	@Autowired
 	private GymDAO gymDAO;
-	private static final int POST_MAX_SIZE = 5;
-
+	private static final int POST_MAX_SIZE = 3;
+	
 	public List<Gym> getGymListByLocationAndCategory(int categoryId, String location, Integer prevId, Integer nextId){
 		Integer standardId = null; // 기준이 되는 id(이전 또는 다음)
 		String direction = null; // 방향
