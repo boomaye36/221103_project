@@ -6,11 +6,11 @@
 <h1>${categoryName}
 ${categoryId }
 ${location }</h1>
-<div class="container my-5">
+<div class="container my-5 ">
 	<c:forEach items="${gymList }" var="gym">
-		<div class="gym-box">
-			<a class="text-dark" href="/gym/detail_view"><img src="/static/${gym.image}" width="18px" height="18px">
-			<br>${gym.name}<br>${gym.location }</a>
+		<div class="gym-box d-flex justify-content-center bg-light">
+			<a class="text-dark gym_detail_btn" href="#" data-gym-id="${gym.id }"><img src="/static/${gym.image}" width="150px" height="100px" >
+			<br><span class="font-weight-bold ">#${gym.name}</span><br>#${gym.location }</a>
  		</div>
 	</c:forEach>
 	
@@ -23,3 +23,14 @@ ${location }</h1>
 			</c:if>
 		</div>
 </div>
+<script>
+	$(document).ready(function(){
+		$('.gym_detail_btn').on('click', function(e){
+			e.preventDefault();
+			let gymId = $(this).data('gym-id');
+			//alert(gymId);
+			document.location.href = "/gym/detail_view?gymId=" + gymId;
+		});
+		
+	});
+</script>

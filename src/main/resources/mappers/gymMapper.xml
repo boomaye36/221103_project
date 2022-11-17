@@ -117,6 +117,13 @@
 	`location` LIKE '%성동구 %'
 </if>
 	</select>
-
+	<select id="selectGymDetailListByGymId" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		SELECT 
+			*
+		FROM
+			`gym`
+		WHERE
+			`id` = #{gymId}
+	</select>
 </mapper>
  

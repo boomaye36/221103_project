@@ -49,5 +49,8 @@ public class GymBO {
 	public List<Gym> getGymListByLocationAndCategoryId(int categoryId, String location) {
 		return gymDAO.selectGymListByLocationAndCategoryId(categoryId, location);
 	}
+	public Gym getGymDetailListByGymId(int gymId){
+		return gymDAO.selectGymDetailListByGymId(gymId);
+	}
 	
 }

@@ -55,17 +55,26 @@ public class GymController {
 
 		model.addAttribute("prevId", prevId); // 가져온 포스트 중 가장 앞쪽(큰 id)
 		model.addAttribute("nextId", nextId); // 가져온 포스트 중 가장 뒷쪽(작은 id)
-		model.addAttribute("location", location); // 가져온 포스트 중 가장 뒷쪽(작은 id)
-		model.addAttribute("categoryId", categoryId); // 가져온 포스트 중 가장 뒷쪽(작은 id)
+		model.addAttribute("location", location); 
+		model.addAttribute("categoryId", categoryId); 
 		
 		model.addAttribute("viewName", "gym/gymList");
 		model.addAttribute("gymList", gymList);
 		return "template/layout";
 	}
 
-	@RequestMapping("/detail_view")
-	public String gymDetailView(Model model) {
+	@GetMapping("/detail_view")
+	public String gymDetailView(Model model, HttpSession session,
+			@RequestParam ("gymId") int gymId) {
 		model.addAttribute("viewName", "gym/gymDetailList");
+		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
+		model.addAttribute("gymName", detailGym.getName());
+		model.addAttribute("gymImage", detailGym.getImage());
+		//model.addAttribute("gymId", detailGym.getId());
+		session.setAttribute("gymId", detailGym.getId());
+		model.addAttribute("gymIntroduce", detailGym.getIntroduce());
+		model.addAttribute("gymPhoneNumber", detailGym.getPhoneNumber());
+		model.addAttribute("gymLocation", detailGym.getLocation());
 		return "template/layout";
 	}
 }

@@ -6,3 +6,8 @@
 .contents-box{width:2000px;}
 .categoryBtn{height:100px; width:200px;}
 .modaltext{font-size:x-large;}
+.gym-box{height:200px; width:1000px; justify-content: center;}
+.container{height:1000px;}
+.detail-list{width:500px;}
+.selectMonth{width:200px;}
+.enrollBtn, .reviewBtn{width:200px; height:70px; margin:100px;}
