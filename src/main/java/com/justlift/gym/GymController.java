@@ -65,7 +65,8 @@ public class GymController {
 
 	@GetMapping("/detail_view")
 	public String gymDetailView(Model model, HttpSession session,
-			@RequestParam ("gymId") int gymId) {
+			@RequestParam ("gymId") int gymId,
+			@RequestParam ("location") String location) {
 		model.addAttribute("viewName", "gym/gymDetailList");
 		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
 		model.addAttribute("gymName", detailGym.getName());
@@ -75,6 +76,8 @@ public class GymController {
 		model.addAttribute("gymIntroduce", detailGym.getIntroduce());
 		model.addAttribute("gymPhoneNumber", detailGym.getPhoneNumber());
 		model.addAttribute("gymLocation", detailGym.getLocation());
+		model.addAttribute("categoryId",detailGym.getCategoryId());
+		model.addAttribute("location", location);
 		return "template/layout";
 	}
 }

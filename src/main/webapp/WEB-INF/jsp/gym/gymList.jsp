@@ -9,7 +9,7 @@ ${location }</h1>
 <div class="container my-5 ">
 	<c:forEach items="${gymList }" var="gym">
 		<div class="gym-box d-flex justify-content-center bg-light">
-			<a class="text-dark gym_detail_btn" href="#" data-gym-id="${gym.id }"><img src="/static/${gym.image}" width="150px" height="100px" >
+			<a class="text-dark gym_detail_btn" href="#" data-gym-id="${gym.id }" data-gym-location="${location}"><img src="/static/${gym.image}" width="150px" height="100px" >
 			<br><span class="font-weight-bold ">#${gym.name}</span><br>#${gym.location }</a>
  		</div>
 	</c:forEach>
@@ -28,8 +28,10 @@ ${location }</h1>
 		$('.gym_detail_btn').on('click', function(e){
 			e.preventDefault();
 			let gymId = $(this).data('gym-id');
+			let location = $(this).data('gym-location');
+			alert(location);
 			//alert(gymId);
-			document.location.href = "/gym/detail_view?gymId=" + gymId;
+			document.location.href = "/gym/detail_view?gymId=" + gymId +"&location=" + location;
 		});
 		
 	});
