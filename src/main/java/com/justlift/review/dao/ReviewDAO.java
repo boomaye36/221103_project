@@ -1,0 +1,13 @@
+package com.justlift.review.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import com.justlift.review.model.Review;
+
+@Repository
+public interface ReviewDAO {
+	public List<Review> selectGymReveiwListByWorkoutIdAndType(@Param("workoutId") int workoutId, @Param("type") String type);
+}
