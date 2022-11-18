@@ -41,8 +41,10 @@
 			<li class="list-group-item">${gymPhoneNumber }</li>
 			<li class="list-group-item">${gymLocation }</li>
 		</ul>
-		<button type="button" class="btn btn-info reviewBtn">리뷰보기</button>
-
+		<div class="d-flex">
+			<button type="button" class="btn btn-info reviewViewBtn">리뷰보기</button>
+<!-- 		<button type="button" class="btn btn-info reviewWriteBtn">리뷰쓰기 </button>
+ -->		</div>
 	</div>
 	<div class="d-flex justify-content-between mt-5">
 		<a href="/timeline/timeline_view"><img
@@ -80,7 +82,18 @@
 															alert("등록 실패했습니다. ");
 														}
 													});
-										});
+											
+				
+				});
+						$('.reviewViewBtn').on('click', function(e){
+							e.preventDefault();
+							let workoutId = ${gymId};
+							//alert(gymId);
+							let type = "gym";
+							let gymName = '${gymName}';
+							//alert(gymName);
+							document.location.href="/review/view?workoutId=" + workoutId + "&type=" + type +"&gymName=" + gymName;	
+						});
 						
 					});
 </script>
