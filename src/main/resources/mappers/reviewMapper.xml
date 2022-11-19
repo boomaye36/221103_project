@@ -19,4 +19,25 @@
 			`workoutId` = #{workoutId} and
 			`type` = 'gym'
 	</select>
+	<select id="InsertReview" parameterType="map" >
+		INSERT INTO `Review`
+			(
+			
+			`workoutId`,
+			`type`,
+			`userId`,
+			`content`,
+			`createdAt`,
+			`updatedAt`
+			)
+		VALUES
+			(
+			#{workoutId},
+			#{type},
+			#{userId},
+			#{content},
+			NOW(),
+			NOW()
+			)
+	</select>
 </mapper>

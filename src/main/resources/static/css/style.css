@@ -10,4 +10,5 @@
 .container{height:1000px;}
 .detail-list{width:500px;}
 .selectMonth{width:200px;}
-.enrollBtn, .reviewWriteBtn, .reviewViewBtn{width:200px; height:70px; margin:100px;}
+.enrollBtn, .reviewWriteBtn, .reviewViewBtn, .insertBtn, .cancelBtn{width:200px; height:70px; margin:100px;}
+#content{width:500px; height:400px;margin-top:200px;}
