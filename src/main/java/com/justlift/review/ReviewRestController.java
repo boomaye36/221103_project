@@ -23,10 +23,12 @@ public class ReviewRestController {
 			@RequestParam("workoutId") int workoutId,
 			@RequestParam("type") String type,
 			@RequestParam("content") String content,
+			@RequestParam("rank") int rank,
+			
 			Model model, HttpSession session
 			){
 		Integer userId = (Integer)session.getAttribute("userId");
-		reviewBO.addReview(workoutId, type, content, userId);
+		reviewBO.addReview(workoutId, type, content, rank, userId);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);
 		return result;

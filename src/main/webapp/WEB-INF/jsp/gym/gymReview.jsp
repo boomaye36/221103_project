@@ -11,6 +11,9 @@
 	<tr>
 		<th>회원 ID</th>
 		<th>리뷰</th>
+		<th>별점 </th>
+		
+		<th>작성 날짜</th>
 		
 	</tr>
 	</thead>
@@ -19,6 +22,10 @@
 	<tr >
 		<td>${userLoginId }</td>
 		<td>${gymReview.content }</td>
+		<td>${gymReview.rank }</td>
+		
+						
+			<td>${gymReview.createdAt }</td>			
 	</tr>
 	 </c:forEach>
 	</tbody>

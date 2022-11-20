@@ -9,6 +9,7 @@ public class Review {
 	private String type;
 	private int userId;
 	private String content;
+	private int rank;
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
@@ -53,6 +54,13 @@ public class Review {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+	
 	
 	
 }

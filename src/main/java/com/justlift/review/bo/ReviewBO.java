@@ -15,7 +15,7 @@ public class ReviewBO {
 	public List<Review> getReveiwListByWorkoutIdAndType(int workoutId, String type){
 		return reviewDAO.selectGymReveiwListByWorkoutIdAndType(workoutId, type);
 	}
-	public void addReview(int workoutId, String type, String content, int userId) {
-		reviewDAO.InsertReview(workoutId, type, content, userId);
+	public void addReview(int workoutId, String type, String content, int rank, int userId) {
+		reviewDAO.InsertReview(workoutId, type, content,rank, userId);
 	}
 }

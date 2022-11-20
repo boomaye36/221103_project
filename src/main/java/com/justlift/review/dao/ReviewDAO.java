@@ -15,6 +15,7 @@ public interface ReviewDAO {
 			@Param("workoutId") int workoutId,
 			@Param("type") String type,
 			@Param("content") String content,
+			@Param("rank") int rank,
 			@Param("userId") int userId
 			);
 }

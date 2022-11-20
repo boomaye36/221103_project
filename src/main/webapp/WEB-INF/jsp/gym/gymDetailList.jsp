@@ -7,8 +7,8 @@
 	<div class="d-flex justify-content-between">
 		<div class="d-flex">
 
-			<img src="/static/${gymImage}" width="400px" height="300px"> <a
-				href="#" class="like-btn ml-3"><img
+			<img src="/static/${gymImage}" width="400px" height="300px"> 
+			<a href="#" class="like-btn ml-3"><img
 				src="https://www.iconninja.com/files/527/809/128/heart-icon.png"
 				width="50px"></a>
 		</div>
@@ -93,6 +93,32 @@
 							let gymName = '${gymName}';
 							//alert(gymName);
 							document.location.href="/review/view?workoutId=" + workoutId + "&type=" + type +"&gymName=" + gymName;	
+						});
+						$('.like-btn').on('click', function(e){
+							e.preventDefault();
+							let userId = ${userId};
+							//alert (userId);
+							if (userId ==''){
+								alert("로그인을 해주세요 ");
+								document.location.href="/user/sign_in_view";
+								return;
+							}
+							let workoutId = ${gymId};
+							let type = "gym";
+							//alert(workoutId);
+							$.ajax({
+								url:"/like/" + workoutId,
+								data : {"type" : type},
+								success:function(data)	{
+									if(data.code == 100 ){
+										location.reload(true);
+									}else{
+										alert(data.errorMessage);
+									}
+								},error : function(e){
+									alert("체육관 좋아요 누르기 실패 ");
+								}
+							});
 						});
 						
 					});

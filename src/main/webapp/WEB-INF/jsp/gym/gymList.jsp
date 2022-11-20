@@ -11,6 +11,22 @@ ${location }</h1>
 		<div class="gym-box d-flex justify-content-center bg-light">
 			<a class="text-dark gym_detail_btn" href="#" data-gym-id="${gym.id }" data-gym-location="${location}"><img src="/static/${gym.image}" width="150px" height="100px" >
 			<br><span class="font-weight-bold ">#${gym.name}</span><br>#${gym.location }</a>
+			<c:choose>
+				<c:when test="${gym.rank >=4.5 }">
+					<span class="text-info">${gym.rank }</span>
+				</c:when>
+				<c:when test="${gym.rank >=4.0 && gym.rank < 4.5}">
+					<span class="text-success">${gym.rank }</span>
+				</c:when>
+				<c:when test="${gym.rank >=3.0 && gym.rank  < 4.0}">
+					<span class="text-warning">${gym.rank }</span>
+				</c:when>
+				<c:otherwise>
+					<span class="text-danger">${gym.rank }</span>
+				</c:otherwise>
+			</c:choose>			
+			
+			
  		</div>
 	</c:forEach>
 	
