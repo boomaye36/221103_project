@@ -46,10 +46,7 @@
 <!-- 		<button type="button" class="btn btn-info reviewWriteBtn">리뷰쓰기 </button>
  -->		</div>
 	</div>
-	<div class="d-flex justify-content-between mt-5">
-		<a href="/timeline/timeline_view"><img
-			src="https://www.iconninja.com/files/995/95/811/home-interface-button-symbol-icon.png"></a>
-	</div>
+	
 </div>
 <script>
 	$(document)

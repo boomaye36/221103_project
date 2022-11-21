@@ -1,0 +1,31 @@
+package com.justlift.like.dao;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface LikeDAO {
+
+	public boolean existLike(
+			@Param("workoutId") int workoutId, 
+			@Param("userId") int userId,
+			@Param("type") String type);
+	
+	public void insertLike(
+			@Param("workoutId") int workoutId, 
+			@Param("userId") int userId,
+			@Param("type") String type);
+	
+	public void deleteLikeByWorkoutIdUserId(
+			@Param("workoutId") int workoutId, 
+			@Param("userId") int userId,
+			@Param("type") String type);
+	
+	public int selectLikeCountByWorkoutIdOrUserId(
+			@Param ("workoutId") int workoutId, 
+			@Param ("userId")Integer userId,
+			@Param("type") String type);
+	
+	public void deleteLikeByWorkoutId(@Param("workoutId")int workoutId, @Param("type") String type);
+
+}

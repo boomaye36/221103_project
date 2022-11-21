@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.justlift.like.dao.LikeDAO">
+ 	<select id="selectLikeCountByWorkoutIdOrUserId" parameterType="map" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{workoutId}
+			<if test="userId != null">
+			AND `userId` = #{userId}
+			AND `type` = 'gym'
+			</if>
+	</select>
+	
+	<select id="existLike" parameterType="map" resultType="boolean">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{workoutId}
+			AND `userId` = #{userId}
+			AND `type` = 'gym'
+	</select>
+	
+	<select id="selectLikeCountByWorkoutID" parameterType="int" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{workoutId}
+			AND `type` = 'gym'
+			
+	</select>
+	
+	<insert id="insertLike" parameterType="map">
+		INSERT INTO `like`
+ 		(
+ 			`workoutId`
+ 			,`type`
+ 			, `userId`
+ 			, `createdAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{workoutId}
+ 			,#{type}
+ 			, #{userId}
+ 			, now()
+ 		)
+	</insert>
+	
+	<delete id="deleteLikeByWorkoutIdUserId" parameterType="map">
+		DELETE
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{workoutId}
+			AND `userId` = #{userId}
+			AND `type` = 'gym'
+			
+	</delete>
+	
+	<delete id="deleteLikeByWorkoutId" parameterType="map">
+		DELETE
+		FROM
+			`like`
+		WHERE 
+			`workoutId`=#{workoutId}
+			AND `type` = 'gym'
+			
+	</delete>
+ </mapper>

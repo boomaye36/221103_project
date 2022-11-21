@@ -37,7 +37,8 @@
 			<jsp:include page="../${viewName}.jsp"/>
 		</section>
 		<footer>
-			
+			<jsp:include page="../include/footer.jsp"/>
+
 		</footer>
 	</div>
 </body>

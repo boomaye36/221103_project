@@ -31,10 +31,7 @@
 			alt="photo" id="bannerImg">
 	</div>
 
-	<div class="d-flex justify-content-between">
-		<a href="/timeline/timeline_view"><img
-			src="https://www.iconninja.com/files/995/95/811/home-interface-button-symbol-icon.png"></a>
-	</div>
+	
 	<div class="d-flex justify-content-center">
 		<a href="#" class="categoryBtn btn btn-info" data-toggle="modal"
 			data-target="#modal">카테고리 </a>

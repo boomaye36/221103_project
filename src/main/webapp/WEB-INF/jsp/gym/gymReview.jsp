@@ -22,10 +22,35 @@
 	<tr >
 		<td>${userLoginId }</td>
 		<td>${gymReview.content }</td>
-		<td>${gymReview.rank }</td>
+		<td><c:choose>
+			<c:when test="${gymReview.rank eq 1}">
+				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>
+				</c:when>
+			<c:when test="${gymReview.rank eq 2}">
+				<c:forEach begin="1" end="2">
+				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="two-star" width='30px' height='30px'>
+				</c:forEach>
+				</c:when>
+			<c:when test="${gymReview.rank eq 3}">
+			<c:forEach begin="1" end="3">
+				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="three-star" width='30px' height='30px'>
+				</c:forEach>
+				</c:when>
+			<c:when test="${gymReview.rank eq 4}">
+			<c:forEach begin="1" end="4">
+				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="four-star" width='30px' height='30px'>
+				</c:forEach>
+			</c:when>
+			<c:when test="${gymReview.rank eq 5}">
+			<c:forEach begin="1" end="5">
+				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="five-star" width='30px' height='30px'>
+				</c:forEach>
+			</c:when>
+		
+		</c:choose></td>
 		
 						
-			<td>${gymReview.createdAt }</td>			
+			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${gymReview.createdAt }"/></td>			
 	</tr>
 	 </c:forEach>
 	</tbody>
