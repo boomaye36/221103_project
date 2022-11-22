@@ -3,6 +3,8 @@ package com.justlift.like.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.justlift.like.model.Like;
+
 @Repository
 public interface LikeDAO {
 
@@ -28,4 +30,8 @@ public interface LikeDAO {
 	
 	public void deleteLikeByWorkoutId(@Param("workoutId")int workoutId, @Param("type") String type);
 
+	
+	public Like selectLikeIdFromUserId(@Param("userId")int userId);
+	
+	public boolean selectHeart(@Param("userId")int userId, @Param("gymId")int gymId);
 }

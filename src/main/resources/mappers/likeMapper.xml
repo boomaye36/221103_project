@@ -75,4 +75,14 @@
 			AND `type` = 'gym'
 			
 	</delete>
+	<select id="selectHeart" parameterType="map" resultType="boolean">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{gymId}
+			AND `userId` = #{userId}
+	</select>
+	
  </mapper>

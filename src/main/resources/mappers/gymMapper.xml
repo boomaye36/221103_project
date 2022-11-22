@@ -125,5 +125,21 @@
 		WHERE
 			`id` = #{gymId}
 	</select>
+	<select id="selectGymList" resultType="com.justlift.gym.model.Gym">
+		SELECT
+			`id`
+			,`name`
+			,`categoryId`
+			,`location`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`gym`
+		ORDER BY `id` DESC
+	</select>
 </mapper>
  

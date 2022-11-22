@@ -79,5 +79,6 @@ public class GymController {
 		model.addAttribute("categoryId",detailGym.getCategoryId());
 		model.addAttribute("location", location);
 		return "template/layout";
+		
 	}
 }

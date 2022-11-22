@@ -1,13 +1,19 @@
 package com.justlift.like.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.justlift.gym.bo.GymBO;
+import com.justlift.gym.model.Gym;
 import com.justlift.like.dao.LikeDAO;
+import com.justlift.like.model.Like;
 
 @Service
 public class LikeBO {
-	
+	@Autowired
+	private GymBO gymBO;
 	@Autowired
 	private LikeDAO likeDAO;
 	public void likeToggle(int workoutId, int userId, String type) {
@@ -30,4 +36,20 @@ public class LikeBO {
 		likeDAO.deleteLikeByWorkoutId(workoutId, type);
 	}
 	
+	//public Like getisLikeFromUserIdAndId(int userId, int )
+	public Like getLikeIdFromUserId(int userId) {
+		return likeDAO.selectLikeIdFromUserId(userId);
+	}
+	public boolean getHeart(Integer userId, Integer gymId) {
+		Like like = new Like();
+		if (userId == null) {
+				like.setFilledLike(false);
+			} else {
+				like.setFilledLike(true);
+			}
+			
+		return likeDAO.selectHeart(userId, gymId);
+		
+		
+	}
 }

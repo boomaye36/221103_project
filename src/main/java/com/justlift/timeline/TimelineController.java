@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TimelineController {
 	@RequestMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
+		Integer userId = (Integer)session.getAttribute("userId");
+
+		if(userId == null) {
+			return "redirect:/user/sign_in_view";
+		}
 		model.addAttribute("viewName", "timeline/timeline");
 		return "template/layout";
 	}

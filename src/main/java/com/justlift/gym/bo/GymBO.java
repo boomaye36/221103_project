@@ -52,5 +52,8 @@ public class GymBO {
 	public Gym getGymDetailListByGymId(int gymId){
 		return gymDAO.selectGymDetailListByGymId(gymId);
 	}
+	public List<Gym> getGymList(){
+		return gymDAO.selectGymList();
+	}
 	
 }

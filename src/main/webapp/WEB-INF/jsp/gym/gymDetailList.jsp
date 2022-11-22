@@ -7,10 +7,20 @@
 	<div class="d-flex justify-content-between">
 		<div class="d-flex">
 
-			<img src="/static/${gymImage}" width="400px" height="300px"> 
-			<a href="#" class="like-btn ml-3"><img
-				src="https://www.iconninja.com/files/527/809/128/heart-icon.png"
-				width="50px"></a>
+			<img src="/static/${gymImage}" width="400px" height="300px">
+						<a href="#" class="like-btn ml-3">
+			
+			<%-- <c:if test="${isLike eq true}">  --%>
+ 				<img
+						src="https://www.iconninja.com/files/186/930/395/like-icon.png"
+						width="30px" height="30px"  id="like">
+				 <%--  </c:if>
+				<c:if test="${isLike eq false}">
+					<img
+						src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
+						width="18px" height="18px" alt="empty heart">
+				</c:if>  --%> 
+		</a>
 		</div>
 		<div>
 			<h3>등록 개월을 선택하세요</h3>
@@ -43,10 +53,11 @@
 		</ul>
 		<div class="d-flex">
 			<button type="button" class="btn btn-info reviewViewBtn">리뷰보기</button>
-<!-- 		<button type="button" class="btn btn-info reviewWriteBtn">리뷰쓰기 </button>
- -->		</div>
+			<!-- 		<button type="button" class="btn btn-info reviewWriteBtn">리뷰쓰기 </button>
+ -->
+		</div>
 	</div>
-	
+
 </div>
 <script>
 	$(document)
@@ -57,11 +68,10 @@
 										'click',
 										function(e) {
 											e.preventDefault();
-
 											let month = $(
 													'.selectMonth option:selected')
 													.val();
-											
+
 											$.ajax({
 														type : 'POST',
 														url : '/enroll/create',
@@ -79,44 +89,67 @@
 															alert("등록 실패했습니다. ");
 														}
 													});
-											
-				
-				});
-						$('.reviewViewBtn').on('click', function(e){
+
+										});
+						$('.reviewViewBtn')
+								.on(
+										'click',
+										function(e) {
+											e.preventDefault();
+											//alert(${gymId});
+											let workoutId = ${gymId};
+											//alert(gymId);
+											let type = "gym";
+											let gymName = '${gymName}';
+											//alert(gymName);
+											document.location.href = "/review/view?workoutId="
+													+ workoutId
+													+ "&type="
+													+ type
+													+ "&gymName="
+													+ gymName;
+										});
+						$('.like-btn').on('click', function(e) {
 							e.preventDefault();
-							let workoutId = ${gymId};
-							//alert(gymId);
-							let type = "gym";
-							let gymName = '${gymName}';
-							//alert(gymName);
-							document.location.href="/review/view?workoutId=" + workoutId + "&type=" + type +"&gymName=" + gymName;	
-						});
-						$('.like-btn').on('click', function(e){
-							e.preventDefault();
-							let userId = ${userId};
+							//alert(${gymId});
+
+							let userId = $
+							{
+								userId
+							}
+							;
 							//alert (userId);
-							if (userId ==''){
+							if (userId == '') {
 								alert("로그인을 해주세요 ");
-								document.location.href="/user/sign_in_view";
+								document.location.href = "/user/sign_in_view";
 								return;
 							}
-							let workoutId = ${gymId};
+							let workoutId =${gymId};
 							let type = "gym";
 							//alert(workoutId);
 							$.ajax({
-								url:"/like/" + workoutId,
-								data : {"type" : type},
-								success:function(data)	{
-									if(data.code == 100 ){
-										location.reload(true);
-									}else{
-										alert(data.errorMessage);
+								url : "/like/" + workoutId,
+								data : {
+									"type" : type
+								},
+								success : function(data) {
+									 if (data.code == 100) {
+									location.reload(true);
+									}  
+									if (data.isLiked == true){
+									      document.getElementById("like").src = "https://www.iconninja.com/files/186/930/395/like-icon.png";
 									}
-								},error : function(e){
+									else {
+									      document.getElementById("like").src = "https://www.iconninja.com/files/507/847/828/like-icon.png";
+
+									}
+									
+								},
+								error : function(e) {
 									alert("체육관 좋아요 누르기 실패 ");
 								}
 							});
 						});
-						
+
 					});
 </script>
