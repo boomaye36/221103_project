@@ -28,8 +28,9 @@ ${location }</h1>
 			
 			
  		</div>
+ 		
 	</c:forEach>
-	
+	<a href="#" id="trainerBtn" class="btn btn-info">트레이너 보러가기 </a>
 	<div class="d-flex justify-content-center">
 			<c:if test="${prevId ne 0 }">
 				<a href="/gym/gym_view?prevId=${prevId }&categoryId=${categoryId}&location=${location}" class="mr-5">&lt;&lt; 이전</a>
@@ -38,6 +39,7 @@ ${location }</h1>
 				<a href="/gym/gym_view?nextId=${nextId }&categoryId=${categoryId}&location=${location}" class="mr-5">다음 &gt;&gt; </a>
 			</c:if>
 		</div>
+		<a href="/trainer/trainer_view"></a>
 </div>
 <script>
 	$(document).ready(function(){
@@ -49,6 +51,14 @@ ${location }</h1>
 			//alert(gymId);
 			document.location.href = "/gym/detail_view?gymId=" + gymId +"&location=" + location;
 		});
-		
+		$('#trainerBtn').on('click', function(e){
+			e.preventDefault();
+			let area = '${location}';
+			let categoryId = ${categoryId};
+			//alert (area);
+			//alert (categoryId);
+			document.location.href = "/trainer/trainer_view?area=" + area +"&categoryId=" + categoryId;
+
+		});
 	});
 </script>

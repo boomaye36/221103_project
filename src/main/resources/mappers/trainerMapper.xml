@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.justlift.trainer.dao.TrainerDAO">
+ 	<select id="selectTrainerListByAreaAndCategoryId" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`gymId`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`trainer`
+		WHERE
+			`gymId` IN (select `id` from `gym` where `categoryId`=1 and `location` like '%성동구%')
+ 	</select>
+ </mapper>
