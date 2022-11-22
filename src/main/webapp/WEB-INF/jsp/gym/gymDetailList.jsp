@@ -133,9 +133,9 @@
 									"type" : type
 								},
 								success : function(data) {
-									 if (data.code == 100) {
+									/*  if (data.code == 100) {
 									location.reload(true);
-									}  
+									} */  
 									if (data.isLiked == true){
 									      document.getElementById("like").src = "https://www.iconninja.com/files/186/930/395/like-icon.png";
 									}
