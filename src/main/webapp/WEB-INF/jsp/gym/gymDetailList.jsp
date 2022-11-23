@@ -10,17 +10,17 @@
 			<img src="/static/${gymImage}" width="400px" height="300px">
 						<a href="#" class="like-btn ml-3">
 			
-			<%-- <c:if test="${isLike eq true}">  --%>
- 				<img
-						src="https://www.iconninja.com/files/186/930/395/like-icon.png"
-						width="30px" height="30px"  id="like">
-				 <%--  </c:if>
+					<!-- <img src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
+					 width ="30px" height="30px" alt="empty heart"> -->
+			 <c:if test="${isLike eq true}">  
+ 				<img src="https://www.iconninja.com/files/507/847/828/like-icon.png"
+						width="30px" height="30px" alt="good" >
+				  </c:if>
 				<c:if test="${isLike eq false}">
-					<img
-						src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
-						width="18px" height="18px" alt="empty heart">
-				</c:if>  --%> 
-		</a>
+					<img src="https://www.iconninja.com/files/186/930/395/like-icon.png"
+					 width ="30px" height="30px" alt="not good">
+					</c:if>		
+					</a>
 		</div>
 		<div>
 			<h3>등록 개월을 선택하세요</h3>
@@ -61,12 +61,8 @@
 </div>
 <script>
 	$(document)
-			.ready(
-					function(e) {
-						$('.enrollBtn')
-								.on(
-										'click',
-										function(e) {
+			.ready(function(e) {
+				$('.enrollBtn').on('click',function(e) {
 											e.preventDefault();
 											let month = $(
 													'.selectMonth option:selected')
@@ -112,12 +108,8 @@
 						$('.like-btn').on('click', function(e) {
 							e.preventDefault();
 							//alert(${gymId});
-
-							let userId = $
-							{
-								userId
-							}
-							;
+							alert('${isLike}');
+							let userId = ${userId};
 							//alert (userId);
 							if (userId == '') {
 								alert("로그인을 해주세요 ");
@@ -133,22 +125,20 @@
 									"type" : type
 								},
 								success : function(data) {
-									/*  if (data.code == 100) {
-									location.reload(true);
-									} */  
-									if (data.isLiked == true){
+									  if (data.code == 100) 
+									location.href="/gym/like";
+								}
+									/* if (data.isLiked == true){
 									      document.getElementById("like").src = "https://www.iconninja.com/files/186/930/395/like-icon.png";
-											//location.reload(true);
 
 									}
 									
 									else {
 									      document.getElementById("like").src = "https://www.iconninja.com/files/507/847/828/like-icon.png";
-											//location.reload(true);
 
-									}
+									} */
 									
-								},
+								,
 								error : function(e) {
 									alert("체육관 좋아요 누르기 실패 ");
 								}
