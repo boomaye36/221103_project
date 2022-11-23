@@ -41,12 +41,12 @@ public class LikeBO {
 		return likeDAO.selectLikeIdFromUserId(userId);
 	}
 	public boolean getHeart(Integer userId, Integer gymId) {
-		Like like = new Like();
-		if (userId == null) {
-				like.setFilledLike(false);
-			} else {
-				like.setFilledLike(true);
-			}
+		//Like like = new Like();
+//		if (userId == null) {
+//				like.setFilledLike(false);
+//			} else {
+//				like.setFilledLike(true);
+//			}
 			
 		return likeDAO.selectHeart(userId, gymId);
 		

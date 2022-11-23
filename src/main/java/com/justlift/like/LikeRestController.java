@@ -27,14 +27,14 @@ private LikeBO likeBO;
 		//Like like = likeBO.getLikeIdFromUserId(userId);
 		//session.setAttribute("userName", like.getName());
 		
-			Integer gymId = (Integer)session.getAttribute("gymId");
+			//Integer gymId = (Integer)session.getAttribute("gymId");
 			
-			boolean like = likeBO.getHeart(userId, gymId);
-			model.addAttribute("isLike", like);
+//			boolean like = likeBO.getHeart(userId, gymId);
+//			model.addAttribute("isLike", like);
 		Map<String, Object> result = new HashMap<>();
 		likeBO.likeToggle(workoutId, userId, type);
 		result.put("code", 100);
-		result.put("isLiked", like);
+//		result.put("isLiked", like);
 		return result;
 		
 	}

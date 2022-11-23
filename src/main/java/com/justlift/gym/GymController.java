@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.justlift.gym.bo.GymBO;
 import com.justlift.gym.model.Category;
 import com.justlift.gym.model.Gym;
+import com.justlift.like.bo.LikeBO;
 
 @Controller
 @RequestMapping("/gym")
 public class GymController {
 	@Autowired
 	private GymBO gymBO;
-
+@Autowired
+private LikeBO likeBO;
 	@GetMapping("/gym_view")
 	public String gymView(Model model, HttpSession session,
 			@RequestParam(value = "prevId", required = false) Integer prevIdParam,
@@ -71,13 +73,17 @@ public class GymController {
 		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
 		model.addAttribute("gymName", detailGym.getName());
 		model.addAttribute("gymImage", detailGym.getImage());
-		//model.addAttribute("gymId", detailGym.getId());
 		session.setAttribute("gymId", detailGym.getId());
+		Integer userId = (Integer) session.getAttribute("userId");
+		//Integer gymId = (Integer)session.getAttribute("gymId");
+		boolean like = likeBO.getHeart(userId, gymId);
+		model.addAttribute("isLike", like);
 		model.addAttribute("gymIntroduce", detailGym.getIntroduce());
 		model.addAttribute("gymPhoneNumber", detailGym.getPhoneNumber());
 		model.addAttribute("gymLocation", detailGym.getLocation());
 		model.addAttribute("categoryId",detailGym.getCategoryId());
 		model.addAttribute("location", location);
+		model.addAttribute("gymId", gymId);
 		return "template/layout";
 		
 	}

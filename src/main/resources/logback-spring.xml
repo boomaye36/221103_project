@@ -9,7 +9,7 @@
     </appender>
 
     <!-- Logger -->
-    <logger name="com.memo" level="DEBUG" appender-ref="console" />
+    <logger name="com.justlift" level="DEBUG" appender-ref="console" />
 
     <!-- Root Logger -->
     <root level="info">

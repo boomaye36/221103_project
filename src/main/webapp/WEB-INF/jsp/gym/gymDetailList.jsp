@@ -8,10 +8,10 @@
 		<div class="d-flex">
 
 			<img src="/static/${gymImage}" width="400px" height="300px">
-						<a href="#" class="like-btn ml-3">
+						<a href="#" class="like-btn ml-3" data-gym-id="${gymId }" data-location="${location}" }>
 			
-					<!-- <img src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
-					 width ="30px" height="30px" alt="empty heart"> -->
+					   <!-- <img src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
+					 width ="30px" height="30px" alt="empty heart"> -->  
 			 <c:if test="${isLike eq true}">  
  				<img src="https://www.iconninja.com/files/507/847/828/like-icon.png"
 						width="30px" height="30px" alt="good" >
@@ -111,6 +111,9 @@
 							alert('${isLike}');
 							let userId = ${userId};
 							//alert (userId);
+							let gymId = $(this).data('gym-id');
+							let location = $(this).data('location');
+							alert(location);
 							if (userId == '') {
 								alert("로그인을 해주세요 ");
 								document.location.href = "/user/sign_in_view";
@@ -125,8 +128,16 @@
 									"type" : type
 								},
 								success : function(data) {
-									  if (data.code == 100) 
-									location.href="/gym/like";
+									//alert("좋아");
+								alert(data.code);
+									  if (data.code == 100){
+											alert("좋아요 ");
+											
+
+									document.location.href="/gym/detail_view?gymId="+gymId+"&location="+location;
+									  
+									  }	  
+									//location.href="/gym/like";
 								}
 									/* if (data.isLiked == true){
 									      document.getElementById("like").src = "https://www.iconninja.com/files/186/930/395/like-icon.png";
