@@ -15,4 +15,8 @@ public class TrainerBO {
 	public List<Trainer> getTrainerListByAreaAndCategoryId(String area, int categoryId){
 		return trainerDAO.selectTrainerListByAreaAndCategoryId(area, categoryId);
 	}
+	
+	public List<Trainer> getTrainerDetailListByTrainerId(int trainerId){
+		return trainerDAO.selectTrainerDetailListByTrainerId(trainerId);
+	}
 }

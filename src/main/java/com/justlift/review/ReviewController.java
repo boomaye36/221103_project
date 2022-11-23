@@ -29,6 +29,8 @@ public class ReviewController {
 		model.addAttribute("viewName", "gym/gymReview");
 		model.addAttribute("gymReviewList", gymReviewList);
 		model.addAttribute("gymName", gymName);
+		model.addAttribute("workoutId", workoutId);
+		model.addAttribute("type", type);
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		model.addAttribute("userLoginId", userLoginId);
 		return "template/layout";
@@ -50,6 +52,7 @@ public class ReviewController {
 		return "template/layout";
 
 	}
+	
 	
 	
 }

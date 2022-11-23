@@ -118,10 +118,7 @@ $(document).ready(
 				alert("전화번호를 입력하세요 ");
 				return false;
 			}
-			if (introduce==''){
-				alert("소개를 입력하세요 ");
-				return false;
-			}
+			
 			let file = $('#file').val();
 			let ext = file.split('.').pop().toLowerCase();
 			/* if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {

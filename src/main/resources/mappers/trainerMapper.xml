@@ -16,6 +16,46 @@
 		FROM
 			`trainer`
 		WHERE
-			`gymId` IN (select `id` from `gym` where `categoryId`=1 and `location` like '%성동구%')
+			`gymId` IN (select `id` from `gym` where `categoryId`=#{categoryId} 
+			AND 
+			<if test="area == 'gangnam'">
+	`location` LIKE '%강남구%')
+</if>
+<if test="area == 'seocho'">
+	`location` LIKE '%서초구 %')
+</if>
+<if test="area == 'songpa'">
+	`location` LIKE '%송파구 %')
+</if>
+<if test="area == 'kwanak'">
+	`location` LIKE '%관악구 %')
+</if>
+<if test="area == 'yongsan'">
+	`location` LIKE '%용산구 %')
+</if>
+<if test="area == 'mapo'">
+	`location` LIKE '%마포구 %')
+</if>
+<if test="area == 'seongdong'">
+	`location` LIKE '%성동구 %')
+</if>
+
  	</select>
+ 	
+ 	<select id="selectTrainerDetailListByTrainerId" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`gymId`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`trainer`
+		WHERE
+			`id` = #{trainerId}
+		</select>
  </mapper>

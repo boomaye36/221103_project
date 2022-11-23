@@ -28,8 +28,9 @@
 <script>
 	$(document).ready(function(){
 		$('.insertBtn').on('click', function(){
-			let workoutId = ${gymId};
-			let type = "gym";
+			let workoutId = ${workoutId};
+			alert(workoutId);
+			let type = "${type}";
 			let content = $('#content').val().trim();
 			if (content == ''){
 				alert("내용을 입력하세요 ");

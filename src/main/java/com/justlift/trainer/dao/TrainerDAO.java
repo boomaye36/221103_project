@@ -11,4 +11,6 @@ import com.justlift.trainer.model.Trainer;
 public interface TrainerDAO {
 	public List<Trainer> selectTrainerListByAreaAndCategoryId(
 			@Param("area") String area, @Param("categoryId") int categoryId);
+	
+	public List<Trainer> selectTrainerDetailListByTrainerId(@Param("trainerId")int trainerId);
 }

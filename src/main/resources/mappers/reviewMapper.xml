@@ -18,7 +18,7 @@
 			`Review`
 		WHERE
 			`workoutId` = #{workoutId} and
-			`type` = 'gym'
+			`type` = #{type}
 	</select>
 	<select id="InsertReview" parameterType="map" >
 		INSERT INTO `Review`

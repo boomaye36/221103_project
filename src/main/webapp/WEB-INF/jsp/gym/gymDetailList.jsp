@@ -138,9 +138,13 @@
 									} */  
 									if (data.isLiked == true){
 									      document.getElementById("like").src = "https://www.iconninja.com/files/186/930/395/like-icon.png";
+											//location.reload(true);
+
 									}
+									
 									else {
 									      document.getElementById("like").src = "https://www.iconninja.com/files/507/847/828/like-icon.png";
+											//location.reload(true);
 
 									}
 									

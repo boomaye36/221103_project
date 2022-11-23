@@ -6,8 +6,7 @@ public class Trainer {
 	
 	private int id;
 	private String name;
-	private int categoryId;
-	private String location;
+	private int gymId;
 	private String phoneNumber;
 	private String introduce;
 	private double rank;
@@ -16,6 +15,12 @@ public class Trainer {
 	private Date updatedAt;
 	public int getId() {
 		return id;
+	}
+	public int getGymId() {
+		return gymId;
+	}
+	public void setGymId(int gymId) {
+		this.gymId = gymId;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -26,18 +31,7 @@ public class Trainer {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCategoryId() {
-		return categoryId;
-	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}

@@ -66,13 +66,10 @@
 <script>
 	$(document).ready(function(e){
 		$('.reviewWriteBtn').on('click', function(e){
-			
-			let workoutId = ${workoutId};
+			let workoutId = ${gymId};
 			let gymName = '${gymName}';
-			let type='${type}';
-			alert(type);
+			let type="trainer";
 			//alert( gymName);
-			
 			document.location.href="/review/review_write_view?workoutId=" + workoutId + "&type=" + type +"&gymName=" + gymName;
 		});
 	});
