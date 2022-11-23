@@ -34,4 +34,6 @@ public interface LikeDAO {
 	public Like selectLikeIdFromUserId(@Param("userId")int userId);
 	
 	public boolean selectHeart(@Param("userId")int userId, @Param("gymId")int gymId);
+	
+	public boolean selectTrainerHeart(@Param("userId")int userId, @Param("trainerId")int trainerId);
 }

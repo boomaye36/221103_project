@@ -12,7 +12,7 @@
 			`workoutId` = #{workoutId}
 			<if test="userId != null">
 			AND `userId` = #{userId}
-			AND `type` = 'gym'
+			AND `type` = #{type}
 			</if>
 	</select>
 	
@@ -24,7 +24,7 @@
 		WHERE
 			`workoutId` = #{workoutId}
 			AND `userId` = #{userId}
-			AND `type` = 'gym'
+			AND `type` = #{type}
 	</select>
 	
 	<select id="selectLikeCountByWorkoutID" parameterType="int" resultType="int">
@@ -34,7 +34,7 @@
 			`like`
 		WHERE
 			`workoutId` = #{workoutId}
-			AND `type` = 'gym'
+			AND `type` = #{type}
 			
 	</select>
 	
@@ -62,7 +62,7 @@
 		WHERE
 			`workoutId` = #{workoutId}
 			AND `userId` = #{userId}
-			AND `type` = 'gym'
+			AND `type` = #{type}
 			
 	</delete>
 	
@@ -72,7 +72,7 @@
 			`like`
 		WHERE 
 			`workoutId`=#{workoutId}
-			AND `type` = 'gym'
+			AND `type` = #{type}
 			
 	</delete>
 	<select id="selectHeart" parameterType="map" resultType="boolean">
@@ -82,6 +82,16 @@
 			`like`
 		WHERE
 			`workoutId` = #{gymId}
+			AND `userId` = #{userId}
+	</select>
+	
+	<select id="selectTrainerHeart" parameterType="map" resultType="boolean">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{trainerId}
 			AND `userId` = #{userId}
 	</select>
 	

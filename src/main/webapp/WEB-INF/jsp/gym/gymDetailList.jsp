@@ -8,10 +8,8 @@
 		<div class="d-flex">
 
 			<img src="/static/${gymImage}" width="400px" height="300px">
-						<a href="#" class="like-btn ml-3" data-gym-id="${gymId }" data-location="${location}" }>
-			
-					   <!-- <img src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
-					 width ="30px" height="30px" alt="empty heart"> -->  
+				<a href="#" class="like-btn ml-3" data-gym-id="${gymId }" data-location="${location}" >
+			 
 			 <c:if test="${isLike eq true}">  
  				<img src="https://www.iconninja.com/files/507/847/828/like-icon.png"
 						width="30px" height="30px" alt="good" >
@@ -108,7 +106,7 @@
 						$('.like-btn').on('click', function(e) {
 							e.preventDefault();
 							//alert(${gymId});
-							alert('${isLike}');
+							//alert('${isLike}');
 							let userId = ${userId};
 							//alert (userId);
 							let gymId = $(this).data('gym-id');
@@ -129,9 +127,9 @@
 								},
 								success : function(data) {
 									//alert("좋아");
-								alert(data.code);
+								//alert(data.code);
 									  if (data.code == 100){
-											alert("좋아요 ");
+											//alert("좋아요 ");
 											
 
 									document.location.href="/gym/detail_view?gymId="+gymId+"&location="+location;

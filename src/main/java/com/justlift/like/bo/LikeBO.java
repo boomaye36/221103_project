@@ -1,12 +1,9 @@
 package com.justlift.like.bo;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.justlift.gym.bo.GymBO;
-import com.justlift.gym.model.Gym;
 import com.justlift.like.dao.LikeDAO;
 import com.justlift.like.model.Like;
 
@@ -49,7 +46,10 @@ public class LikeBO {
 //			}
 			
 		return likeDAO.selectHeart(userId, gymId);
+	
 		
-		
+	}
+	public boolean getTrainerHeart(Integer userId, Integer trainerId) {
+		return likeDAO.selectTrainerHeart(userId, trainerId);
 	}
 }

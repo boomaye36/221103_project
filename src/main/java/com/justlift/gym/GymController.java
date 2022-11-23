@@ -53,8 +53,9 @@ private LikeBO likeBO;
 		}
 		// Map<String, Object> result1 = new HashMap<>();
 		Category category = gymBO.getCategoryNameByCategoryId(categoryId);
-		session.setAttribute("categoryName", category.getCategory());
+		//session.setAttribute("categoryName", category.getCategory());
 
+		model.addAttribute("categoryName", category.getCategory()); // 가져온 포스트 중 가장 앞쪽(큰 id)
 		model.addAttribute("prevId", prevId); // 가져온 포스트 중 가장 앞쪽(큰 id)
 		model.addAttribute("nextId", nextId); // 가져온 포스트 중 가장 뒷쪽(작은 id)
 		model.addAttribute("location", location); 
@@ -73,7 +74,7 @@ private LikeBO likeBO;
 		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
 		model.addAttribute("gymName", detailGym.getName());
 		model.addAttribute("gymImage", detailGym.getImage());
-		session.setAttribute("gymId", detailGym.getId());
+		//session.setAttribute("gymId", detailGym.getId());
 		Integer userId = (Integer) session.getAttribute("userId");
 		//Integer gymId = (Integer)session.getAttribute("gymId");
 		boolean like = likeBO.getHeart(userId, gymId);
