@@ -19,4 +19,8 @@ public class TrainerBO {
 	public List<Trainer> getTrainerDetailListByTrainerId(int trainerId){
 		return trainerDAO.selectTrainerDetailListByTrainerId(trainerId);
 	}
+
+	public List<Trainer> getTrainerListByGymId(int gymId) {
+		return trainerDAO.selectTrainerDetailListByTrainerId(gymId);
+	}
 }

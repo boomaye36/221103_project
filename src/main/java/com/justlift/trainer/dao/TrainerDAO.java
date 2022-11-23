@@ -13,4 +13,6 @@ public interface TrainerDAO {
 			@Param("area") String area, @Param("categoryId") int categoryId);
 	
 	public List<Trainer> selectTrainerDetailListByTrainerId(@Param("trainerId")int trainerId);
+	
+	public List<Trainer> selectTrainerListByGymId(@Param("gymId") int gymId);
 }

@@ -49,23 +49,16 @@ public class TrainerController {
 			model.addAttribute("trainerDetailList", trainerDetailList);
 			return "template/layout";
 		}
-//	@GetMapping("/gym_detail_view")
-//	public String gymDetailView(HttpSession session, Model model,
-//			@RequestParam("gymId") int gymId) {
-//		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
-//		model.addAttribute("gymName", detailGym.getName());
-//		model.addAttribute("gymImage", detailGym.getImage());
-//		model.addAttribute("gymId", detailGym.getId());
-//		//session.setAttribute("gymId", detailGym.getId());
-//		model.addAttribute("gymIntroduce", detailGym.getIntroduce());
-//		model.addAttribute("gymPhoneNumber", detailGym.getPhoneNumber());
-//		model.addAttribute("gymLocation", detailGym.getLocation());
-//		model.addAttribute("categoryId",detailGym.getCategoryId());
-//		
-//		model.addAttribute("viewName", "gym/gymDetailList");
-//
-//		return "template/layout";
-//
-//	}
+	
+	@GetMapping("/trainer_view1")
+	public String trainerViewByGym(Model model,
+			@RequestParam("gymId") int gymId) {
+		List<Trainer> trainerList = trainerBO.getTrainerListByGymId(gymId);
+		model.addAttribute("trainerList", trainerList);
+		model.addAttribute("viewName", "trainer/trainer");
+		return "template/layout";
+		
+	}
+
 	
 }

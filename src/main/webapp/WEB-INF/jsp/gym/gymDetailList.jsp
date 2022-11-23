@@ -21,6 +21,7 @@
 					</a>
 		</div>
 		<div>
+		<div class="d-flex align-items-center justify-content-center">
 			<h3>등록 개월을 선택하세요</h3>
 			<select class="ml-5 selectMonth mt-5">
 				<option value="3">3</option>
@@ -28,8 +29,13 @@
 				<option value="9">9</option>
 				<option value="12">12</option>
 			</select><br>
+			</div>
+			<div class="d-flex align-items-center justify-content-center">
+			
+			<button type="button" class="btn btn-success trainer_view_btn" data-gym-id="${gymId}">트레이너 보기 </button>
 			<button type="button" class="btn btn-info enrollBtn">등록하기</button>
 			<br>
+			</div>
 
 		</div>
 
@@ -153,6 +159,13 @@
 								}
 							});
 						});
-
+		$('.trainer_view_btn').on('click',function(e){
+			e.preventDefault();
+			let gymId = $(this).data('gym-id');
+			//alert(gymId);
+			
+			document.location.href = "/trainer/trainer_view1?gymId=" + gymId;
+			
+		});
 					});
 </script>

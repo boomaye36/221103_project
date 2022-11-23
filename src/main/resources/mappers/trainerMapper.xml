@@ -58,4 +58,20 @@
 		WHERE
 			`id` = #{trainerId}
 		</select>
- </mapper>
+		
+<select id="selectTrainerListByGymId" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`gymId`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`trainer`
+		WHERE
+			`gymId` = #{gymId}
+		</select> </mapper>
