@@ -15,4 +15,6 @@ public interface EnrollDAO {
 			@Param("gymId")int gymId);
 
 	public List<Enroll> selectMyEnrollList(@Param("userId")int userId);
+	
+	public int selectMyEnrollCount(@Param("userId") int userId);
 }

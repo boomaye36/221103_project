@@ -55,6 +55,8 @@ public class TimelineController {
 		List<Enroll> myEnrollList = enrollBO.getMyEnrollList(userId);
 		model.addAttribute("myEnrollList",myEnrollList);
 		List<Gym> myGymList = gymBO.getGymListByUserId(userId);
+		int enrollCount = enrollBO.getMyEnrollCount(userId);
+		model.addAttribute("enrollCount", enrollCount);
 		model.addAttribute("myGymList",myGymList);
 		model.addAttribute("viewName", "timeline/myGym");
 		return "template/layout";

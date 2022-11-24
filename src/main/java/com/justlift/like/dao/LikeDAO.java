@@ -27,7 +27,7 @@ public interface LikeDAO {
 			@Param ("workoutId") int workoutId, 
 			@Param ("userId")Integer userId,
 			@Param("type") String type);
-	
+	public int getLikeCountByGymIdAndType(@Param ("gymId") int gymId, @Param("type") String type);
 	public void deleteLikeByWorkoutId(@Param("workoutId")int workoutId, @Param("type") String type);
 
 	

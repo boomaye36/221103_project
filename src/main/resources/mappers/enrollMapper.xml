@@ -37,4 +37,13 @@
 			`userId` = #{userId}
 	
 	</select>
+	
+	<select id="selectMyEnrollCount" parameterType="map" resultType="int">
+		SELECT 
+			COUNT(1)
+		FROM
+			`enroll`
+		WHERE 
+			`userId` = #{userId}
+	</select>
 </mapper>

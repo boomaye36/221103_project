@@ -21,7 +21,9 @@ public class LikeBO {
 			likeDAO.insertLike(workoutId, userId, type);
 		}
 	}
-	
+	public int getLikeCountByGymIdAndType(int gymId, String type) {
+		return likeDAO.getLikeCountByGymIdAndType(gymId, type);
+	}
 	public int getLikeCountByWorkoutIdOrUserId(int workoutId, Integer userId,String type) {
 		return likeDAO.selectLikeCountByWorkoutIdOrUserId(workoutId, userId, type );
 	}

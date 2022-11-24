@@ -44,6 +44,9 @@ public class TrainerController {
 			List<Trainer> trainerDetailList = trainerBO.getTrainerDetailListByTrainerId(trainerId);
 			Integer userId = (Integer) session.getAttribute("userId");
 			boolean like = likeBO.getTrainerHeart(userId, trainerId);
+			String type = "trainer";
+			int likeCount = likeBO.getLikeCountByGymIdAndType(trainerId, type);
+			model.addAttribute("likeCount", likeCount);
 			model.addAttribute("isLike", like);
 			model.addAttribute("viewName", "trainer/trainerDetail");
 			model.addAttribute("trainerDetailList", trainerDetailList);

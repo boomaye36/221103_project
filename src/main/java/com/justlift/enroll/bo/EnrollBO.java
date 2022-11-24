@@ -18,4 +18,7 @@ public class EnrollBO {
 	public List<Enroll> getMyEnrollList(int userId){
 		return enrollDAO.selectMyEnrollList(userId);
 	}
+	public int getMyEnrollCount(int userId) {
+		return enrollDAO.selectMyEnrollCount(userId);
+	}
 }

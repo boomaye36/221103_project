@@ -4,7 +4,7 @@
     
 <div class="container p-3">
 	<div class="d-flex justify-content-center m-5">
-	
+	<h3>이용중인 서비스 ${enrollCount}개</h3>
 	<div class="p-4 m-5">
 	
 	<c:forEach items="${myGymList}" var="mygym">

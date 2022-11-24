@@ -15,6 +15,16 @@
 			AND `type` = #{type}
 			</if>
 	</select>
+	<select id="getLikeCountByGymIdAndType" parameterType="map" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			`like`
+		WHERE
+			`workoutId` = #{gymId}
+			AND
+			`type` = #{type}
+	</select>
 	
 	<select id="existLike" parameterType="map" resultType="boolean">
 		SELECT

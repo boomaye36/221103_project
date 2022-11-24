@@ -22,7 +22,10 @@
 					 width ="30px" height="30px" alt="not good">
 					</c:if>		
 					</a>
+					<span class="ml-2 text-info">좋아요 ${likeCount}개 </span>
+			
 				</div>
+				
 				<br> <br> <br> <b>${trainerDetail.introduce }</b>
 			</div>
 			<div class="d-flex align-items-center">

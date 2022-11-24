@@ -19,15 +19,24 @@
 					 width ="30px" height="30px" alt="not good" class="like">
 					</c:if>		
 					</button>
+					
+					
 		</div>
+		
+					
 		<div>
+				<div>
+						<span class="ml-2 text-info">좋아요 ${likeCount}개 </span>
+					</div>
+					
+		
 		<div class="d-flex align-items-center justify-content-center">
 			<h3>등록 개월을 선택하세요</h3>
 			<select class="ml-5 selectMonth mt-5">
-				<option value="3">3</option>
-				<option value="6">6</option>
-				<option value="9">9</option>
-				<option value="12">12</option>
+				<option value="3">3개월 </option>
+				<option value="6">6개월 </option>
+				<option value="9">9개월 </option>
+				<option value="12">12개월 </option>
 			</select><br>
 			</div>
 			<div class="d-flex align-items-center justify-content-center">
