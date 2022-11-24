@@ -18,4 +18,10 @@ public class ReviewBO {
 	public void addReview(int workoutId, String type, String content, int rank, int userId) {
 		reviewDAO.InsertReview(workoutId, type, content,rank, userId);
 	}
+	public List<Review> getMyReviewByUserId(int userId){
+		return reviewDAO.selectMyReviewByUserId(userId);
+	}
+	public void deleteReview(int reviewId) {
+		reviewDAO.deleteReview(reviewId);
+	}
 }

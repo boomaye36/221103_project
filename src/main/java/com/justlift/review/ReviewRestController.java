@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,13 @@ public class ReviewRestController {
 		result.put("code", 100);
 		return result;
 		
+	}
+	@PostMapping("/delete")
+	public Map<String, Object> deleteReview(
+			@RequestParam("reviewId") int reviewId){
+		reviewBO.deleteReview(reviewId);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+		return result;
 	}
 }

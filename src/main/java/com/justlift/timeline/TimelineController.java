@@ -15,6 +15,8 @@ import com.justlift.enroll.bo.EnrollBO;
 import com.justlift.enroll.model.Enroll;
 import com.justlift.gym.bo.GymBO;
 import com.justlift.gym.model.Gym;
+import com.justlift.review.bo.ReviewBO;
+import com.justlift.review.model.Review;
 import com.justlift.trainer.bo.TrainerBO;
 import com.justlift.trainer.model.Trainer;
 
@@ -27,6 +29,8 @@ public class TimelineController {
 	private GymBO gymBO;
 	@Autowired
 	private TrainerBO trainerBO;
+	@Autowired
+	private ReviewBO reviewBO;
 	@RequestMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
@@ -76,6 +80,15 @@ public class TimelineController {
 		return "template/layout";
 		
 		
+	}
+	@RequestMapping("/myReview")
+	public String myReviewView(Model model, HttpSession session) {
+		Integer userId = (Integer)session.getAttribute("userId");
+		List<Review> myReview = reviewBO.getMyReviewByUserId(userId);
+		model.addAttribute("myReview", myReview);
+		model.addAttribute("viewName", "timeline/myReview");
+		return "template/layout";
+
 	}
 	
 }

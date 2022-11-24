@@ -20,7 +20,7 @@
 			`workoutId` = #{workoutId} and
 			`type` = #{type}
 	</select>
-	<select id="InsertReview" parameterType="map" >
+	<insert id="InsertReview" parameterType="map" >
 		INSERT INTO `Review`
 			(
 			
@@ -42,5 +42,27 @@
 			NOW(),
 			NOW()
 			)
+	</insert>
+	<select id="selectMyReviewByUserId"
+		parameterType="map" resultType="com.justlift.review.model.Review">
+		SELECT
+			`id`,
+			`workoutId`,
+			`type`,
+			`userId`,
+			`content`,
+			`rank`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+			`Review`
+		WHERE
+			`userId` = #{userId}
 	</select>
+	<delete id="deleteReview" parameterType="map">
+		DELETE 
+		FROM
+			`review`
+		WHERE `id`  = #{reviewId}
+	</delete>
 </mapper>

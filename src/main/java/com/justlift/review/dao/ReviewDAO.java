@@ -18,5 +18,9 @@ public interface ReviewDAO {
 			@Param("rank") int rank,
 			@Param("userId") int userId
 			);
+	
+	public List<Review> selectMyReviewByUserId(@Param("userId") int userId);
+	
+	public void deleteReview(@Param("reviewId") int reviewId); 
 }
 
