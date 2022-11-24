@@ -74,4 +74,24 @@
 			`trainer`
 		WHERE
 			`gymId` = #{gymId}
-		</select> </mapper>
+			
+			
+		</select> 
+		
+		<select id="selectTrainerLikeListByUserIdAndType" parameterType="map" resultType="com.justlift.gym.model.Gym" >
+		SELECT
+			`id`
+			,`name`
+			,`gymId`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`trainer`
+		WHERE
+			`id` in (SELECT `workoutId` FROM `like` WHERE `userId` = #{userId} AND `type` = #{type})
+	</select>
+		</mapper>

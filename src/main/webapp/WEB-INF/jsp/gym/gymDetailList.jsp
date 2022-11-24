@@ -8,17 +8,17 @@
 		<div class="d-flex">
 
 			<img src="/static/${gymImage}" width="400px" height="300px">
-				<a href="#" class="like-btn ml-3" data-gym-id="${gymId }" data-location="${location}" >
+				<button class="btn like-btn ml-3" data-gym-id="${gymId }" data-location="${location}">  
 			 
 			 <c:if test="${isLike eq true}">  
  				<img src="https://www.iconninja.com/files/507/847/828/like-icon.png"
-						width="30px" height="30px" alt="good" >
+						width="30px" height="30px" alt="good" class="like" >
 				  </c:if>
 				<c:if test="${isLike eq false}">
 					<img src="https://www.iconninja.com/files/186/930/395/like-icon.png"
-					 width ="30px" height="30px" alt="not good">
+					 width ="30px" height="30px" alt="not good" class="like">
 					</c:if>		
-					</a>
+					</button>
 		</div>
 		<div>
 		<div class="d-flex align-items-center justify-content-center">

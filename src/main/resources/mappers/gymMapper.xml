@@ -141,5 +141,40 @@
 			`gym`
 		ORDER BY `id` DESC
 	</select>
+	<select id="selectGymListByUserId" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		SELECT
+			`id`
+			,`name`
+			,`categoryId`
+			,`location`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`gym`
+		WHERE
+			`id`
+		IN (SELECT `gymId` FROM `enroll` WHERE `userId` = #{userId});
+	</select>
+	<select id="selectGymLikeListByUserIdAndType" parameterType="map" resultType="com.justlift.gym.model.Gym" >
+		SELECT
+			`id`
+			,`name`
+			,`categoryId`
+			,`location`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`gym`
+		WHERE
+			`id` in (SELECT `workoutId` FROM `like` WHERE `userId` = #{userId} AND `type` = #{type})
+	</select>
 </mapper>
  

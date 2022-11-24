@@ -73,10 +73,7 @@ public class UserRestController {
 		
 		 int Ddays = (int) (dateCalculate / ( 24*60*60));
 		 System.out.println("Ddays : " + Ddays);
-		//String todayFm = Calendar.getInstance();
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		Date date = new Date(user.getCreatedAt().getTime());
-//		Date today = new Date(sdf.parse(todayFm).getTime());
+		
 		if (user != null) { //로그인
 			result.put("code", 100);
 			result.put("result", "success");
@@ -85,7 +82,7 @@ public class UserRestController {
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userId", user.getId());
-			model.addAttribute("Ddays", Ddays);
+			//model.addAttribute("Ddays", Ddays);
 		}else { 
 			result.put("code", 400);// 실패
 			result.put("errorMessage", "존재하지 않는 사용자입니다.");

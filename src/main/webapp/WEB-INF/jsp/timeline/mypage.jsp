@@ -18,9 +18,9 @@
 			<%-- 모달 창 안에 내용 넣기 --%>
 			<div class="text-center">
 				<div class="my-3 border-bottom">
-					<a class="m-3 modaltext" href="/gym/gym_view" id="healthBtn" data-category-id="1">이용중인 서비스 </a><br>
-					<a class="m-3 modaltext" href="/gym/gym_view" id="pilatesBtn" data-category-id="3">관심 체육관  </a><br>
-					<a class="m-3 modaltext" href="/gym/gym_view" id="crossfitBtn" data-category-id="4">관심 트레이너 </a><br>
+					<a class="m-3 modaltext" href="#" id="healthBtn" >이용중인 서비스 </a><br>
+					<a class="m-3 modaltext" href="#" id="gymLikeBtn" >관심 체육관  </a><br>
+					<a class="m-3 modaltext" href="#" id="trainerLikeBtn" >관심 트레이너 </a><br>
 					<a class="m-3 modaltext" href="/user/sign_out"  >로그아웃 </a>
 				</div>
 				<div class="py-3">
@@ -33,6 +33,24 @@
 	</div>
 </div>
 <script>
-	
+	$(document).ready(function(){
+		$('#healthBtn').on ('click', function(e){
+			e.preventDefault();
+			document.location.href="/timeline/enroll_view"
+		});
+		
+		$('#gymLikeBtn').on('click', function(e){
+			e.preventDefault();
+			let type="gym";
+			
+			document.location.href="/timeline/gym_like_view?type=" + type;
+		});
+		$('#trainerLikeBtn').on('click', function(e){
+			e.preventDefault();
+			let type="trainer";
+			
+			document.location.href="/timeline/trainer_like_view?type=" + type;
+		});
+	});
 	
 </script>

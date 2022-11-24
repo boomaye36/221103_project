@@ -19,8 +19,22 @@
 			#{gymId},
 			#{userId},
 			NOW(),
-			NOW()
+			NOW()	
 		)
 
 	</insert>
+	<select id="selectMyEnrollList" parameterType="map" resultType="com.justlift.enroll.model.Enroll">
+		SELECT
+			`id`
+			,`month`
+			,`gymId`
+			,`userId`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`enroll`
+		WHERE
+			`userId` = #{userId}
+	
+	</select>
 </mapper>

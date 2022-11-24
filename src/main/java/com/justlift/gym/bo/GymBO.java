@@ -56,4 +56,11 @@ public class GymBO {
 		return gymDAO.selectGymList();
 	}
 	
+	public List<Gym> getGymListByUserId(int userId){
+		return gymDAO.selectGymListByUserId(userId);
+	}
+	
+	public List<Gym> getGymLikeListByUserIdAndType(Integer userId, String type) {
+		return gymDAO.selectGymLikeListByUserIdAndType(userId, type);
+	}
 }

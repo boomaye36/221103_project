@@ -120,7 +120,7 @@ $(document).ready(function(){
 		 let url = $(this).attr('action');
 		 let params = $(this).serialize();
 		
-		 console.log(params);
+		 //console.log(params);
 		 $.post(url, params)
 			.done(function(data) {
 				if (data.code == 100){
