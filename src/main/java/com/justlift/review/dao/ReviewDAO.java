@@ -34,7 +34,9 @@ public interface ReviewDAO {
 
 	public void insertReviewCount(@Param("reviewId") int reviewId, @Param("userId") int userId);
 
-	public List<ReviewCount> selectReviewCountIdByWorkoutIdAndTypeAndUserId(@Param("workoutId") int workoutId,@Param("type") String type, @Param("userId") int userId); 
+	public int selectReviewCountIdByWorkoutIdAndTypeAndUserId(@Param("id") int workoutId,@Param("type") String type, @Param("userId") int userId);
+
+	public List<Review> selectReviewList(@Param("workoutId") int workoutId, @Param("type") String type); 
 
 
 }

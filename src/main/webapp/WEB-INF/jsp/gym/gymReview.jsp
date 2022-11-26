@@ -6,6 +6,7 @@
 
 <div class="container">
 <h2 class="bg-light text-info">${gymName}리뷰 </h2>
+<div class="d-flex">
 <table class="table mt-5">
 <thead>
 	<tr>
@@ -53,14 +54,29 @@
 		
 						
 			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${gymReview.createdAt }"/></td>	
-	 <c:forEach items="${gymReviewList}" var="gymReview">
-			<td> 조회수 : ${gymReview.}</td>	
-			</c:forEach>
+			
 	</tr>
+	
 	 </c:forEach>
+	
 	</tbody>
 	
 </table>
+<table class="table mt-5">
+	<thead>
+		<tr>
+			<th>조회수</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="count" items="${reviewCountList}" >
+			<tr>
+			<td>조회수 : ${count.reviewCount}</td>
+			</tr>
+			</c:forEach>
+	</tbody>
+</table>
+</div>
 <div class="d-flex justify-content-center mt-5">
 
 <button type="button" class="btn btn-info reviewWriteBtn" data-review-id="${review.id}">리뷰 등록 </button>
@@ -84,6 +100,8 @@
 		});
 		$('.reviewDetailBtn').on('click', function(e){
 			let reviewId = $(this).data('review-id');
+			let gymName = '${gymName}';
+
 			//alert(reviewId);
 			/* let reviewCount  = 0;
 			reviewCount ++; */
@@ -95,8 +113,8 @@
 				,data:{"reviewId" : reviewId}
 				,success:function(data){
 					if (data.code == 100){
-						document.location.href="/review/review_detail_view?reviewId=" + reviewId;
-
+						document.location.href="/review/review_detail_view?reviewId=" + reviewId + "&gymName=" + gymName;
+						
 					}
 				},error : function(e) {
 					alert("조회수 실패  ");

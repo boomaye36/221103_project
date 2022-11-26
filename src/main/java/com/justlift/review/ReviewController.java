@@ -1,5 +1,6 @@
 package com.justlift.review;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.justlift.review.bo.ReviewBO;
 import com.justlift.review.model.Review;
 import com.justlift.review.model.ReviewCount;
+import com.justlift.review.model.ReviewCountView;
 
 @Controller
 @RequestMapping("/review")
@@ -28,13 +30,22 @@ public class ReviewController {
 			HttpSession session, Model model) {
 		List<Review>gymReviewList = reviewBO.getReveiwListByWorkoutIdAndType(workoutId, type);
 		Integer userId = (Integer)session.getAttribute("userId");
-		List<ReviewCount>reviewCountList = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
-		model.addAttribute("reviewCountList", reviewCountList);
+		//List<ReviewCount>reviewCountList = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
+//		List<Integer>Rcount = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
+//		for (Integer count : Rcount) {
+//			//System.out.println("##### ReveiwCount ####" + count);
+//			model.addAttribute("count", count);
+//		}
+		//model.addAttribute("reviewCountList", reviewCountList);
 		//Integer reviewId = (Integer)session.getAttribute("reviewId");
-		
-		//int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
-		//model.addAttribute("reviewCount", reviewCount);
-
+		List<ReviewCountView> reviewCountList = reviewBO.getReviewCountByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
+		model.addAttribute("reviewCountList", reviewCountList);
+//		if (session.getAttribute("reviewId") != null) {
+//			int reviewId = (int)session.getAttribute("reviewId");
+//			int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
+//			model.addAttribute("reviewCount", reviewCount);
+//
+//		}
 		model.addAttribute("viewName", "gym/gymReview");
 		model.addAttribute("gymReviewList", gymReviewList);
 		model.addAttribute("gymName", gymName);
@@ -66,6 +77,7 @@ public class ReviewController {
 	@GetMapping("/review_detail_view")
 	public String reviewDetail(
 			@RequestParam("reviewId") int reviewId,
+			@RequestParam("gymName") String gymName,
 			Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		//session.setAttribute("reviewId", reviewId);

@@ -131,7 +131,23 @@
 		WHERE 
 			
 			
-			`reviewId` GROUP BY `reviewId` in (SELECT `id` FROM `Review` WHERE `workoutId` = #{workoutId} AND `type` = #{type})
-			
+			`reviewId` = #{id} order by `id` DESC
+	</select>
+	<select id="selectReviewList" resultType="com.justlift.review.model.Review">
+		SELECT
+			`id`,
+			`workoutId`,
+			`type`,
+			`userId`,
+			`title`,
+			`content`,
+			`rank`,
+			`createdAt`,
+			`updatedAt`
+		FROM 
+			`Review`
+		WHERE `workoutId` = #{workoutId}
+		AND `type` = #{type}
+		ORDER BY `id` ASC
 	</select>
 </mapper>

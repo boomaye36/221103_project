@@ -48,6 +48,8 @@ public class ReviewRestController {
 	public Map<String, Object>reviewCount(
 			@RequestParam("reviewId") int reviewId, HttpSession session){
 		Integer userId = (Integer) session.getAttribute("userId");
+		session.setAttribute("reviewId", reviewId);
+
 		reviewBO.addReviewCount(reviewId, userId);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);
