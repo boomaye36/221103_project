@@ -8,6 +8,7 @@ public class Review {
 	private int workoutId;
 	private String type;
 	private int userId;
+	private String title;
 	private String content;
 	private int rank;
 	private Date createdAt;
@@ -59,6 +60,12 @@ public class Review {
 	}
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

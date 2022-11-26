@@ -13,9 +13,8 @@
 				<thead>
 					<tr>
 						<th>회원 ID</th>
-						<th>리뷰</th>
+						<th>제목 </th>
 						<th>별점</th>
-
 						<th>작성 날짜</th>
 					</tr>
 
@@ -26,7 +25,7 @@
 				<tbody>
 					<tr>
 						<td>${userLoginId }</td>
-						<td>${review.content }</td>
+						<td>${review.title }</td>
 						<td><c:choose>
 			<c:when test="${review.rank eq 1}">
 				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>
@@ -70,7 +69,7 @@
 				<thead>
 					<tr>
 						<th>회원 ID</th>
-						<th>리뷰</th>
+						<th>제목 </th>
 						<th>별점</th>
 
 						<th>작성 날짜</th>
@@ -83,7 +82,7 @@
 				<tbody>
 					<tr>
 						<td>${userLoginId }</td>
-						<td>${review.content }</td>
+						<td>${review.title }</td>
 						<td><c:choose>
 			<c:when test="${review.rank eq 1}">
 				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>

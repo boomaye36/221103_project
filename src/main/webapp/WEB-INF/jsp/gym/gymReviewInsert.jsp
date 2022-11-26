@@ -17,8 +17,12 @@
 			for="rate5">★</label>
 	</fieldset>
 	
-</form>				
+</form>
+<div class="d-flex justify-content-left">	
+	<input class="ml-4" type="text" id="gymReviewName" class="mt-5" placeholder="제목을 입력해주세요 ">
+</div>
 	<textarea id="content" placeholder="내용을 입력하세요 "></textarea>
+		
 	<div class="d-flex justify-content-between">
 		<button class="btn btn-info insertBtn">등록하기 </button>
 		<button class="btn btn-danger cancelBtn">취소하기  </button>
@@ -29,9 +33,12 @@
 	$(document).ready(function(){
 		$('.insertBtn').on('click', function(){
 			let workoutId = ${workoutId};
-			alert(workoutId);
+			//alert(workoutId);
 			let type = "${type}";
 			let content = $('#content').val().trim();
+			let title = $('#gymReviewName').val().trim();
+			//let reviewId = ${reviewId};
+			//alert(reviewId);
 			if (content == ''){
 				alert("내용을 입력하세요 ");
 				return;
@@ -51,6 +58,7 @@
 				url : '/review/create',
 				data: {"workoutId" : workoutId,
 					"type" : type,
+					"title" : title,
 					"content" : content,
 					"rank" : rank},
 				success:function(data){
@@ -66,7 +74,7 @@
 			});
 		});
 		$('.cancelBtn').on('click', function(){
-			let workoutId = ${gymId};
+			let workoutId = ${workoutId};
 			//alert(gymId);
 			let type = "gym";
 			let gymName = '${gymName}';

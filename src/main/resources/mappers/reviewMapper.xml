@@ -10,6 +10,7 @@
 			`workoutId`,
 			`type`,
 			`userId`,
+			`title`,
 			`content`,
 			`rank`,
 			`createdAt`,
@@ -27,6 +28,7 @@
 			`workoutId`,
 			`type`,
 			`userId`,
+			`title`,
 			`content`,
 			`rank`,
 			`createdAt`,
@@ -37,6 +39,7 @@
 			#{workoutId},
 			#{type},
 			#{userId},
+			#{title},
 			#{content},
 			#{rank},
 			NOW(),
@@ -50,6 +53,7 @@
 			`workoutId`,
 			`type`,
 			`userId`,
+			`title`,
 			`content`,
 			`rank`,
 			`createdAt`,
@@ -65,4 +69,69 @@
 			`review`
 		WHERE `id`  = #{reviewId}
 	</delete>
+	<select id="selectDetailReviewById"
+		parameterType="map" resultType="com.justlift.review.model.Review">
+		SELECT
+			`id`,
+			`workoutId`,
+			`type`,
+			`userId`,
+			`title`,
+			`content`,
+			`rank`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+			`Review`
+		WHERE
+			`id` = #{reviewId}
+	</select>
+	
+	<select id="selectReviewCountByWorkoutidAndType" parameterType="map" resultType="int">
+		SELECT
+			count(1)
+		FROM
+			`Review`
+		WHERE
+			`workoutId` = #{workoutId}
+			AND 
+			`type` = #{type}
+			AND
+			`userId` = #{userId}
+	</select>
+	<insert id="insertReviewCount" parameterType="map">
+		INSERT INTO `reviewCount`
+		(
+			`reviewId`,
+			`userId`,
+			`createdAt`
+		)
+		VALUES
+		(
+			#{reviewId},
+			#{userId},
+			NOW()
+		)
+			
+	</insert>
+	<select id="selectReviewCountByReviewIdAndUserId" parameterType="map" resultType="int">
+		SELECT 
+			COUNT(distinct `userId`)
+		FROM 
+			`reviewCount`
+		WHERE 
+			`reviewId` =  #{reviewId}
+		
+	</select>
+	<select id="selectReviewCountIdByWorkoutIdAndTypeAndUserId" parameterType="map" resultType="int">
+		SELECT 
+			COUNT(distinct `userId`)
+		FROM 
+			`reviewCount`
+		WHERE 
+			
+			
+			`reviewId` GROUP BY `reviewId` in (SELECT `id` FROM `Review` WHERE `workoutId` = #{workoutId} AND `type` = #{type})
+			
+	</select>
 </mapper>

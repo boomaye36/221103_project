@@ -19,9 +19,10 @@ public class EnrollRestController {
 	@Autowired
 	private EnrollBO enrollBO;
 	@RequestMapping("/create")
-	public Map<String, Object> createEnroll(@RequestParam("month") int month,
+	public Map<String, Object> createEnroll(@RequestParam("month") int month,@RequestParam("gymId") int gymId,
 			HttpSession session) {
-		Integer gymId = (Integer)session.getAttribute("gymId");
+		//Integer gymId = (Integer)session.getAttribute("gymId");
+		
 		Integer userId = (Integer)session.getAttribute("userId");
 		Map<String, Object> result = new HashMap<>();
 		enrollBO.addEnroll(month, userId, gymId);

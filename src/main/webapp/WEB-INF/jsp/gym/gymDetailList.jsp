@@ -80,12 +80,14 @@
 											let month = $(
 													'.selectMonth option:selected')
 													.val();
+											let gymId = ${gymId};
 
 											$.ajax({
 														type : 'POST',
 														url : '/enroll/create',
 														data : {
-															"month" : month
+															"month" : month,
+															"gymId" : gymId
 														},
 														success : function(data) {
 															if (data.code == 100) {

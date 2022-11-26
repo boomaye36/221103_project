@@ -23,13 +23,14 @@ public class ReviewRestController {
 	public Map<String, Object> createReview(
 			@RequestParam("workoutId") int workoutId,
 			@RequestParam("type") String type,
+			@RequestParam("title") String title,
 			@RequestParam("content") String content,
 			@RequestParam("rank") int rank,
 			
 			Model model, HttpSession session
 			){
 		Integer userId = (Integer)session.getAttribute("userId");
-		reviewBO.addReview(workoutId, type, content, rank, userId);
+		reviewBO.addReview(workoutId, type, title, content, rank, userId);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);
 		return result;
@@ -39,6 +40,15 @@ public class ReviewRestController {
 	public Map<String, Object> deleteReview(
 			@RequestParam("reviewId") int reviewId){
 		reviewBO.deleteReview(reviewId);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+		return result;
+	}
+	@PostMapping("/review_count_insert")
+	public Map<String, Object>reviewCount(
+			@RequestParam("reviewId") int reviewId, HttpSession session){
+		Integer userId = (Integer) session.getAttribute("userId");
+		reviewBO.addReviewCount(reviewId, userId);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);
 		return result;

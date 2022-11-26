@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.justlift.review.bo.ReviewBO;
 import com.justlift.review.model.Review;
+import com.justlift.review.model.ReviewCount;
 
 @Controller
 @RequestMapping("/review")
@@ -26,6 +27,14 @@ public class ReviewController {
 			@RequestParam("gymName") String gymName,
 			HttpSession session, Model model) {
 		List<Review>gymReviewList = reviewBO.getReveiwListByWorkoutIdAndType(workoutId, type);
+		Integer userId = (Integer)session.getAttribute("userId");
+		List<ReviewCount>reviewCountList = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
+		model.addAttribute("reviewCountList", reviewCountList);
+		//Integer reviewId = (Integer)session.getAttribute("reviewId");
+		
+		//int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
+		//model.addAttribute("reviewCount", reviewCount);
+
 		model.addAttribute("viewName", "gym/gymReview");
 		model.addAttribute("gymReviewList", gymReviewList);
 		model.addAttribute("gymName", gymName);
@@ -45,10 +54,27 @@ public class ReviewController {
 		model.addAttribute("type", type);
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		Integer userId = (Integer)session.getAttribute("userId");
+		//Review review = reviewBO.getReviewIdByWorkoutIdAndType(workoutId,type);
+		//model.addAttribute("reviewId", review.getId());
 		model.addAttribute("gymName", gymName);
 		model.addAttribute("viewName", "gym/gymReviewInsert");
 		model.addAttribute("userLoginId", userLoginId);
 		model.addAttribute("userId", userId);
+		return "template/layout";
+
+	}
+	@GetMapping("/review_detail_view")
+	public String reviewDetail(
+			@RequestParam("reviewId") int reviewId,
+			Model model, HttpSession session) {
+		Integer userId = (Integer)session.getAttribute("userId");
+		//session.setAttribute("reviewId", reviewId);
+		int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
+		model.addAttribute("reviewCount", reviewCount);
+		List<Review> reviewDetailList = reviewBO.getDetailReviewById(reviewId);
+		
+		model.addAttribute("reviewDetailList", reviewDetailList);
+		model.addAttribute("viewName", "gym/reviewDetail");
 		return "template/layout";
 
 	}

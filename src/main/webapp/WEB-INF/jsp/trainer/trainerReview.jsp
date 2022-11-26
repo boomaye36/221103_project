@@ -10,7 +10,7 @@
 <thead>
 	<tr>
 		<th>회원 ID</th>
-		<th>리뷰</th>
+		<th>제목 </th>
 		<th>별점 </th>
 		
 		<th>작성 날짜</th>
@@ -21,7 +21,7 @@
 	 <c:forEach items="${gymReviewList}" var="gymReview">
 	<tr >
 		<td>${userLoginId }</td>
-		<td>${gymReview.content }</td>
+		<td><a href="#" class="reviewDetailBtn" data-review-id="${gymReview.id}">${gymReview.title }</a></td>
 		<td><c:choose>
 			<c:when test="${gymReview.rank eq 1}">
 				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>
@@ -50,7 +50,8 @@
 		</c:choose></td>
 		
 						
-			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${gymReview.createdAt }"/></td>			
+			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${gymReview.createdAt }"/></td>	
+			<td></td>		
 	</tr>
 	 </c:forEach>
 	</tbody>
@@ -71,6 +72,12 @@
 			let type="trainer";
 			//alert( gymName);
 			document.location.href="/review/review_write_view?workoutId=" + workoutId + "&type=" + type +"&gymName=" + gymName;
+		});
+		
+		$('.reviewDetailBtn').on('click', function(e){
+			let reviewId = $(this).data('review-id');
+			//alert(reviewId);
+			document.location.href="/review/review_detail_view?reviewId=" + reviewId;
 		});
 	});
 </script>
