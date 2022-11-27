@@ -12,7 +12,8 @@ public interface EnrollDAO {
 	public void insertEnroll(
 			@Param("month")int month,
 			@Param("userId")int userId,
-			@Param("gymId")int gymId);
+			@Param("gymId")int gymId,
+			@Param("newMonth")int newMonth);
 
 	public List<Enroll> selectMyEnrollList(@Param("userId")int userId);
 	

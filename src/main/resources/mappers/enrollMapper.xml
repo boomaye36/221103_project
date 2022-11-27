@@ -21,6 +21,9 @@
 			NOW(),
 			NOW()	
 		)
+		ON DUPLICATE KEY UPDATE
+			`month` = #{month},
+			`month` = #{newMonth}
 
 	</insert>
 	<select id="selectMyEnrollList" parameterType="map" resultType="com.justlift.enroll.model.Enroll">

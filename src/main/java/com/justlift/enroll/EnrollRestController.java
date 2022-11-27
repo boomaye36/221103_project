@@ -25,7 +25,8 @@ public class EnrollRestController {
 		
 		Integer userId = (Integer)session.getAttribute("userId");
 		Map<String, Object> result = new HashMap<>();
-		enrollBO.addEnroll(month, userId, gymId);
+		int newMonth = month;
+		enrollBO.addEnroll(month, userId, gymId, newMonth);
 		result.put("code", 100);
 		return result;
 	}

@@ -6,13 +6,15 @@
     <c:if test="${type == 'gym'}">
     <h2>관심 체육관 : ${LikeCount}개 </h2>
     	<c:forEach items="${LikeGymList}" var="gymlike">
+    	<div class="flip-conver-gym">
     		<a href="#" class="btn myGym-detail-btn text-dark" data-gym-id="${gymlike.id}" data-location="${gymlike.location}">
-    		<div>
+    		
     		<br>
     		${gymlike.name }<br><br>
     	
-    		</div>
+    		
     		</a>
+    		</div>
     	</c:forEach>
   </c:if>
 	<c:if test="${type == 'trainer'}">
@@ -65,5 +67,8 @@
 			let trainerId = $(this).data('trainer-id');
 			document.location.href="/trainer/trainer_detail_view?trainerId="+trainerId;
 			});
- 	});
+			});
+ 		
+ 	
+
  </script>
