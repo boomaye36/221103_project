@@ -15,6 +15,7 @@ import com.justlift.enroll.bo.EnrollBO;
 import com.justlift.enroll.model.Enroll;
 import com.justlift.gym.bo.GymBO;
 import com.justlift.gym.model.Gym;
+import com.justlift.like.bo.LikeBO;
 import com.justlift.review.bo.ReviewBO;
 import com.justlift.review.model.Review;
 import com.justlift.trainer.bo.TrainerBO;
@@ -31,6 +32,8 @@ public class TimelineController {
 	private TrainerBO trainerBO;
 	@Autowired
 	private ReviewBO reviewBO;
+	@Autowired
+	private LikeBO likeBO;
 	@RequestMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
@@ -65,7 +68,9 @@ public class TimelineController {
 	public String gymLikeView(Model model, HttpSession session, @RequestParam("type") String type) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		List<Gym> LikeGymList = gymBO.getGymLikeListByUserIdAndType(userId, type);
+		int LikeCount = likeBO.getGymLikeCountByUserIdAndType(userId, type);
 		model.addAttribute("LikeGymList", LikeGymList);
+		model.addAttribute("LikeCount", LikeCount);
 		model.addAttribute("viewName", "timeline/myLike");
 		model.addAttribute("type", type);
 		return "template/layout";
@@ -76,6 +81,9 @@ public class TimelineController {
 	public String trainerLikeView(Model model, HttpSession session, @RequestParam("type") String type) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		List<Trainer> LikeTrainerList = trainerBO.getTrainerLikeListByUserIdAndType(userId, type);
+		int LikeCount = likeBO.getGymLikeCountByUserIdAndType(userId, type);
+		model.addAttribute("LikeCount", LikeCount);
+
 		model.addAttribute("LikeTrainerList", LikeTrainerList);
 		model.addAttribute("viewName", "timeline/myLike");
 		model.addAttribute("type", type);

@@ -103,6 +103,15 @@
 		WHERE
 			`workoutId` = #{trainerId}
 			AND `userId` = #{userId}
+	</select> 
+	<select id="selectGymLikeCountByUserIdAndType" parameterType="map" resultType="int">
+		SELECT 
+			COUNT(1)
+		FROM 
+			`like`
+		WHERE 
+			`type` = #{type}
+			AND
+			`userId` = #{userId}
 	</select>
-	
  </mapper>

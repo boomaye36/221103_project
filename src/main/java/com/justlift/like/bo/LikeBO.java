@@ -54,4 +54,7 @@ public class LikeBO {
 	public boolean getTrainerHeart(Integer userId, Integer trainerId) {
 		return likeDAO.selectTrainerHeart(userId, trainerId);
 	}
+	public int getGymLikeCountByUserIdAndType(int userId, String type) {
+		return likeDAO.selectGymLikeCountByUserIdAndType(userId, type);
+	}
 }
