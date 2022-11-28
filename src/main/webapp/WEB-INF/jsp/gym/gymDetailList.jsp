@@ -81,6 +81,7 @@
 													'.selectMonth option:selected')
 													.val();
 											let gymId = ${gymId};
+											alert(month);
 
 											$.ajax({
 														type : 'POST',

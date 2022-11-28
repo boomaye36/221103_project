@@ -21,9 +21,9 @@
 			NOW(),
 			NOW()	
 		)
-		ON DUPLICATE KEY UPDATE
+		 ON DUPLICATE KEY UPDATE
 			`month` = #{month},
-			`month` = #{newMonth}
+			`month` = #{newMonth} 
 
 	</insert>
 	<select id="selectMyEnrollList" parameterType="map" resultType="com.justlift.enroll.model.Enroll">
@@ -48,5 +48,30 @@
 			`enroll`
 		WHERE 
 			`userId` = #{userId}
+	</select>
+	<select id="selectGymByGymIdAndUserId" parameterType="map" resultType="boolean">
+		SELECT
+			COUNT(1)
+		FROM
+			`enroll`
+		WHERE
+			`userId` = #{userId}
+		AND
+			`gymId` = #{gymId}
+	</select>
+	<select id="seletMonthByUserIdAndGymId" parameterType="map" resultType="com.justlift.enroll.model.Enroll">
+		SELECT
+			`id`
+			,`month`
+			,`gymId`
+			,`userId`
+			,`createdAt`
+			,`updatedAt`		
+		FROM
+			`enroll`
+		WHERE
+			`userId` = #{userId}
+		AND
+			`gymId` = #{gymId}
 	</select>
 </mapper>

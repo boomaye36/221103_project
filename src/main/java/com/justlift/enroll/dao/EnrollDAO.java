@@ -9,13 +9,14 @@ import com.justlift.enroll.model.Enroll;
 
 @Repository
 public interface EnrollDAO {
-	public void insertEnroll(
-			@Param("month")int month,
-			@Param("userId")int userId,
-			@Param("gymId")int gymId,
-			@Param("newMonth")int newMonth);
+	public void insertEnroll(@Param("month") int month, @Param("userId") int userId, @Param("gymId") int gymId,
+			@Param("newMonth") int newMonth);
 
-	public List<Enroll> selectMyEnrollList(@Param("userId")int userId);
-	
+	public List<Enroll> selectMyEnrollList(@Param("userId") int userId);
+
 	public int selectMyEnrollCount(@Param("userId") int userId);
+
+	public boolean selectGymByGymIdAndUserId(@Param("gymId") int gymId, @Param("userId") int userId);
+	
+	public Enroll seletMonthByUserIdAndGymId(@Param("userId") int userId, @Param("gymId") int gymId);
 }
