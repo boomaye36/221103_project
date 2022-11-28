@@ -1,5 +1,8 @@
 package com.justlift.user.bo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,11 @@ public class UserBO {
 	}
 	public User getUserByUserIdandPassword(String loginId, String password) {
 		return userDAO.selectUserByUserIdandPassword(loginId, password);
+	}
+	
+	public int getDdayFromUser(int userId) {
+		 return userDAO.selectDdayFromUser(userId);
+		
 	}
 	
 }

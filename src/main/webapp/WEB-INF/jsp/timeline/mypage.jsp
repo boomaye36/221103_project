@@ -3,7 +3,7 @@
 <div class="container">
 <div class="d-flex justify-content-center">
 	<div class="d-flex justify-content-center">
-	<h3>${userName}님 오늘도 근성장 <span class="text-info">${Ddays}일</span> </h3>
+	<h3>${userName}님 오늘도 근성장 <span class="text-info">${dday}일</span> </h3>
 	<a href="#" class="myBtn ml-5" data-toggle="modal" data-target="#modal" ><img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="50"></a>
 	</div>
 	

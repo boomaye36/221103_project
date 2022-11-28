@@ -47,7 +47,7 @@
 		e.preventDefault();
 		//alert("dsf");
 		let gymId = $(this).data('gym-id');
-		//alert(gymId);
+		alert(gymId);
 		let location = $(this).data('gym-location');
 		//alert(location);
 		document.location.href="/gym/detail_view?gymId=" + gymId + "&location=" + location;

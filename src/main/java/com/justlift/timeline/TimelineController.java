@@ -20,6 +20,7 @@ import com.justlift.review.bo.ReviewBO;
 import com.justlift.review.model.Review;
 import com.justlift.trainer.bo.TrainerBO;
 import com.justlift.trainer.model.Trainer;
+import com.justlift.user.bo.UserBO;
 
 @Controller
 @RequestMapping("/timeline")
@@ -34,6 +35,8 @@ public class TimelineController {
 	private ReviewBO reviewBO;
 	@Autowired
 	private LikeBO likeBO;
+	@Autowired
+	private UserBO userBO;
 	@RequestMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
@@ -45,10 +48,11 @@ public class TimelineController {
 		return "template/layout";
 	}
 	@RequestMapping("/timeline_mypage_view")
-	public String timelineMypageView(Model model) {
-		//Integer userId = (Integer)session.getAttribute("userId");
+	public String timelineMypageView(Model model, HttpSession session) {
+		Integer userId = (Integer)session.getAttribute("userId");
+		int dday = userBO.getDdayFromUser(userId);
 		
-		
+		model.addAttribute("dday", dday);
 		model.addAttribute("viewName", "timeline/mypage");
 			return "template/layout";
 	}
