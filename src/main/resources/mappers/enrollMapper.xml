@@ -61,12 +61,8 @@
 	</select>
 	<select id="seletMonthByUserIdAndGymId" parameterType="map" resultType="com.justlift.enroll.model.Enroll">
 		SELECT
-			`id`
-			,`month`
-			,`gymId`
-			,`userId`
-			,`createdAt`
-			,`updatedAt`		
+			`month`
+					
 		FROM
 			`enroll`
 		WHERE

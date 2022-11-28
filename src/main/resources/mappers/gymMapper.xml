@@ -157,7 +157,8 @@
 			`gym`
 		WHERE
 			`id`
-		IN (SELECT `gymId` FROM `enroll` WHERE `userId` = #{userId});
+		IN (SELECT `gymId` FROM `enroll` WHERE `userId` = #{userId} ORDER BY `createdAt` )
+		
 	</select>
 	<select id="selectGymLikeListByUserIdAndType" parameterType="map" resultType="com.justlift.gym.model.Gym" >
 		SELECT
