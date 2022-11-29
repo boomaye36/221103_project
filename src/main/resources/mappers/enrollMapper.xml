@@ -70,4 +70,10 @@
 		AND
 			`gymId` = #{gymId}
 	</select>
+	<delete id="deleteEnroll" parameterType="map">
+		DELETE
+		FROM
+			`enroll`
+		WHERE `id` = #{enrollId}
+	</delete>
 </mapper>

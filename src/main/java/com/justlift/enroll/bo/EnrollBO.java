@@ -29,4 +29,7 @@ public class EnrollBO {
 	public int getMyEnrollCount(int userId) {
 		return enrollDAO.selectMyEnrollCount(userId);
 	}
+	public void deleteEnroll(int enrollId) {
+		enrollDAO.deleteEnroll(enrollId);
+	}
 }

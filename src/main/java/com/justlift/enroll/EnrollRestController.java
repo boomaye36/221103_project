@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,14 @@ public class EnrollRestController {
 		enrollBO.addEnroll(month, userId, gymId, newMonth);
 		result.put("code", 100);
 		return result;
+	}
+	@RequestMapping("/delete")
+	public Map<String, Object> deleteEnroll(@RequestParam("enrollId") int enrollId){
+		enrollBO.deleteEnroll(enrollId);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+		return result;
+
 	}
 	
 

@@ -19,4 +19,7 @@ public interface EnrollDAO {
 	public boolean selectGymByGymIdAndUserId(@Param("gymId") int gymId, @Param("userId") int userId);
 	
 	public Enroll seletMonthByUserIdAndGymId(@Param("userId") int userId, @Param("gymId") int gymId);
+	
+	public void deleteEnroll(@Param("enrollId") int enrollId); 
+
 }
