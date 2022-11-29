@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.justlift.goods.dao.GoodsDAO">
+ 	<select id="selectGoodsList" parameterType="map" resultType="com.justlift.goods.model.Goods">
+ 		SELECT 
+ 			`id`,
+ 			`name`,
+ 			`category`,
+ 			`price`,
+ 			`image`,
+ 			`createdAt`,
+ 			`updatedAt`
+ 		FROM
+ 			`goods`
+ 		WHERE
+ 			`category` = #{category}
+ 	</select>
+ 	<insert id="insertCartById" parameterType="map" >
+ 		INSERT INTO
+ 			`cart`
+ 			(
+ 				`goodsId`,
+ 				`userId`,
+ 				`count`,
+ 				`createdAt`
+ 			)
+ 			
+ 		VALUES
+ 			(
+ 				#{goodsId},
+ 				#{userId},
+ 				#{count},
+ 				NOW()
+ 			)
+ 			ON DUPLICATE KEY UPDATE
+			`count` = #{count},
+			`count` = #{count} 
+ 			
+ 	</insert>
+ 	<select id="selectGoodsListByUserId" parameterType="map" resultType="com.justlift.goods.model.Goods">
+ 		SELECT 
+ 			*
+ 		FROM
+ 			`goods`
+ 		WHERE 
+ 			`id` in (select `goodsId` from `cart` where `userId` = #{userId})
+ 	</select>
+ 	<select id="ExistGoodsByUserId" parameterType="map" resultType="boolean">
+ 		SELECT 
+ 			COUNT(1)
+ 		FROM
+ 			`cart`
+ 		WHERE 
+ 			`goodsId` = #{goodsId}
+ 		AND
+ 			`userId` = #{userId}
+ 	</select>
+ 	<select id="selectCartByUserIdAndGoodsId" parameterType="map" resultType="com.justlift.goods.model.Cart">
+ 		SELECT
+ 			*
+ 		FROM
+ 			`cart`
+ 		WHERE 
+ 			`goodsId` = #{goodsId}
+ 		AND
+ 			`userId` = #{userId}
+ 	</select>
+ 	
+ 	<select id="selectCartList" parameterType="map" resultType="com.justlift.goods.model.Cart">
+		SELECT
+			`id`,
+			`goodsId`,
+			`userId`,
+			`count`,
+			`createdAt`
+		FROM
+			`cart`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
+ </mapper>

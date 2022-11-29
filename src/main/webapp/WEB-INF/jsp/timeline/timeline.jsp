@@ -35,6 +35,7 @@
 	<div class="d-flex justify-content-center">
 		<a href="#" class="categoryBtn btn btn-info" data-toggle="modal"
 			data-target="#modal">카테고리 </a>
+		<a href="#" class="goodsBtn btn btn-success ml-5" >상품보기</a>
 	</div>
 
 	<!-- Modal -->
@@ -62,6 +63,30 @@
 
 		</div>
 	</div>
+	<%-- <div class="modal fade" id="12">
+		modal-dialog-centered 모달창을 가운데정렬, modal-sm 작은 모달창
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				모달 창 안에 내용 넣기
+				<div class="text-center">
+					<div class="my-3 border-bottom">
+						<a class="m-3 modaltext" href="#" id="healthBtn"
+							data-category-id="1">헬스 </a><br> <a class="m-3 modaltext"
+							href="#" id="pilatesBtn" data-category-id="3">필라테스 </a><br>
+						<a class="m-3 modaltext" href="#" id="crossfitBtn"
+							data-category-id="4">크로스핏 </a><br> <a class="m-3 modaltext"
+							href="#" id="yogaBtn" data-category-id="2">요가 </a>
+					</div>
+					<div class="py-3">
+						data-dismiss="modal" 모달창 닫힘
+						<a class="m-3 modaltext" href="#" data-dismiss="modal">취소</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div> --%>
 </form>
 <script>
 	$(document).ready(
@@ -137,6 +162,10 @@
 									+ location + "&categoryId=" + categoryId;
 
 						});
+				$('.goodsBtn').on('click', function(e){
+					e.preventDefault();
+					document.location.href="/goods/select_view";
+				});
 
 			});
 </script>

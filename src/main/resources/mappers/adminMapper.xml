@@ -56,4 +56,26 @@
  			,NOW()
  		)
  	</insert>
+ 	
+ 	<insert id="insertGoods" parameterType="map">
+ 		INSERT INTO `goods`
+ 		(
+ 			`name`
+ 			,`category`
+ 			,`price`
+
+ 			,`image`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+ 			,#{category}
+ 			,#{price}
+ 			,#{imagePath}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 	</insert>
  </mapper>

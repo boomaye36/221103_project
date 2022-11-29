@@ -34,4 +34,5 @@ public interface GymDAO {
 	public List<Gym> selectGymListByUserId(@Param("userId") int userId);
 	
 	public List<Gym> selectGymLikeListByUserIdAndType(@Param("userId") int userId, @Param("type") String type);
+	
 }

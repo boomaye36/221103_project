@@ -62,5 +62,24 @@ public class AdminRestController {
 		}
 	return result;
 	}
-	
+@PostMapping("/admin_goods")
+
+public Map<String, Object> addGoods(
+	@RequestParam("name") String name,
+	@RequestParam("category") String category,
+		@RequestParam("price") int price,
+		@RequestParam(value="file", required=false) MultipartFile file
+		){
+	//String userLoginId = (String)session.getAttribute("userLoginId");
+	Map<String, Object> result = new HashMap<>();
+	int row = adminBO.addGoods( name, category, price, file);
+	if (row > 0) {
+		result.put("code", 100); // 성공
+		result.put("result", "success");
+	}else {
+		result.put("code", 400);
+		result.put("errorMessage", "상품 저장에 실패했습니다. 관리자에게 문의하세요.");
+	}
+return result;
+}
 }

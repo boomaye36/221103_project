@@ -28,4 +28,13 @@ public class AdminBO {
 		}
 		return adminDAO.insertTrainer(name, gymId, phoneNumber, introduce, rank, imagePath);
 	}
+
+	public int addGoods(String name, String category, int price, MultipartFile file) {
+		String imagePath = null;
+
+		if (file != null) {
+			imagePath = fileManagerService.saveFile( file);
+		}
+		return adminDAO.insertGoods(name, category, price, imagePath);
+	}
 }

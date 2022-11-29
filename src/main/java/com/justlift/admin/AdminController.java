@@ -13,4 +13,8 @@ public class AdminController {
 	public String adminTrainer() {
 		return "admin/trainer";
 	}
+	@RequestMapping("/admin_goods_view")
+	public String adminGoods() {
+		return "admin/goods";
+	}
 }

@@ -23,4 +23,6 @@ public interface AdminDAO {
 			@Param("introduce")String introduce, 
 			@Param("rank")double rank,
 			@Param("imagePath")String imagePath);
+
+	public int insertGoods(@Param("name") String name, @Param("category") String category, @Param("price") int price,@Param("imagePath") String imagePath);
 }
