@@ -100,4 +100,12 @@
  		WHERE
  			`id` = #{id}
  	</select>
+ 	<update id="updateCartByCountAndId" parameterType="map" >
+ 		UPDATE
+ 			`cart`
+ 		SET 
+ 			`count` = #{count}
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
  </mapper>

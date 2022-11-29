@@ -61,5 +61,7 @@ public class GoodsBO {
 		return cartViewList;
 		
 	}
-	
+	public void updateCartByCountAndId(int count, int id) {
+		goodsDAO.updateCartByCountAndId(count, id);
+	}
 }

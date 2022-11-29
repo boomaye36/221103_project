@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,14 @@ public class GoodsRestController {
 	@RequestMapping("/delete")
 	public Map<String, Object> deleteCart(@RequestParam("goodsId") int goodsId){
 		goodsBO.deleteCart(goodsId);
+		Map<String, Object>result = new HashMap<>();
+		result.put("code", 100);
+		return result;
+	}
+	@PostMapping("/update")
+	public Map<String, Object>updateCart(@RequestParam("count") int count,
+			@RequestParam("id") int id){
+		goodsBO.updateCartByCountAndId(count, id);
 		Map<String, Object>result = new HashMap<>();
 		result.put("code", 100);
 		return result;

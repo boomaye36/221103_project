@@ -11,30 +11,21 @@
 					<img class="m-5" src="/static/${card.goods.image }" width="300px"
 						height="200px">
 					<h3 class="text-warning mr-5">갯수  : ${card.cart.count }개 </h3>
+				
+					<button class="minusBtn btn btn-danger" data-goods-count="${card.cart.count }" data-goods-id="${card.cart.id }" >빼기  </button>
+					<button class="plusBtn btn btn-info" data-goods-count="${card.cart.count }"  data-goods-id="${card.cart.id }">더하기 </button>
+					<div>
 					<h3>가격 ${card.goods.price }원 </h3>
+					<h4 class="text-success">총가격 : ${card.cart.count * card.goods.price}원 </h4>
+					</div>
 				<button class="goods-del-btn btn btn-danger ml-5" data-goods-id="${card.cart.id }">삭제하기 </button>
 				
 				</div>
 			</c:forEach>
 		</div>
-		<%-- <div>
-			<c:forEach items="${cartList }" var="cart">
-				
-				<div class="d-flex m-5 border border-success goods-count-box justify-content-between">
-					<h3 class="text-warning mr-5">갯수  : ${cart.count }개 </h3>
-					<button class="goods-del-btn btn btn-danger ml-5" data-goods-id="${cart.id }">삭제하기 </button>
- 				</div>
- 
-			</c:forEach>
-
-		</div> --%>
+		
 	</div>
-		<%-- <c:forEach items="${cartViewList }" var="card">
-			${card.goods.price }
-			${card.goods.name }
-			${card.cart.count }
-		</c:forEach>
-	 --%>
+		
 </div>
 <script>
 	$(document).ready(function(e){
@@ -53,6 +44,48 @@
 				}
 				
 			});
+		});
+		$('.minusBtn').on('click', function(e){
+			e.preventDefault();
+			let id = $(this).data('goods-id');
+			//alert(id);
+			let count = $(this).data('goods-count');
+			count--;
+			//alert(count);
+			$.ajax({
+				type : 'post',
+				url : "/goods/update",
+				data : {"count" : count,
+						"id" : id},
+				success:function(data){
+					if (data.code == 100){
+						location.reload(true);
+					}
+				}
+				
+			});
+			
+		});
+		$('.plusBtn').on('click', function(e){
+			e.preventDefault();
+			let count = $(this).data('goods-count');
+			count++;
+			let id = $(this).data('goods-id');
+
+			//alert(count);
+			$.ajax({
+				type : 'post',
+				url : "/goods/update",
+				data : {"count" : count,
+						"id" : id},
+				success:function(data){
+					if (data.code == 100){
+						location.reload(true);
+					}
+				}
+				
+			});
+			
 		});
 		
 	});
