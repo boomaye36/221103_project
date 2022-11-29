@@ -28,4 +28,11 @@ public class GoodsRestController {
 
 		return result;
 	}
+	@RequestMapping("/delete")
+	public Map<String, Object> deleteCart(@RequestParam("goodsId") int goodsId){
+		goodsBO.deleteCart(goodsId);
+		Map<String, Object>result = new HashMap<>();
+		result.put("code", 100);
+		return result;
+	}
 }

@@ -3,6 +3,7 @@ package com.justlift.goods.model;
 import java.util.Date;
 
 public class Cart {
+	
 	private int id;
 	private int goodsId;
 	private int userId;

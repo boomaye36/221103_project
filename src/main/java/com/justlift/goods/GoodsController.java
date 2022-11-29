@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.justlift.goods.bo.GoodsBO;
 import com.justlift.goods.model.Cart;
+import com.justlift.goods.model.CartView;
 import com.justlift.goods.model.Goods;
 
 @Controller
@@ -44,6 +45,8 @@ public class GoodsController {
 		model.addAttribute("viewName", "goods/cart");
 		List<Cart> cartList = goodsBO.getCartList(userId);
 		model.addAttribute("cartList", cartList);
+		List<CartView> cartViewList = goodsBO.getCartViewList(userId);
+		model.addAttribute("cartViewList", cartViewList);
 
 		return "template/layout";
 	}

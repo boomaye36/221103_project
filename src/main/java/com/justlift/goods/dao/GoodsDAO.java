@@ -21,5 +21,8 @@ public interface GoodsDAO {
 	public Cart selectCartByUserIdAndGoodsId(@Param("userId") int userId, @Param("goodsId") int goodsId);
 	//public int selectGoodsCount
 	public List<Cart> selectCartList(@Param("userId") int userId);
+	
+	public void deleteCart(@Param("goodsId") int goodsId);
 
+	public Goods getGoodsById(@Param("id") int id);
 }

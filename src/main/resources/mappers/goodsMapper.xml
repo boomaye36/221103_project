@@ -79,4 +79,25 @@
 		WHERE
 			`userId` = #{userId}
  	</select>
+ 	<delete id="deleteCart" parameterType="map">
+ 		DELETE
+ 		FROM
+ 			`cart`
+ 		WHERE
+ 			`id` = #{goodsId}
+ 	</delete>
+ 	<select id="getGoodsById" parameterType="map" resultType="com.justlift.goods.model.Goods">
+ 	SELECT 
+ 			`id`,
+ 			`name`,
+ 			`category`,
+ 			`price`,
+ 			`image`,
+ 			`createdAt`,
+ 			`updatedAt`
+ 		FROM
+ 			`goods`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
  </mapper>
