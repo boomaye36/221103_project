@@ -10,7 +10,7 @@
 .container{height:2000px;}
 .detail-list{width:500px;}
 .selectMonth{width:200px;}
-.enrollBtn, .reviewWriteBtn, .reviewViewBtn, .insertBtn, .cancelBtn, .trainer_view_btn, #cart-btn, .buy-button, #buy-btn{width:200px; height:70px; margin:100px;}
+.enrollBtn, .reviewWriteBtn,  .insertBtn, .cancelBtn, .trainer_view_btn, #cart-btn, .buy-button, #buy-btn{width:200px; height:70px; margin:100px;}
 #content{width:500px; height:400px;margin-top:200px;}
 #trainer-box{height:400px; width:800px; margin-top:100px; }
 #myform fieldset{
@@ -97,6 +97,10 @@
 .cartBtn{width:200px;height:100px;}
 .my-goods-box {height:300px; width:1200px;}
 .coupon-btn{width:150px; height:50px;}
+.detailgymBox{width:400px;margin-left:250px;}
+.reviewViewBtn, .qnaBtn{width:300px; height:80px;margin:30px;}
+.modal-title-box{height:50px; }
+.modal-content-box{margin-top:-150px;}
 /* html, body { height: 100%; }
  */
 /* body {

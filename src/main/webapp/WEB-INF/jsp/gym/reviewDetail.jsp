@@ -3,10 +3,13 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <div class="container">
+	<h3 class="text-info">${userLoginId} 님의 리뷰 </h3>
 	<c:forEach items="${reviewDetailList}" var="review">
-		${review.content}
+		<div>
 		조회수 : ${reviewCount}
-	
+		<h4>	글내용 : ${review.content}
+		</h4>
+		</div>
 	<a href="#" class="btn btn-info" id="review-confirm-btn" data-workout-id="${review.workoutId}" data-type="${review.type}">확인 </a>
 	</c:forEach>
 </div>

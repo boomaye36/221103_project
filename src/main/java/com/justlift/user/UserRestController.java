@@ -62,17 +62,6 @@ public class UserRestController {
 		User user = userBO.getUserByUserIdandPassword(loginId, encryptPassword);
 		Map<String, Object> result = new HashMap<>();
 
-		//String todayFm = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
-		Date todayFm = new Date(System.currentTimeMillis());
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Date today = new Date(todayFm.getTime());
-		Date date = new Date(user.getCreatedAt().getTime());
-		long dateCalculate = today.getTime() - date.getTime();
-		//System.out.println("dateCalculate: "+dateCalculate);
-		
-		 int Ddays = (int) (dateCalculate / ( 24*60*60));
-		 System.out.println("Ddays : " + Ddays);
 		
 		if (user != null) { //로그인
 			result.put("code", 100);

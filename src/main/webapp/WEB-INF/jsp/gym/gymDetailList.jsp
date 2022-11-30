@@ -8,42 +8,46 @@
 		<div class="d-flex">
 
 			<img src="/static/${gymImage}" width="400px" height="300px">
-				<button class="btn like-btn ml-3" data-gym-id="${gymId }" data-location="${location}">  
-			 
-			 <c:if test="${isLike eq true}">  
- 				<img src="https://www.iconninja.com/files/507/847/828/like-icon.png"
-						width="30px" height="30px" alt="good" class="like" >
-				  </c:if>
+			<button class="btn like-btn ml-3" data-gym-id="${gymId }"
+				data-location="${location}">
+
+				<c:if test="${isLike eq true}">
+					<img
+						src="https://www.iconninja.com/files/507/847/828/like-icon.png"
+						width="30px" height="30px" alt="good" class="like">
+				</c:if>
 				<c:if test="${isLike eq false}">
-					<img src="https://www.iconninja.com/files/186/930/395/like-icon.png"
-					 width ="30px" height="30px" alt="not good" class="like">
-					</c:if>		
-					</button>
-					
-					
+					<img
+						src="https://www.iconninja.com/files/186/930/395/like-icon.png"
+						width="30px" height="30px" alt="not good" class="like">
+				</c:if>
+			</button>
+
+
 		</div>
-		
-					
+
+
 		<div>
-				<div>
-						<span class="ml-2 text-info">좋아요 ${likeCount}개 </span>
-					</div>
-					
-		
-		<div class="d-flex align-items-center justify-content-center">
-			<h3>등록 개월을 선택하세요</h3>
-			<select class="ml-5 selectMonth mt-5">
-				<option value="3">3개월 </option>
-				<option value="6">6개월 </option>
-				<option value="9">9개월 </option>
-				<option value="12">12개월 </option>
-			</select><br>
+			<div>
+				<span class="ml-2 text-info">좋아요 ${likeCount}개 </span>
+			</div>
+
+
+			<div class="d-flex align-items-center justify-content-center">
+				<h3>등록 개월을 선택하세요</h3>
+				<select class="ml-5 selectMonth mt-5">
+					<option value="3">3개월</option>
+					<option value="6">6개월</option>
+					<option value="9">9개월</option>
+					<option value="12">12개월</option>
+				</select><br>
 			</div>
 			<div class="d-flex align-items-center justify-content-center">
-			
-			<button type="button" class="btn btn-success trainer_view_btn" data-gym-id="${gymId}">트레이너 보기 </button>
-			<button type="button" class="btn btn-info enrollBtn">등록하기</button>
-			<br>
+
+				<button type="button" class="btn btn-success trainer_view_btn"
+					data-gym-id="${gymId}">트레이너 보기</button>
+				<button type="button" class="btn btn-info enrollBtn">등록하기</button>
+				<br>
 			</div>
 
 		</div>
@@ -64,13 +68,42 @@
 			<li class="list-group-item">${gymPhoneNumber }</li>
 			<li class="list-group-item">${gymLocation }</li>
 		</ul>
-		<div class="d-flex">
+		<div class="d-flex detailgymBox">
 			<button type="button" class="btn btn-info reviewViewBtn">리뷰보기</button>
-			<!-- 		<button type="button" class="btn btn-info reviewWriteBtn">리뷰쓰기 </button>
- -->
+			<button type="button" class="btn btn-success qnaBtn"
+				data-toggle="modal" data-target="#modal">qna쓰기</button>
 		</div>
 	</div>
 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal">
+	<%-- modal-dialog-centered 모달창을 가운데정렬, modal-sm 작은 모달창 --%>
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<%-- 모달 창 안에 내용 넣기 --%>
+			<div class="text-center">
+				<div class="my-3 border-bottom">
+					<div class="d-flex modal-title-box">
+						<b class="w-25">제목 : </b> <input type="text"
+							class="form-control ml-5" id="title" placeholder="제목을 입력하세요 ">
+
+					</div>
+					<div class="d-flex align-items-center modal-content-box">
+						<b class="w-25">내용 : </b> <input type="text"
+							class="form-control ml-5" id="content" placeholder="내용을 입력하세요 ">
+					</div>
+					<a href="#" class="btn btn-info" id="qnaEnrollBtn">등록하기</a>
+
+				</div>
+				<div class="py-3">
+					<%-- data-dismiss="modal" 모달창 닫힘 --%>
+					<a class="m-3 modaltext" href="#" data-dismiss="modal">취소</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
 <script>
 	$(document)
@@ -178,6 +211,38 @@
 			
 			document.location.href = "/trainer/trainer_view1?gymId=" + gymId;
 			
+		});
+		$('#qnaEnrollBtn').on('click', function(e){
+			e.preventDefault();
+			let title = $('#title').val().trim();
+			let content = $('#content').val().trim();
+			if (title == ''){
+				alert('제목을 입력하세요 ');
+				return false;
+			}
+			if (content == ''){
+				alert('내용을 입력하세요 ');
+				return false;
+
+			}
+			let workoutId = ${gymId};
+			let type = 'gym';
+			$.ajax({
+				type:'post',
+				url:'/qna/insert_' + type,
+				data : {"title" : title, 
+						"content" : content,
+						"workoutId" : workoutId},
+				success : function(data) {
+					if (data.code == 100) {
+						alert("등록 되었습니다");
+						location.reload(true); 
+						}
+					},
+				error : function(e) {
+					alert("등록 실패했습니다. ");
+				}
+			});
 		});
 					});
 </script>

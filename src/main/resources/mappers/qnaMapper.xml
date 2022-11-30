@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.justlift.qna.dao.QnaDAO">
+	<insert id="insertQna" parameterType="map">
+		INSERT INTO `qna`
+		
+		(
+			`userId`
+			,`workoutId`
+			,`type`
+			,`title`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+			(
+				#{userId},
+				#{workoutId},
+				#{type},
+				#{title},
+				#{content},
+				NOW(),
+				NOW()
+			)
+	</insert>
+</mapper>
