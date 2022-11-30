@@ -10,6 +10,7 @@
 </div>
 	<div class="d-flex align-items-center mt-5 reviewManageBox">
 		<button type="button" class="btn btn-success " id="cart-btn">장바구니  </button>
+		<button type="button" class="btn btn-warning " id="buy-btn">구매목록  </button>
 		<button type="button" class="btn btn-info" id="review-manage-btn">리뷰 관리 </button>
 	</div>
 </div>
@@ -59,6 +60,10 @@
 		$('#review-manage-btn').on('click', function(e){
 			e.preventDefault();
 			document.location.href="/timeline/myReview"
+		});
+		$('#buy-btn').on('click', function(e){
+			e.preventDefault();
+			document.location.href="/goods/buy_view";
 		});
 		$('#cart-btn').on('click', function(e){
 			e.preventDefault();

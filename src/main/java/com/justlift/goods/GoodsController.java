@@ -58,14 +58,14 @@ public class GoodsController {
 	public String myBuyView(Model model, HttpSession session) {
 		model.addAttribute("viewName", "goods/buy");
 		Integer userId = (Integer)session.getAttribute("userId");
-
-		//model.addAttribute("amount", amount);
+		//int allAmount = goodsBO.getAmount(amount);
+		//model.addAttribute("allAmount", allAmount);
 //		List<Goods> goodsList = goodsBO.getGoodsListByUserId(userId);
 //		List<Buy> buyList = goodsBO.getBuyListByUserId(userId);
 		List<BuyView>buyViewList = goodsBO.getBuyViewList(userId);
 		model.addAttribute("buyViewList", buyViewList);
 		//int amountPrice = amount;
-		int amountPrice = goodsBO.getAmountBuyPriceByUserId(userId);
+		Integer amountPrice = goodsBO.getAmountBuyPriceByUserId(userId);
 
 		model.addAttribute("amountPrice", amountPrice);
 		

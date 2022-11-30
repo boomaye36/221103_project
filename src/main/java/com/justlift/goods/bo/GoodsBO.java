@@ -98,8 +98,16 @@ public class GoodsBO {
 	public int getAmountPriceByUserId(int userId, double percent) {
 		return goodsDAO.selectAmountPriceByUserId(userId, percent);
 	}
-	public int getAmountBuyPriceByUserId(int userId) {
+	public Integer getAmountBuyPriceByUserId(int userId) {
 		return goodsDAO.selectAmountBuyPriceByUserId(userId);
+	}
+//	public int getAmount(int amount) {
+//		int finalAmount = amount;
+//		finalAmount += amount;
+//		return finalAmount;
+//	}
+	public void deleteBuyByUserIdAndId(int userId, int id) {
+		goodsDAO.deleteBuyByUserIdAndId(userId, id);
 	}
 	
 }

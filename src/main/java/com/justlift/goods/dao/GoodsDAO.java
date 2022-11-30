@@ -33,8 +33,9 @@ public interface GoodsDAO {
 	public void updateCartByCountAndId(@Param("count") int count, @Param("id") int id);
 	
 	public int selectAmountPriceByUserId(@Param("userId") int userId, @Param("percent") double percent);
-	public int selectAmountBuyPriceByUserId(@Param("userId") int userId);
+	public Integer selectAmountBuyPriceByUserId(@Param("userId") int userId);
 
 	public void InsertBuyByIdAndCount(@Param("goodsId") int goodsId, @Param("userId") int userId, @Param("quantity") int quantity);
 
+	public void deleteBuyByUserIdAndId(@Param("userId") int userId, @Param("id") int id);
 }

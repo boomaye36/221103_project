@@ -19,7 +19,7 @@
 					<h4 class="text-success">총가격 : ${card.cart.count * card.goods.price}원 </h4>
 					</div>
 				<button class="goods-del-btn btn btn-danger ml-5" data-goods-id="${card.cart.id }">삭제하기 </button>
-				<button class="goods-info-btn btn" data-goods-name="${card.goods.name}" data-goods-quantity="${card.cart.count }" data-goods-price="${card.cart.count * card.goods.price}" data-goods-id="${card.goods.id }"> </button>
+				<button class="goods-info-btn btn d-none" data-goods-name="${card.goods.name}" data-goods-quantity="${card.cart.count }" data-goods-price="${card.cart.count * card.goods.price}" data-goods-id="${card.goods.id }"> </button>
 				
 				</div>
 				
@@ -160,9 +160,9 @@
 			let quantity = $(this).data('goods-quantity');
 			let price = $(this).data('goods-price');
 			let goodsId = $(this).data('goods-id');
-			//let amount = ${amountPrice};
+			let amount = ${amountPrice};
 
-			//alert(goodsId);
+			alert(amount);
 			
 			alert("상품 이름 : " + name 
 					+"\n상품 개수 : " + quantity 
@@ -174,7 +174,7 @@
 						"goodsId" : goodsId},
 				success:function(data){
 					if (data.code == 100){
-						document.location.href="/goods/buy_view?;
+						document.location.href="/goods/buy_view";
 					}
 				}
 			});

@@ -54,6 +54,15 @@ public class GoodsRestController {
 
 		return result;
 	}
+	@PostMapping("/buy_delete")
+	public Map<String, Object>deleteBuy(@RequestParam("id") int id, HttpSession session){
+		Integer userId = (Integer)session.getAttribute("userId");
+		goodsBO.deleteBuyByUserIdAndId(userId, id);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+
+		return result;
+	}
 //	@PostMapping("/price")
 //	public Map<String, Object>updatePrice(@RequestParam("percent") double price, HttpSession session){
 //		Integer userId = (Integer)session.getAttribute("userId");
