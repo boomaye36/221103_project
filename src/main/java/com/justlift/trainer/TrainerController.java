@@ -43,6 +43,8 @@ public class TrainerController {
 				@RequestParam("trainerId") int trainerId,
 				Model model, HttpSession session) {
 			List<Trainer> trainerDetailList = trainerBO.getTrainerDetailListByTrainerId(trainerId);
+			Trainer trainer  = trainerBO.getTraineIdByTrainerId(trainerId);
+			model.addAttribute("id", trainer.getId());
 			Integer userId = (Integer) session.getAttribute("userId");
 			boolean like = likeBO.getTrainerHeart(userId, trainerId);
 			String type = "trainer";

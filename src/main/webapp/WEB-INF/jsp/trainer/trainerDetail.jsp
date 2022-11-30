@@ -33,11 +33,43 @@
 				<span>전화번호 : ${trainerDetail.phoneNumber }</span> <br><br>
 				<span>평점 :${trainerDetail.rank }</span><br><br>
 				<a href="#" id="workgym-btn" data-gym-id="${trainerDetail.gymId }">##근무 체육관</a><br><br>
+				<div class="d-flex">
+				<button type="button" class="btn btn-success qnaBtn" data-toggle="modal" data-target="#modal"  data-trainer-id="${trainerDetail.id }">qna쓰기</button>					
 				<button id="trainer-review-btn" class="btn btn-info" data-trainer-id="${trainerDetail.id }" data-trainer-name="${trainerDetail.name }">리뷰보기 </button>
+				</div>
 			</div>
 			</div>
 		</div>
 	</c:forEach>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal">
+	<%-- modal-dialog-centered 모달창을 가운데정렬, modal-sm 작은 모달창 --%>
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<%-- 모달 창 안에 내용 넣기 --%>
+			<div class="text-center">
+				<div class="my-3 border-bottom">
+					<div class="d-flex modal-title-box">
+						<b class="w-25">제목 : </b> <input type="text"
+							class="form-control ml-5" id="title" placeholder="제목을 입력하세요 ">
+
+					</div>
+					<div class="d-flex align-items-center modal-content-box">
+						<b class="w-25">내용 : </b> <input type="text"
+							class="form-control ml-5" id="content" placeholder="내용을 입력하세요 ">
+					</div>
+					<a href="#" class="btn btn-info" id="qnaTrainerEnrollBtn">등록하기</a>
+
+				</div>
+				<div class="py-3">
+					<%-- data-dismiss="modal" 모달창 닫힘 --%>
+					<a class="m-3 modaltext" href="#" data-dismiss="modal">취소</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>
 <script>
 	$(document).ready(function(){
@@ -79,6 +111,39 @@
 				}
 			});
 			
+		});
+		$('#qnaTrainerEnrollBtn').on('click', function(e){
+			e.preventDefault();
+			let title = $('#title').val().trim();
+			let content = $('#content').val().trim();
+			if (title == ''){
+				alert('제목을 입력하세요 ');
+				return false;
+			}
+			if (content == ''){
+				alert('내용을 입력하세요 ');
+				return false;
+
+			}
+			let workoutId = ${id};
+			alert(workoutId);
+			let type = 'trainer';
+			$.ajax({
+				type:'post',
+				url:'/qna/insert_' + type,
+				data : {"title" : title, 
+						"content" : content,
+						"workoutId" : workoutId},
+				success : function(data) {
+					if (data.code == 100) {
+						alert("등록 되었습니다");
+						location.reload(true); 
+						}
+					},
+				error : function(e) {
+					alert("등록 실패했습니다. ");
+				}
+			});
 		});
 	});
 </script>

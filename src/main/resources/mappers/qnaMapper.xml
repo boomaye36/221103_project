@@ -25,4 +25,34 @@
 				NOW()
 			)
 	</insert>
+	<select id="selectQnaListByUserId" parameterType="map" resultType="com.justlift.qna.model.Qna">
+		SELECT
+			`id`,
+			`userId`
+			,`workoutId`
+			,`type`
+			,`title`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`qna`
+		WHERE
+			`userID` = #{userId}
+	</select>
+	<select id="getQnaDetailListById" parameterType="map" resultType="com.justlift.qna.model.Qna">
+		SELECT
+			`id`,
+			`userId`
+			,`workoutId`
+			,`type`
+			,`title`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`qna`
+		WHERE
+			`id` = #{id}
+	</select>
 </mapper>

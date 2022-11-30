@@ -26,6 +26,7 @@
 					<a class="m-3 modaltext" href="#" id="healthBtn" >이용중인 서비스 </a><br>
 					<a class="m-3 modaltext" href="#" id="gymLikeBtn" >관심 체육관  </a><br>
 					<a class="m-3 modaltext" href="#" id="trainerLikeBtn" >관심 트레이너 </a><br>
+					<a class="m-3 modaltext" href="#" id="myQna" >나의 Qna </a><br>
 					<a class="m-3 modaltext" href="/user/sign_out"  >로그아웃 </a>
 				</div>
 				<div class="py-3">
@@ -68,6 +69,10 @@
 			e.preventDefault();
 			let percent = 1.0;
 			document.location.href="/goods/cart_view?percent=" + percent;
+		});
+		$('#myQna').on('click', function(e){
+			e.preventDefault();
+			document.location.href="/qna/qna_view";		
 		});
 	});
 	

@@ -94,4 +94,13 @@
 		WHERE
 			`id` in (SELECT `workoutId` FROM `like` WHERE `userId` = #{userId} AND `type` = #{type})
 	</select>
+	
+	<select id="getTrainerIdByTrainerId" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+		SELECT 
+			*
+		FROM
+			`trainer`
+		WHERE
+			`id` = #{trainerId}
+	</select>
 		</mapper>

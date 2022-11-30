@@ -27,4 +27,7 @@ public class TrainerBO {
 	public List<Trainer> getTrainerLikeListByUserIdAndType(int userId, String type) {
 		return trainerDAO.selectTrainerLikeListByUserIdAndType(userId, type);
 	}
+	public Trainer getTraineIdByTrainerId(int trainerId) {
+		return trainerDAO.getTrainerIdByTrainerId(trainerId);
+	}
 }

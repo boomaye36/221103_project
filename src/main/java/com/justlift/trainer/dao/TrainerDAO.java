@@ -17,4 +17,7 @@ public interface TrainerDAO {
 	public List<Trainer> selectTrainerListByGymId(@Param("gymId") int gymId);
 	
 	public List<Trainer> selectTrainerLikeListByUserIdAndType(@Param("userId")int userId, @Param("type") String type);
+	
+	public Trainer getTrainerIdByTrainerId(@Param("trainerId") int trainerId);
+
 }
