@@ -62,7 +62,8 @@
 		});
 		$('#cart-btn').on('click', function(e){
 			e.preventDefault();
-			document.location.href="/goods/cart_view";
+			let percent = 1.0;
+			document.location.href="/goods/cart_view?percent=" + percent;
 		});
 	});
 	

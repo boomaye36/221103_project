@@ -44,4 +44,9 @@ public class GoodsRestController {
 		result.put("code", 100);
 		return result;
 	}
+//	@PostMapping("/price")
+//	public Map<String, Object>updatePrice(@RequestParam("percent") double price, HttpSession session){
+//		Integer userId = (Integer)session.getAttribute("userId");
+//		
+//	}
 }

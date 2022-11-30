@@ -27,5 +27,7 @@ public interface GoodsDAO {
 	public Goods getGoodsById(@Param("id") int id);
 	
 	public void updateCartByCountAndId(@Param("count") int count, @Param("id") int id);
+	
+	public int selectAmountPriceByUserId(@Param("userId") int userId, @Param("percent") double percent);
 
 }

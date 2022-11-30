@@ -108,4 +108,12 @@
  		WHERE
  			`id` = #{id}
  	</update>
+ 	<!-- <select id="selectAmountPriceByUserId" parameterType="map" resultType="int">
+ 		select sum(a.`count`  * b.`price`) from `cart` a join `goods` b on b.`id` = a.`goodsId` where a.`userId` = #{userId};
+ 		
+ 	</select> -->
+ 	<select id="selectAmountPriceByUserId" parameterType="map" resultType="int">
+ 		select sum(a.`count`  * b.`price` * #{percent}) from `cart` a join `goods` b on b.`id` = a.`goodsId` where a.`userId` = #{userId};
+ 		
+ 	</select>
  </mapper>

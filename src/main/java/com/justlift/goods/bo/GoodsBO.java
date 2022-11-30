@@ -64,4 +64,8 @@ public class GoodsBO {
 	public void updateCartByCountAndId(int count, int id) {
 		goodsDAO.updateCartByCountAndId(count, id);
 	}
+	
+	public int getAmountPriceByUserId(int userId, double percent) {
+		return goodsDAO.selectAmountPriceByUserId(userId, percent);
+	}
 }

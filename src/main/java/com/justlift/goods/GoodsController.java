@@ -36,8 +36,8 @@ public class GoodsController {
 		return "template/layout";
 
 	}
-	@RequestMapping("/cart_view")
-	public String myCartList(Model model, HttpSession session) {
+	@GetMapping("/cart_view")
+	public String myCartList(Model model, HttpSession session, @RequestParam("percent") double percent) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		List<Goods> goodsList = goodsBO.getGoodsListByUserId(userId);
 		//int goodsCount = 
@@ -47,7 +47,9 @@ public class GoodsController {
 		model.addAttribute("cartList", cartList);
 		List<CartView> cartViewList = goodsBO.getCartViewList(userId);
 		model.addAttribute("cartViewList", cartViewList);
-
+		int amountPrice = goodsBO.getAmountPriceByUserId(userId, percent);
+		model.addAttribute("amountPrice", amountPrice);
+		
 		return "template/layout";
 	}
 }
