@@ -19,7 +19,7 @@
 					<h4 class="text-success">총가격 : ${card.cart.count * card.goods.price}원 </h4>
 					</div>
 				<button class="goods-del-btn btn btn-danger ml-5" data-goods-id="${card.cart.id }">삭제하기 </button>
-				<button class="goods-info-btn btn d-none" data-goods-name="${card.goods.name}" data-goods-quantity="${card.cart.count }" data-goods-price="${card.cart.count * card.goods.price}"> </button>
+				<button class="goods-info-btn btn" data-goods-name="${card.goods.name}" data-goods-quantity="${card.cart.count }" data-goods-price="${card.cart.count * card.goods.price}" data-goods-id="${card.goods.id }"> </button>
 				
 				</div>
 				
@@ -124,7 +124,12 @@
 		});
 		$('.buy-button').on('click', function(e){
 			e.preventDefault(); 
+			let amount = ${amountPrice};
+			
+
+			alert("총 금액 :" + amount + "원 구매되었습니다.");
 			$('.goods-info-btn').click();
+			
 		});
 		$("#5percentcoupon").on('click', function(e){
 			e.preventDefault(); 
@@ -154,11 +159,25 @@
 			//alert("sdf");
 			let quantity = $(this).data('goods-quantity');
 			let price = $(this).data('goods-price');
-			let amount = ${amountPrice};
+			let goodsId = $(this).data('goods-id');
+			//let amount = ${amountPrice};
+
+			//alert(goodsId);
+			
 			alert("상품 이름 : " + name 
 					+"\n상품 개수 : " + quantity 
 					+"\n금액 : " + price + "원");
-			alert("총 금액 :" + amount + "원 구매되었습니다.");
+			$.ajax({
+				type : 'post',
+				url : "/goods/buy_insert",
+				data : {"quantity" : quantity,
+						"goodsId" : goodsId},
+				success:function(data){
+					if (data.code == 100){
+						document.location.href="/goods/buy_view?;
+					}
+				}
+			});
 		});
 		
 	});

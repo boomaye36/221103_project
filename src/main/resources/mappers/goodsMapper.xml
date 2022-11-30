@@ -56,11 +56,31 @@
  		AND
  			`userId` = #{userId}
  	</select>
+ 	<select id="ExistBuyGoodsByUserId" parameterType="map" resultType="boolean">
+ 		SELECT 
+ 			COUNT(1)
+ 		FROM
+ 			`buy`
+ 		WHERE 
+ 			`goodsId` = #{goodsId}
+ 		AND
+ 			`userId` = #{userId}
+ 	</select>
  	<select id="selectCartByUserIdAndGoodsId" parameterType="map" resultType="com.justlift.goods.model.Cart">
  		SELECT
  			*
  		FROM
  			`cart`
+ 		WHERE 
+ 			`goodsId` = #{goodsId}
+ 		AND
+ 			`userId` = #{userId}
+ 	</select>
+ 	<select id="selectBuyByUserIdAndGoodsId" parameterType="map" resultType="com.justlift.goods.model.Buy">
+ 		SELECT
+ 			*
+ 		FROM
+ 			`buy`
  		WHERE 
  			`goodsId` = #{goodsId}
  		AND
@@ -76,6 +96,18 @@
 			`createdAt`
 		FROM
 			`cart`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
+ 	<select id="selectBuyListByUserId" parameterType="map" resultType="com.justlift.goods.model.Buy">
+		SELECT
+			`id`,
+			`goodsId`,
+			`userId`,
+			`count`,
+			`createdAt`
+		FROM
+			`buy`
 		WHERE
 			`userId` = #{userId}
  	</select>
@@ -116,4 +148,31 @@
  		select sum(a.`count`  * b.`price` * #{percent}) from `cart` a join `goods` b on b.`id` = a.`goodsId` where a.`userId` = #{userId};
  		
  	</select>
+ 	<select id="selectAmountBuyPriceByUserId" parameterType="map" resultType="int">
+ 		select sum(a.`count`  * b.`price`) from `buy` a join `goods` b on b.`id` = a.`goodsId` where a.`userId` = #{userId};
+ 		
+ 	</select>
+ 	
+ 	<insert id="InsertBuyByIdAndCount" parameterType="map" >
+ 		INSERT INTO
+ 			`buy`
+ 			(
+ 				`goodsId`,
+ 				`userId`,
+ 				`count`,
+ 				`createdAt`
+ 			)
+ 			
+ 		VALUES
+ 			(
+ 				#{goodsId},
+ 				#{userId},
+ 				#{quantity},
+ 				NOW()
+ 			)
+ 			ON DUPLICATE KEY UPDATE
+			`count` = #{quantity},
+			`count` = #{quantity} 
+ 			
+ 	</insert>
  </mapper>

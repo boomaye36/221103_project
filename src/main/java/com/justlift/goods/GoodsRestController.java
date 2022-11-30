@@ -44,6 +44,16 @@ public class GoodsRestController {
 		result.put("code", 100);
 		return result;
 	}
+	@RequestMapping("/buy_insert")
+	public Map<String, Object> InsertBuy(@RequestParam("goodsId") int goodsId,@RequestParam("quantity") int quantity, HttpSession session){
+		Integer userId = (Integer)session.getAttribute("userId");
+		
+		goodsBO.putBuyByIdAndCount(goodsId, userId, quantity);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+
+		return result;
+	}
 //	@PostMapping("/price")
 //	public Map<String, Object>updatePrice(@RequestParam("percent") double price, HttpSession session){
 //		Integer userId = (Integer)session.getAttribute("userId");

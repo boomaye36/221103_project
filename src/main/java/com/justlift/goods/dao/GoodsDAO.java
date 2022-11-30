@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.justlift.goods.model.Buy;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.Goods;
 
@@ -15,10 +16,13 @@ public interface GoodsDAO {
 	public void insertCartById(@Param("goodsId") int goodsId, @Param("userId") int userId, @Param("count") int count);
 	
 	public List<Goods> selectGoodsListByUserId(@Param("userId") int userId);
+	public List<Buy> selectBuyListByUserId(@Param("userId") int userId);
 
 	public boolean ExistGoodsByUserId(@Param("goodsId") int goodsId, @Param("userId") int userId);
+	public boolean ExistBuyGoodsByUserId(@Param("goodsId") int goodsId, @Param("userId") int userId);
 
 	public Cart selectCartByUserIdAndGoodsId(@Param("userId") int userId, @Param("goodsId") int goodsId);
+	public Buy selectBuyByUserIdAndGoodsId(@Param("userId") int userId, @Param("goodsId") int goodsId);
 	//public int selectGoodsCount
 	public List<Cart> selectCartList(@Param("userId") int userId);
 	
@@ -29,5 +33,8 @@ public interface GoodsDAO {
 	public void updateCartByCountAndId(@Param("count") int count, @Param("id") int id);
 	
 	public int selectAmountPriceByUserId(@Param("userId") int userId, @Param("percent") double percent);
+	public int selectAmountBuyPriceByUserId(@Param("userId") int userId);
+
+	public void InsertBuyByIdAndCount(@Param("goodsId") int goodsId, @Param("userId") int userId, @Param("quantity") int quantity);
 
 }

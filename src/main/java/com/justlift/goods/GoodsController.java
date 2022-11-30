@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.justlift.goods.bo.GoodsBO;
+import com.justlift.goods.model.Buy;
+import com.justlift.goods.model.BuyView;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.CartView;
 import com.justlift.goods.model.Goods;
@@ -51,5 +53,23 @@ public class GoodsController {
 		model.addAttribute("amountPrice", amountPrice);
 		
 		return "template/layout";
+	}
+	@GetMapping("/buy_view")
+	public String myBuyView(Model model, HttpSession session) {
+		model.addAttribute("viewName", "goods/buy");
+		Integer userId = (Integer)session.getAttribute("userId");
+
+		//model.addAttribute("amount", amount);
+//		List<Goods> goodsList = goodsBO.getGoodsListByUserId(userId);
+//		List<Buy> buyList = goodsBO.getBuyListByUserId(userId);
+		List<BuyView>buyViewList = goodsBO.getBuyViewList(userId);
+		model.addAttribute("buyViewList", buyViewList);
+		//int amountPrice = amount;
+		int amountPrice = goodsBO.getAmountBuyPriceByUserId(userId);
+
+		model.addAttribute("amountPrice", amountPrice);
+		
+		return "template/layout";
+
 	}
 }

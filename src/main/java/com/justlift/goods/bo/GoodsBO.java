@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.justlift.goods.dao.GoodsDAO;
+import com.justlift.goods.model.Buy;
+import com.justlift.goods.model.BuyView;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.CartView;
 import com.justlift.goods.model.Goods;
@@ -27,10 +29,23 @@ public class GoodsBO {
 		
 		goodsDAO.insertCartById(goodsId, userId, count);
 	}
+	public void putBuyByIdAndCount(int goodsId, Integer userId, int quantity) {
+		if (goodsDAO.ExistBuyGoodsByUserId(goodsId, userId) == true) {
+			Buy counting = goodsDAO.selectBuyByUserIdAndGoodsId(userId, goodsId);
+			quantity = counting.getCount();
+			quantity+=quantity;
+		}
+		goodsDAO.InsertBuyByIdAndCount(goodsId, userId, quantity);
+	}
 	public List<Goods> getGoodsListByUserId(int userId){
 		
 		return goodsDAO.selectGoodsListByUserId(userId);
 	}
+	public List<Buy> getBuyListByUserId(int userId){
+		
+		return goodsDAO.selectBuyListByUserId(userId);
+	}
+	
 	public void deleteCart(int goodsId) {
 		
 		goodsDAO.deleteCart(goodsId);
@@ -61,6 +76,21 @@ public class GoodsBO {
 		return cartViewList;
 		
 	}
+	public List<BuyView> getBuyViewList(int userId){
+		List<BuyView> buyViewList = new ArrayList<>();
+
+		List<Buy> buyList = goodsDAO.selectBuyListByUserId(userId);
+		for (Buy buy : buyList) {
+			BuyView buyview = new BuyView();
+			buyview.setBuy(buy);
+			Goods goods = goodsDAO.getGoodsById(buy.getGoodsId());
+			buyview.setGoods(goods);
+			buyViewList.add(buyview);
+
+		}
+		return buyViewList;
+		
+	}
 	public void updateCartByCountAndId(int count, int id) {
 		goodsDAO.updateCartByCountAndId(count, id);
 	}
@@ -68,4 +98,8 @@ public class GoodsBO {
 	public int getAmountPriceByUserId(int userId, double percent) {
 		return goodsDAO.selectAmountPriceByUserId(userId, percent);
 	}
+	public int getAmountBuyPriceByUserId(int userId) {
+		return goodsDAO.selectAmountBuyPriceByUserId(userId);
+	}
+	
 }
