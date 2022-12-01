@@ -177,5 +177,21 @@
 		WHERE
 			`id` in (SELECT `workoutId` FROM `like` WHERE `userId` = #{userId} AND `type` = #{type})
 	</select>
+	<select id="selectGymListByUserIdAndFromQna" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		SELECT 
+			`id`
+			,`name`
+			,`categoryId`
+			,`location`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`gym`
+		WHERE `id` in (select `workoutId` from `qna` where `type` = 'gym' and `userId` = #{userId}) 
+	</select>
 </mapper>
  

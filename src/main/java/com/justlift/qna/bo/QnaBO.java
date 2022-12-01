@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.justlift.comment.model.Comment;
 import com.justlift.qna.dao.QnaDAO;
 import com.justlift.qna.model.Qna;
 
@@ -21,4 +22,11 @@ public class QnaBO {
 	public Qna getQnaDetailListById(int id) {
 		return qnaDAO.getQnaDetailListById(id);
 	}
+	public void deleteQnaById( int id) {
+		 qnaDAO.deleteQnaById(id);
+	}
+	public void updateQnaById( int id, String title, String content) {
+		qnaDAO.updateQnaById(id, title, content);
+	}
+	
 }

@@ -103,4 +103,21 @@
 		WHERE
 			`id` = #{trainerId}
 	</select>
+	
+	<select id="selectTrainerListByUserIdAndFromQna" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+			SELECT
+			`id`
+			,`name`
+			,`gymId`
+			,`phoneNumber`
+			,`introduce`
+			,`rank`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`trainer`
+				WHERE `id` in (select `workoutId` from `qna` where `type` = 'trainer' and `userId` = #{userId}) 
+			
+	</select>
 		</mapper>

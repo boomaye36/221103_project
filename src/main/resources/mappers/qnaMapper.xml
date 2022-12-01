@@ -55,4 +55,22 @@
 		WHERE
 			`id` = #{id}
 	</select>
+	<delete id="deleteQnaById" parameterType="map">
+		DELETE
+		FROM
+			`qna`
+		WHERE
+			`id` = #{id}
+	</delete>
+	<update id="updateQnaById" parameterType="map">
+		UPDATE
+			`qna`
+		SET
+			`title` = #{title},
+			`content` = #{content},
+			`updatedAt` = NOW()
+		WHERE
+			`id` = #{id}
+			
+	</update>
 </mapper>

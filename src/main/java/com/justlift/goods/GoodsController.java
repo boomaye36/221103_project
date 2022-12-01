@@ -55,7 +55,7 @@ public class GoodsController {
 		return "template/layout";
 	}
 	@GetMapping("/buy_view")
-	public String myBuyView(Model model, HttpSession session) {
+	public String myBuyView(Model model, HttpSession session, @RequestParam(value = "amount", required=false) Integer amount) {
 		model.addAttribute("viewName", "goods/buy");
 		Integer userId = (Integer)session.getAttribute("userId");
 		//int allAmount = goodsBO.getAmount(amount);
@@ -67,7 +67,7 @@ public class GoodsController {
 		//int amountPrice = amount;
 		Integer amountPrice = goodsBO.getAmountBuyPriceByUserId(userId);
 
-		model.addAttribute("amountPrice", amountPrice);
+		model.addAttribute("amountPrice", amount);
 		
 		return "template/layout";
 

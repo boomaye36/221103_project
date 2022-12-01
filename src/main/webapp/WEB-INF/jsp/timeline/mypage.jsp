@@ -63,7 +63,10 @@
 		});
 		$('#buy-btn').on('click', function(e){
 			e.preventDefault();
-			document.location.href="/goods/buy_view";
+			let amount = 0;
+			
+			//alert (amount);
+			document.location.href="/goods/buy_view?amount=" + amount;
 		});
 		$('#cart-btn').on('click', function(e){
 			e.preventDefault();

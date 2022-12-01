@@ -47,10 +47,12 @@ public class TimelineController {
 		model.addAttribute("viewName", "timeline/timeline");
 		return "template/layout";
 	}
-	@RequestMapping("/timeline_mypage_view")
-	public String timelineMypageView(Model model, HttpSession session) {
+	@GetMapping("/timeline_mypage_view")
+	public String timelineMypageView(Model model, HttpSession session , @RequestParam(value = "amount", required=false) Integer amount) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		int dday = userBO.getDdayFromUser(userId);
+		model.addAttribute("amountPrice", amount);
+
 		
 		model.addAttribute("dday", dday);
 		model.addAttribute("viewName", "timeline/mypage");

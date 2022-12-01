@@ -2,9 +2,11 @@ package com.justlift.trainer.bo;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.justlift.gym.model.Gym;
 import com.justlift.trainer.dao.TrainerDAO;
 import com.justlift.trainer.model.Trainer;
 
@@ -29,5 +31,8 @@ public class TrainerBO {
 	}
 	public Trainer getTraineIdByTrainerId(int trainerId) {
 		return trainerDAO.getTrainerIdByTrainerId(trainerId);
+	}
+	public List<Trainer> getTrainerListByUserIdAndFromQna(int userId){
+		return trainerDAO.selectTrainerListByUserIdAndFromQna(userId);
 	}
 }

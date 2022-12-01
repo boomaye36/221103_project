@@ -162,7 +162,7 @@
 			let goodsId = $(this).data('goods-id');
 			let amount = ${amountPrice};
 
-			alert(amount);
+			//alert(amount);
 			
 			alert("상품 이름 : " + name 
 					+"\n상품 개수 : " + quantity 
@@ -174,7 +174,7 @@
 						"goodsId" : goodsId},
 				success:function(data){
 					if (data.code == 100){
-						document.location.href="/goods/buy_view";
+						document.location.href="/goods/buy_view?amount=" + amount;
 					}
 				}
 			});

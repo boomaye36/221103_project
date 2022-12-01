@@ -16,8 +16,8 @@
 	<h3 class="text-info"> 배송비 : 2500원 <br><br> 
 							<c:if test="${amountPrice ne null}">
 							총 결제금액 : ${amountPrice + 2500 }원 
-							</c:if>
-							${ allAmount}
+							</c:if> 
+							
 						
 	</h3>
 	<button class="btn btn-secondary buy-confirm-btn">구매확정</button>
