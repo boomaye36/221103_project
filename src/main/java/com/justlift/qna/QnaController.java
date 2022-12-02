@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.justlift.answer.bo.AnswerBO;
+import com.justlift.answer.model.Answer;
+import com.justlift.answer.model.AnswerView;
 import com.justlift.comment.bo.CommentBO;
 import com.justlift.comment.model.Comment;
 import com.justlift.gym.bo.GymBO;
@@ -31,6 +34,8 @@ public class QnaController {
 	private TrainerBO trainerBO;
 	@Autowired
 	private CommentBO commentBO;
+	@Autowired
+	private AnswerBO answerBO;
 	@RequestMapping("/qna_view")
 	public String QnaView(HttpSession session, Model model){
 		Integer userId = (Integer)session.getAttribute("userId");
@@ -45,11 +50,15 @@ public class QnaController {
 	}
 	@GetMapping("/qna_detail_view")
 	public String QnaDetailView( Model model,
-			@RequestParam("id") int id, HttpSession session){
+			@RequestParam("id") int id, HttpSession session,
+			@RequestParam(value="commentId", required = false) Integer commentId){
 		Qna qna = qnaBO.getQnaDetailListById(id);
 		Integer userId = (Integer)session.getAttribute("userId");
 		List<Comment> commentList = commentBO.getCommentListByQnaIdAndUserid(id, userId);
-		
+		List<AnswerView> answerViewList = answerBO.getAnswerViewList(userId, commentId, id);
+		//List<Answer>answerList = answerBO.getAnswerListByCommentIdAndUserId(commentId, userId);
+		//model.addAttribute("answerList", answerList);
+		model.addAttribute("answerViewList", answerViewList);
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("content", qna.getContent());
 		model.addAttribute("title", qna.getTitle());

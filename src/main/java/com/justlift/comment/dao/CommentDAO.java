@@ -14,5 +14,8 @@ public interface CommentDAO {
 	public List<Comment> selectCommentListByQnaIdAndUserid(@Param("id") int id, @Param("userId") int userId);
 
 	public void deleteComment(@Param("id") int id);
+	
+	public List<Comment> selectCommentListByCommentId(@Param("commentId") int commentId);
+
 
 }

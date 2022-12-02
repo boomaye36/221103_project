@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.justlift.answer.dao.AnswerDAO">
+	<insert id="insertAnswer" parameterType="map">
+		INSERT INTO
+		`answer`
+		(
+			`qnaId`
+			,`commentId`
+			,`userId`
+			,`userLoginId`
+			,`content`
+			,`createdAt`
+		)
+		VALUES
+		(
+			#{qnaId},
+			#{commentId},
+			#{userId},
+			#{userLoginId},
+			#{content},
+			NOW()
+		)
+	</insert>
+	<select id="selectAnswerListByCommentIdAndUserId" parameterType="map" resultType="com.justlift.answer.model.Answer">
+		SELECT
+			`id`,
+			`qnaId`
+			,`commentId`
+			,`userId`
+			,`userLoginId`
+			,`content`
+			,`createdAt`
+		FROM
+			`answer`
+		WHERE
+			`commentId` = #{commentId}
+		AND
+			`userId` = #{userId}
+	</select>
+</mapper>

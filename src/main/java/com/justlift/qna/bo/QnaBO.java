@@ -28,5 +28,4 @@ public class QnaBO {
 	public void updateQnaById( int id, String title, String content) {
 		qnaDAO.updateQnaById(id, title, content);
 	}
-	
 }

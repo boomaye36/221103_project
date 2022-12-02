@@ -5,6 +5,7 @@ import java.util.List;
 import com.justlift.user.model.User;
 
 public class SecondComment {
+	
 	private List<Comment> commentList;
 	private Comment comment;
 	private User user;

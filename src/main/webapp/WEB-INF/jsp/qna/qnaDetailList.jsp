@@ -19,15 +19,33 @@
 			<b>댓글목록 : </b>
 		</div>			
 			<c:forEach items="${commentList }" var="comment">
-				<span class="text-info">댓글쓴이 : ${comment.userloginId }</span>
-				<div class="d-flex m-5">
-				${comment.content }
-				<button class="btn btn-danger comment-delete-btn ml-5" data-comment-id="${comment.id }">삭제하기 </button>
-				<button class="btn btn-info comment-add-btn ml-5" data-comment-id="${comment.id }">답글달기  </button>
-				</div>
+				
+				
+				<%-- <c:forEach items="${answerList }" var="answer">
+				${answer.content }
+				
+				</c:forEach> --%>
 			</c:forEach>
-
+			
+  <c:forEach items="${answerViewList }" var="answer">
+  				<span class="text-info">댓글쓴이 : ${answer.comment.userloginId }</span>
+				<div class="d-flex m-5">
+				${answer.comment.content }
+				<button class="btn btn-danger comment-delete-btn ml-5" data-comment-id="${answer.comment.id }">삭제하기 </button>
+				<button class="btn btn-info comment-add-btn ml-5" data-comment-id="${answer.comment.id }">답글달기  </button>
+				</div>
+				<div class="d-flex d-none">
+					<input class="form-control d-none answer-input" type="text" id="answerInput"> 
+					<button class="btn btn-success d-none answer-add-btn">등록하기 </button>
+				</div>
+				 <c:forEach items="${answer.answerList}" var="view">
+				 	${view.content }<br>
+				 	
+				 </c:forEach>
+				
+			</c:forEach>  
     </div>
+   
     
 <script>
 	$(document).ready(function(e){
@@ -69,8 +87,36 @@
 			});
 		});
 		$('.comment-add-btn').on('click', function(e){
-			let id = $(this).data('comment-id');
-
+			let commentId = $(this).data('comment-id');
+			//alert(commentId);
+			$('.answer-input').removeClass('d-none'); 
+			$('.answer-add-btn').removeClass('d-none'); 
+			$('.answer-add-btn').data('comment-id', commentId);
+		});
+		$('.answer-add-btn').on('click', function(e){
+			let commentId = $('.answer-add-btn').data('comment-id');
+			let qnaId = ${id}
+			
+			let content = $('#answerInput').val().trim();
+			alert(content);
+			if (content == ''){
+				alert("답글 내용을 입력하세요.");
+				return false;
+			}
+			$.ajax({
+				type : 'post',
+				url : '/answer/insert',
+				data : {"qnaId" : qnaId,
+					"commentId" : commentId, 
+					"content" : content},
+				success : function(data) {
+					if (data.code == 100) {
+						document.location.href="/qna/qna_detail_view?id=" + qnaId + "&commentId=" + commentId;
+						//location.reload(true);
+					}
+				}	
+				
+			});
 		});
 		
 	}); 	

@@ -48,4 +48,14 @@
  		WHERE
  			`id` = #{id}
  	</delete>
+ 	
+ 	<select id="selectCommentListByCommentId" parameterType="map" resultType="com.justlift.comment.model.Comment">
+ 		SELECT 
+ 			* 
+ 		FROM
+ 			`comment`
+ 		WHERE 
+ 			`id` = #{commentId}
+ 	
+ 	</select>
  </mapper>
