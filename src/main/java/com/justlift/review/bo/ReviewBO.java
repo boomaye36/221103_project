@@ -56,7 +56,8 @@ public class ReviewBO {
 				reviewCount.setInquired(count > 0 ? true : false);
 				reviewCount.setReviewCount(reviewDAO.selectReviewCountIdByWorkoutIdAndTypeAndUserId(review.getId(), type, userId));
 				reviewCountList.add(reviewCount);
-		}
+				
+			}
 		return reviewCountList;
 	}
 }

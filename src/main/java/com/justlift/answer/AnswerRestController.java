@@ -28,4 +28,13 @@ public class AnswerRestController {
 		result.put("code", 100);
 		return result;
 	}
+	@RequestMapping("/delete")
+	public Map<String, Object> deleteAnswer(@RequestParam("id") int id){
+		
+		answerBO.deleteAnswer(id);
+		Map<String, Object> result = new HashMap<>();
+
+		result.put("code", 100);
+		return result;
+	}
 }

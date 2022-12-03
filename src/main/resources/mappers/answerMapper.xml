@@ -39,4 +39,12 @@
 		AND
 			`userId` = #{userId}
 	</select>
+	
+	<delete id="deleteAnswer" parameterType="map">
+		DELETE
+		FROM
+			`answer`
+		WHERE
+			`id` = #{id}
+	</delete>
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
     <div class="container">
 		<div class="d-flex justify-content-center">
@@ -16,34 +17,40 @@
 		</div>
 		
 		<div class="m-5">
-			<b>댓글목록 : </b>
+			<b>##댓글목록##</b>
 		</div>			
-			<c:forEach items="${commentList }" var="comment">
-				
-				
-				<%-- <c:forEach items="${answerList }" var="answer">
-				${answer.content }
-				
-				</c:forEach> --%>
-			</c:forEach>
 			
-  <c:forEach items="${answerViewList }" var="answer">
+  <c:forEach items="${answerViewList }" var="answer" >
+  				<div class="border border-info">
+  				<div class="d-flex">
   				<span class="text-info">댓글쓴이 : ${answer.comment.userloginId }</span>
-				<div class="d-flex m-5">
-				${answer.comment.content }
+  				<span class="ml-5">작성시간 : <fmt:formatDate value="${answer.comment.createdAt }" pattern="yyyy-MM-dd"/></span>
+  				</div>
+				<div class="d-flex m-5 ">
+				${answer.comment.content }<
 				<button class="btn btn-danger comment-delete-btn ml-5" data-comment-id="${answer.comment.id }">삭제하기 </button>
 				<button class="btn btn-info comment-add-btn ml-5" data-comment-id="${answer.comment.id }">답글달기  </button>
 				</div>
-				<div class="d-flex d-none">
-					<input class="form-control d-none answer-input" type="text" id="answerInput"> 
-					<button class="btn btn-success d-none answer-add-btn">등록하기 </button>
 				</div>
+				
+				 <div class="bg-light">
+				 
 				 <c:forEach items="${answer.answerList}" var="view">
-				 	${view.content }<br>
+				 	<ul>
+				 	<li>
+				 	<span class="text-info mr-3">${view.userLoginId }</span>
+				 	${view.content }
+				 	<a class="answer-delete-btn ml-5" data-answer-id="${view.id }"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" width="25"></a>
+				 	 <small class="ml-5">작성시간  : <fmt:formatDate value="${view.createdAt }" pattern="yyyy-MM-dd"/></small> <br><br>
+				 	</li>
+				 	</ul>
+				 	
 				 	
 				 </c:forEach>
-				
-			</c:forEach>  
+				</div>
+			</c:forEach> 
+			<input class="form-control d-none answer-input" type="text" id="answerInput"> 
+					<button class="btn btn-success d-none answer-add-btn">등록하기 </button> 
     </div>
    
     
@@ -117,6 +124,20 @@
 				}	
 				
 			});
+		});
+		$('.answer-delete-btn').on('click', function(e){
+			let id = $(this).data('answer-id');
+			//alert(id);
+			$.ajax({
+					type : 'post',
+					url : '/answer/delete',
+					data : {"id" : id},
+					success : function(data) {
+						if (data.code == 100) {
+							location.reload(true);
+						}
+					}				
+					});
 		});
 		
 	}); 	

@@ -12,4 +12,6 @@ public interface AnswerDAO {
 	public void insertAnswer(@Param("qnaId") int qnaId, @Param("commentId") int commentId, @Param("userId") int userId, @Param("userLoginId") String userLoginId, @Param("content") String content);
 	
 	public List<Answer> selectAnswerListByCommentIdAndUserId(@Param("commentId") int commentId, @Param("userId") int userId);
+	
+	public void deleteAnswer(@Param("id") int id);
 }

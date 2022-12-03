@@ -41,4 +41,8 @@ public class AnswerBO {
 	public List<Answer> getAnswerListByCommentIdAndUserId(Integer commentId, int userId){
 		return answerDAO.selectAnswerListByCommentIdAndUserId(commentId, userId);
 	}
+	
+	public void deleteAnswer(int id) {
+		answerDAO.deleteAnswer(id);
+	}
 }
