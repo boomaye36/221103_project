@@ -25,7 +25,7 @@
 				<tbody>
 					<tr>
 						<td>${userLoginId }</td>
-						<td>${review.title }</td>
+						<td><a class="text-dark" href="/review/review_detail_view?reviewId=${review.id }">${review.title }</a></td>
 						<td><c:choose>
 			<c:when test="${review.rank eq 1}">
 				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>
@@ -82,7 +82,7 @@
 				<tbody>
 					<tr>
 						<td>${userLoginId }</td>
-						<td>${review.title }</td>
+						<td><a class="text-dark" href="/review/review_detail_view?reviewId=${review.id }">${review.title }</a></td>
 						<td><c:choose>
 			<c:when test="${review.rank eq 1}">
 				<img src="http://marondal.com/material/images/dulumary/web/jstl/star_fill.png" alt="one-star" width='30px' height='30px'>

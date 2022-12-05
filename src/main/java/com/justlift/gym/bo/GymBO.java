@@ -66,4 +66,7 @@ public class GymBO {
 	public List<Gym> getGymListByUserIdAndFromQna(int userId){
 		return gymDAO.selectGymListByUserIdAndFromQna(userId);
 	}
+	public List<Gym> getHotGymList(){
+		return gymDAO.getHotGymList();
+	}
 }

@@ -47,7 +47,7 @@ public class ReviewBO {
 
 	public List<ReviewCountView> getReviewCountByWorkoutIdAndTypeAndUserId(int workoutId, String type, int userId, String sort){
 		//System.out.println(sort);
-		if (sort.equals("access")) {
+		if (sort == null || sort.equals("access")) {
 			List<ReviewCountView> reviewCountList = new ArrayList<>();
 			System.out.println("dfsadfsafas");
 			List<Review> reviewList1 = reviewDAO.selectReviewList(workoutId, type, sort);

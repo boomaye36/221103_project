@@ -37,4 +37,6 @@ public interface GymDAO {
 	
 	public List<Gym> selectGymListByUserIdAndFromQna(@Param("userId") int userId);
 
+	public List<Gym> getHotGymList();
+
 }

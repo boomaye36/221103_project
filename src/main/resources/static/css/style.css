@@ -101,6 +101,8 @@
 .reviewViewBtn, .qnaBtn{width:300px; height:80px;margin:30px;}
 .modal-title-box{height:50px; }
 .modal-content-box{margin-top:-150px;}
+.topGym{margin-bottom:-200px;}
+#reviewDetailBox{background:#ebe7ad; margin:100px;width:600px; height:400px;}
 /* html, body { height: 100%; }
  */
 /* body {

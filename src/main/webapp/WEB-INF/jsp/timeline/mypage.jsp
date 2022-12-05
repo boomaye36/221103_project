@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <div class="container">
 <div class="d-flex justify-content-center">
 	<div class="d-flex justify-content-center">
@@ -7,6 +9,25 @@
 	<a href="#" class="myBtn ml-5" data-toggle="modal" data-target="#modal" ><img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="50"></a>
 	</div>
 </div>
+	<h3 class="text-info mt-5">주변 헬스장 top5</h3>
+	<div class="d-flex topGym">
+		<c:forEach items="${hotGymList}" var="hot" varStatus="status">
+			<div class="m-5  border border-info text-dark">
+			<a href="/gym/detail_view?gymId=${hot.id }&location=${hot.location}" class="text-dark">
+			
+				<%-- <c:if items="${status.begin}">
+				<span class="text-warning">1위 </span>
+				</c:if> --%>
+				
+				<c:out value="${status.count }"/>위 <br>
+				<b>${hot.name }</b><br>
+				<img src="/static/${ hot.image}" width="150" height="100">
+				</a>
+			</div>
+			
+		</c:forEach>
+	</div>
+
 	<div class="d-flex align-items-center mt-5 reviewManageBox">
 		<button type="button" class="btn btn-success " id="cart-btn">장바구니  </button>
 		<button type="button" class="btn btn-warning " id="buy-btn">구매목록  </button>

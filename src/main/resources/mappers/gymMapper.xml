@@ -192,6 +192,10 @@
 		FROM
 			`gym`
 		WHERE `id` in (select `workoutId` from `qna` where `type` = 'gym' and `userId` = #{userId}) 
+	</select>	
+	<select id="getHotGymList" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		select * from `gym` where `id` in (select `workoutId`from `like` where `type` = 'gym' group by `workoutId` ) limit 5
+		
 	</select>
 </mapper>
  

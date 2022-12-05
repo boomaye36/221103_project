@@ -65,7 +65,7 @@ public class ReviewController {
 	@GetMapping("/review_detail_view")
 	public String reviewDetail(
 			@RequestParam("reviewId") int reviewId,
-			@RequestParam("gymName") String gymName,
+			@RequestParam(value="gymName", required=false) String gymName,
 			Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
 		int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);

@@ -53,7 +53,8 @@ public class TimelineController {
 		int dday = userBO.getDdayFromUser(userId);
 		model.addAttribute("amountPrice", amount);
 
-		
+		List<Gym> hotGymList = gymBO.getHotGymList();
+		model.addAttribute("hotGymList", hotGymList);
 		model.addAttribute("dday", dday);
 		model.addAttribute("viewName", "timeline/mypage");
 			return "template/layout";
