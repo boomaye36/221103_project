@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.justlift.review.model.ReviewCount;
 import com.justlift.review.model.Review;
 
 @Repository
@@ -36,8 +35,11 @@ public interface ReviewDAO {
 
 	public int selectReviewCountIdByWorkoutIdAndTypeAndUserId(@Param("id") int workoutId,@Param("type") String type, @Param("userId") int userId);
 
-	public List<Review> selectReviewList(@Param("workoutId") int workoutId, @Param("type") String type); 
+	public List<Review> selectReviewList(@Param("workoutId") int workoutId, @Param("type") String type, @Param("sort") String sort); 
 
+	public List<Review> selectReviewListById(@Param("id") int id);
+	
+	public Review selectReviewByWorkoutIdAndTypeAndUserId(@Param("workoutId") int workoutId, @Param("type") String type,@Param("userId") int userId);
 
 }
 

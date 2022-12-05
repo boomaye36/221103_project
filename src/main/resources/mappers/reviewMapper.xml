@@ -122,6 +122,7 @@
 		WHERE 
 			`reviewId` =  #{reviewId}
 		
+		
 	</select>
 	<select id="selectReviewCountIdByWorkoutIdAndTypeAndUserId" parameterType="map" resultType="int">
 		SELECT 
@@ -131,9 +132,10 @@
 		WHERE 
 			
 			
-			`reviewId` = #{id} order by `id` DESC
+			`reviewId` = #{id} order by `id` desc
 	</select>
 	<select id="selectReviewList" resultType="com.justlift.review.model.Review">
+		
 		SELECT
 			`id`,
 			`workoutId`,
@@ -148,6 +150,49 @@
 			`Review`
 		WHERE `workoutId` = #{workoutId}
 		AND `type` = #{type}
+		<choose>
+		<when test="sort == '' ">
 		ORDER BY `id` ASC
+		</when>
+		<!-- <when test='sort == 'access>
+		ORDER BY `id` ASC
+		</when> -->
+		<when test='sort == "rankhigh"'>
+		ORDER BY `rank` DESC
+		</when>
+		<when test='sort == "ranklow"'>
+		ORDER BY `rank` ASC
+		</when>
+		<when test='sort == "old"'>
+		ORDER BY `createdAt` ASC
+		</when>
+		<when test='sort == "new"'>
+		ORDER BY `createdAt` DESC
+		</when>
+		<!-- <when test='sort == "access"'>
+		ORDER BY (SELECT 
+			COUNT(distinct `userId`)
+		FROM 
+			`reviewCount`)
+		WHERE 
+			`reviewId` =  #{workoutId}
+			DESC
+		</when> -->
+		<when test='sort == "title"'>
+		ORDER BY `title` asc
+		</when>
+		</choose>
+	</select>
+	<select id="selectReviewByWorkoutIdAndTypeAndUserId" parameterType="map" resultType="com.justlift.review.model.Review" >
+		SELECT 
+			*
+		FROM
+			`review`
+		WHERE 
+			`userId` = #{userId}
+		AND
+			`type` = #{type}
+		AND
+			`workoutId` = #{workoutId}
 	</select>
 </mapper>

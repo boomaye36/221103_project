@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.justlift.review.bo.ReviewBO;
 import com.justlift.review.model.Review;
-import com.justlift.review.model.ReviewCount;
 import com.justlift.review.model.ReviewCountView;
 
 @Controller
@@ -27,27 +26,16 @@ public class ReviewController {
 			@RequestParam("workoutId") int workoutId,
 			@RequestParam("type") String type,
 			@RequestParam("gymName") String gymName,
+			@RequestParam(value = "sort", required=false) String sort,
 			HttpSession session, Model model) {
-		List<Review>gymReviewList = reviewBO.getReveiwListByWorkoutIdAndType(workoutId, type);
+		//List<Review>gymReviewList = reviewBO.getReveiwListByWorkoutIdAndType(workoutId, type);
 		Integer userId = (Integer)session.getAttribute("userId");
-		//List<ReviewCount>reviewCountList = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
-//		List<Integer>Rcount = reviewBO.getReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
-//		for (Integer count : Rcount) {
-//			//System.out.println("##### ReveiwCount ####" + count);
-//			model.addAttribute("count", count);
-//		}
-		//model.addAttribute("reviewCountList", reviewCountList);
-		//Integer reviewId = (Integer)session.getAttribute("reviewId");
-		List<ReviewCountView> reviewCountList = reviewBO.getReviewCountByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
+		
+		List<ReviewCountView> reviewCountList = reviewBO.getReviewCountByWorkoutIdAndTypeAndUserId(workoutId, type, userId, sort);
 		model.addAttribute("reviewCountList", reviewCountList);
-//		if (session.getAttribute("reviewId") != null) {
-//			int reviewId = (int)session.getAttribute("reviewId");
-//			int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
-//			model.addAttribute("reviewCount", reviewCount);
-//
-//		}
+		
 		model.addAttribute("viewName", "gym/gymReview");
-		model.addAttribute("gymReviewList", gymReviewList);
+		//model.addAttribute("gymReviewList", gymReviewList);
 		model.addAttribute("gymName", gymName);
 		model.addAttribute("workoutId", workoutId);
 		model.addAttribute("type", type);
@@ -80,7 +68,6 @@ public class ReviewController {
 			@RequestParam("gymName") String gymName,
 			Model model, HttpSession session) {
 		Integer userId = (Integer)session.getAttribute("userId");
-		//session.setAttribute("reviewId", reviewId);
 		int reviewCount = reviewBO.getReviewCountByReviewIdAndUserId(reviewId, userId);
 		model.addAttribute("reviewCount", reviewCount);
 		List<Review> reviewDetailList = reviewBO.getDetailReviewById(reviewId);

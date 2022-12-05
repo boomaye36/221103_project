@@ -1,6 +1,7 @@
 package com.justlift.review.bo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,21 +44,36 @@ public class ReviewBO {
 		
 		return reviewDAO.selectReviewCountIdByWorkoutIdAndTypeAndUserId(workoutId, type, userId);
 	}
-	public List<Review> getReviewList(int workoutId, String type){
-		return reviewDAO.selectReviewList(workoutId, type);
-	}
-	public List<ReviewCountView> getReviewCountByWorkoutIdAndTypeAndUserId(int workoutId, String type, int userId){
-		List<ReviewCountView> reviewCountList = new ArrayList<>();
-		List<Review> reviewList = reviewDAO.selectReviewList(workoutId, type);
+
+	public List<ReviewCountView> getReviewCountByWorkoutIdAndTypeAndUserId(int workoutId, String type, int userId, String sort){
+		//System.out.println(sort);
+		if (sort == "") {
+			List<ReviewCountView> reviewCountList = new ArrayList<>();
+			System.out.println("dfsadfsafas");
+			List<Review> reviewList1 = reviewDAO.selectReviewList(workoutId, type, sort);
+			for (Review review1 : reviewList1) {
+				ReviewCountView reviewCount1 = new ReviewCountView();
+				reviewCount1.setReview(review1);
+				reviewCount1.setReviewCount(reviewDAO.selectReviewCountByReviewIdAndUserId(review1.getId(), userId ));
+				reviewCountList.add(reviewCount1);
+
+			}
+			Collections.sort(reviewCountList);
+			return reviewCountList;
+		}
+		else {
+			List<ReviewCountView> reviewCountList1 = new ArrayList<>();
+
+		List<Review> reviewList = reviewDAO.selectReviewList(workoutId, type, sort);
 		for (Review review : reviewList) {
 			ReviewCountView reviewCount = new ReviewCountView();
-			
-				int count = reviewDAO.selectReviewCountIdByWorkoutIdAndTypeAndUserId(review.getId(), type, userId);
-				reviewCount.setInquired(count > 0 ? true : false);
-				reviewCount.setReviewCount(reviewDAO.selectReviewCountIdByWorkoutIdAndTypeAndUserId(review.getId(), type, userId));
-				reviewCountList.add(reviewCount);
-				
+				reviewCount.setReview(review);
+				reviewCount.setReviewCount(reviewDAO.selectReviewCountByReviewIdAndUserId(review.getId(), userId ));
+				reviewCountList1.add(reviewCount);
 			}
-		return reviewCountList;
+		return reviewCountList1;
+
+		}
+
 	}
 }
