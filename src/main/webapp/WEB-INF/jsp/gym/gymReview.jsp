@@ -14,7 +14,7 @@
 	<option value="ranklow ">낮은 별점 순  </option>
 	<option value="old ">오래된 순  </option>
 	<option value="new ">최신 순  </option>
-	<option value="">조회수  </option>
+	<option value="access">조회수  </option>
 </select>
 </div>
 <table class="table mt-5">
