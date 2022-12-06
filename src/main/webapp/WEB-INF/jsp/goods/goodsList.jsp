@@ -33,6 +33,7 @@
 					}
 				},error : function(e) {
 					alert("등록 실패했습니다. ");
+					document.location.href="/user/sign_in_view";
 				}
 			});
 			

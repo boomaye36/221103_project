@@ -17,7 +17,8 @@
 			<input type="password" class="form-control" id="password" name="password">
 		</div>
 		<div class="d-flex justify-content-center">
-		<button type="submit" id="signinBtn" class="btn btn-info mt-3">로그인 </button>
+		<button type="submit" id="signinBtn" class="btn btn-info mt-3 mr-5">로그인 </button>
+		<a class="btn btn-warning ml-5" href="/user/sign_up_view">회원가입 </a>
 		</div>
 	</form>
 	</div>

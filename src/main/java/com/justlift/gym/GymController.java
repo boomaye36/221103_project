@@ -70,12 +70,15 @@ private LikeBO likeBO;
 	public String gymDetailView(Model model, HttpSession session,
 			@RequestParam ("gymId") int gymId,
 			@RequestParam ("location") String location) {
+		Integer userId = (Integer)session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/user/sign_in_view";
+		}	
 		model.addAttribute("viewName", "gym/gymDetailList");
 		Gym detailGym = gymBO.getGymDetailListByGymId(gymId);
 		model.addAttribute("gymName", detailGym.getName());
 		model.addAttribute("gymImage", detailGym.getImage());
 		//session.setAttribute("gymId", detailGym.getId());
-		Integer userId = (Integer) session.getAttribute("userId");
 		//Integer gymId = (Integer)session.getAttribute("gymId");
 		boolean like = likeBO.getHeart(userId, gymId);
 		String type = "gym";

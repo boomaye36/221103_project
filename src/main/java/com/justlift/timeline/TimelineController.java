@@ -39,17 +39,18 @@ public class TimelineController {
 	private UserBO userBO;
 	@RequestMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
-		Integer userId = (Integer)session.getAttribute("userId");
+		//Integer userId = (Integer)session.getAttribute("userId");
 
-		if(userId == null) {
-			return "redirect:/user/sign_in_view";
-		}
+		
 		model.addAttribute("viewName", "timeline/timeline");
 		return "template/layout";
 	}
 	@GetMapping("/timeline_mypage_view")
 	public String timelineMypageView(Model model, HttpSession session , @RequestParam(value = "amount", required=false) Integer amount) {
 		Integer userId = (Integer)session.getAttribute("userId");
+		if(userId == null) {
+			return "redirect:/user/sign_in_view";
+		}
 		int dday = userBO.getDdayFromUser(userId);
 		model.addAttribute("amountPrice", amount);
 

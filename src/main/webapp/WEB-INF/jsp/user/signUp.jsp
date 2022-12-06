@@ -18,6 +18,8 @@
 			<div class="d-flex  m-5">
 				<label for="userPw">비밀번호: </label>
 				<input class="ml-4" type="password" id="userPw" name="userPw" class="form-control">	
+				<div  id="pwcheck" class="ml-5 small text-danger d-none">비밀번호 특수문자, 문자, 숫자 포함 형태의 5~10자로 입력하세요 </div>
+				
 			</div>
 			<div class="d-flex  m-5">
 				<label for="userPwConfirm">비밀번호 확인: </label>
@@ -50,6 +52,19 @@
 
 <script>
 $(document).ready(function(){
+	
+	function validEmail(email){
+		 var val_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		 return val_email.test(email);
+	 }
+	function validpw(userPw){
+		 var val_pw = /^.*(?=^.{5,10}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		 return val_pw.test(userPw);
+	 }
+	function validPn(phoneNumber){
+		 var val_pn = /^\d{3}-\d{3,4}-\d{4}$/;
+		 return val_pn.test(phoneNumber);
+	 }
 	$('#duplicateBtn').on('click', function(){
 		let userId = $('#userId').val().trim();
 	if (userId.length < 4){
@@ -99,6 +114,10 @@ $(document).ready(function(){
 			 alert("비밀번호가 일치하지 않습니다");
 			 return false;
 		 }
+		 if (!validpw(userPw)){
+			 $('#pwcheck').removeClass('d-none');
+			 return false;
+		 }
 		 if (name == ''){
 			 alert("이름을 입력하세요");
 			 return false;
@@ -106,17 +125,28 @@ $(document).ready(function(){
 		 if (email == ''){
 			 alert("이메일을 입력하세요");
 			 return false;
+		 }else{
+			 if (!validEmail(email)){
+				 alert("이메일 형식에 맞게 입력해주세요 ");
+				 return false;
+			 }
 		 }
 		 
 		 if (phoneNumber == ''){
 			 alert("전화번호를 입력하세요");
 			 return false;
+		 }else {
+			 if (!validPn(phoneNumber)){
+				 alert("형식에 맞지 않는 번호입니다. ")
+				 return false;
+			 }
 		 }
 		 
 		 if ($('#confirmOk').hasClass('d-none') === true){
 				alert("아이디 중복확인을 다시 해주세요.");
 				return;
 			}
+		 
 		 let url = $(this).attr('action');
 		 let params = $(this).serialize();
 		
