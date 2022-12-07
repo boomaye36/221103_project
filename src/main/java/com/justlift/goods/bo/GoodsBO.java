@@ -12,6 +12,8 @@ import com.justlift.goods.model.BuyView;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.CartView;
 import com.justlift.goods.model.Goods;
+import com.justlift.goods.model.GoodsView;
+import com.justlift.goods.model.Stock;
 
 @Service
 public class GoodsBO {
@@ -101,13 +103,39 @@ public class GoodsBO {
 	public Integer getAmountBuyPriceByUserId(int userId) {
 		return goodsDAO.selectAmountBuyPriceByUserId(userId);
 	}
-//	public int getAmount(int amount) {
-//		int finalAmount = amount;
-//		finalAmount += amount;
-//		return finalAmount;
-//	}
+
 	public void deleteBuyByUserIdAndId(int userId, int id) {
 		goodsDAO.deleteBuyByUserIdAndId(userId, id);
+	}
+	
+//	public List<Stock> getStockListByGoodsId(int goodsId){
+//		return goodsDAO.selectStockListByGoodsId(goodsId);
+//	}
+	
+	public List<GoodsView> getGoodsView(String category){
+		 List<GoodsView> goodsViewList = new ArrayList<>();
+		 List <Goods> goodsList = goodsDAO.selectGoodsList(category);
+		 for (Goods goods : goodsList) {
+			 GoodsView goodsView = new GoodsView();
+			 goodsView.setGoods(goods);
+			 Stock stock = goodsDAO.selectStockListByGoodsId(goods.getId());
+			 goodsView.setStock(stock);
+			 goodsViewList.add(goodsView);
+		 }
+		return goodsViewList;
+	
+	}
+	
+	public void UpdateStockCountByGoodsId(int goodsId, int quantity){
+		 goodsDAO.UpdateStockCountByGoodsId(goodsId, quantity);
+	}
+	
+	public boolean getGoodsByGoodsID(int goodsId) {
+		return goodsDAO.getGoodsByGoodsID(goodsId);
+	}
+	
+	public Stock getStockByGoodsId(int goodsId) {
+		return goodsDAO.getStockByGoodsId(goodsId);
 	}
 	
 }

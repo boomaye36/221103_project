@@ -82,4 +82,14 @@ public Map<String, Object> addGoods(
 	}
 return result;
 }
+@PostMapping("/admin_stock")
+public Map<String, Object> addStock(@RequestParam("goodsId") int goodsId, @RequestParam("count") int count){
+	
+	adminBO.addStock(goodsId, count);
+	Map<String, Object> result = new HashMap<>();
+	result.put("code", 100); // 성공
+	return result;
+
+}
+
 }

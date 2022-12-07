@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.justlift.goods.model.Buy;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.Goods;
+import com.justlift.goods.model.Stock;
 
 @Repository
 public interface GoodsDAO {
@@ -38,4 +39,16 @@ public interface GoodsDAO {
 	public void InsertBuyByIdAndCount(@Param("goodsId") int goodsId, @Param("userId") int userId, @Param("quantity") int quantity);
 
 	public void deleteBuyByUserIdAndId(@Param("userId") int userId, @Param("id") int id);
+	
+	public Stock selectStockListByGoodsId(@Param("goodsId") int goodsId);
+	
+	public void UpdateStockCountByGoodsId(@Param("goodsId") int goodsId, @Param("quantity") int quantity);
+	
+	public boolean getGoodsByGoodsID(@Param("goodsId") int goodsId);
+	
+	public Stock getStockByGoodsId(int goodsId);
+
+
+
+
 }

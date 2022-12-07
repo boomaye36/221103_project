@@ -118,6 +118,11 @@
 		FROM
 			`trainer`
 				WHERE `id` in (select `workoutId` from `qna` where `type` = 'trainer' and `userId` = #{userId}) 
-			
+
+	</select>
+	
+	<select id="getTrainerList" parameterType="map" resultType="com.justlift.trainer.model.Trainer">
+		select * from `trainer` where `id` in (select `workoutId`from `like` where `type` = 'trainer' order by (select count(*) from `like` where `type` = 'trainer') ) limit 3
+		
 	</select>
 		</mapper>

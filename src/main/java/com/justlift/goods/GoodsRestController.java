@@ -47,7 +47,7 @@ public class GoodsRestController {
 	@RequestMapping("/buy_insert")
 	public Map<String, Object> InsertBuy(@RequestParam("goodsId") int goodsId,@RequestParam("quantity") int quantity, HttpSession session){
 		Integer userId = (Integer)session.getAttribute("userId");
-		
+		goodsBO.UpdateStockCountByGoodsId(goodsId, quantity);
 		goodsBO.putBuyByIdAndCount(goodsId, userId, quantity);
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);

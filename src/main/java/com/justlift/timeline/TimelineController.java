@@ -53,7 +53,8 @@ public class TimelineController {
 		}
 		int dday = userBO.getDdayFromUser(userId);
 		model.addAttribute("amountPrice", amount);
-
+		List<Trainer> hotTrainerList = trainerBO.getTrainerList();
+		model.addAttribute("hotTrainerList", hotTrainerList);
 		List<Gym> hotGymList = gymBO.getHotGymList();
 		model.addAttribute("hotGymList", hotGymList);
 		model.addAttribute("dday", dday);

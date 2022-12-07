@@ -10,10 +10,12 @@
 					<h3 class="text-info">${card.goods.name }</h3>
 					<img class="m-5" src="/static/${card.goods.image }" width="300px"
 						height="200px">
+					
+				<div class="d-flex align-items-center">
+					<a href="#" class="minusBtn" data-goods-count="${card.cart.count }" data-goods-id="${card.cart.id }" ><img src="https://cdn-icons-png.flaticon.com/512/463/463700.png" width="50" height="50px">  </a>
 					<h3 class="text-warning mr-5">갯수  : ${card.cart.count }개 </h3>
-				
-					<button class="minusBtn btn btn-danger" data-goods-count="${card.cart.count }" data-goods-id="${card.cart.id }" >빼기  </button>
-					<button class="plusBtn btn btn-info" data-goods-count="${card.cart.count }"  data-goods-id="${card.cart.id }">더하기 </button>
+					<a href="#" class="plusBtn" data-goods-count="${card.cart.count }"  data-goods-id="${card.cart.id }"><img src="https://cdn-icons-png.flaticon.com/512/399/399271.png" width="50" height="50px"> </a>
+				</div>
 					<div>
 					<h3>가격 ${card.goods.price }원 </h3>
 					<h4 class="text-success">총가격 : ${card.cart.count * card.goods.price}원 </h4>

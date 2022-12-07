@@ -35,4 +35,8 @@ public class TrainerBO {
 	public List<Trainer> getTrainerListByUserIdAndFromQna(int userId){
 		return trainerDAO.selectTrainerListByUserIdAndFromQna(userId);
 	}
+	
+	public List<Trainer> getTrainerList(){
+		return trainerDAO.getTrainerList();
+	}
 }

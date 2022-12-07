@@ -5,12 +5,14 @@
  
     <c:if test="${type == 'gym'}">
     <h2>관심 체육관 : ${LikeCount}개 </h2>
-    	<c:forEach items="${LikeGymList}" var="gymlike">
+    	<c:forEach items="${LikeGymList}" var="gymlike" varStatus="status">
+    	
     	<div class="flip-conver-gym">
     		<a href="#" class="btn myGym-detail-btn text-dark" data-gym-id="${gymlike.id}" data-location="${gymlike.location}">
     		
     		<br>
-    		${gymlike.name }<br><br>
+    		${gymlike.name }<br>
+    		<img src="/static/${gymlike.image }"><br>
     	
     		
     		</a>

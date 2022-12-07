@@ -78,4 +78,23 @@
  			,NOW()
  		)
  	</insert>
+ 	<insert id="insertStock" parameterType="map">
+ 		INSERT INTO `stock`
+ 		(
+ 			`goodsId`,
+ 			`count`,
+ 			`createdAt`,
+ 			`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{goodsId},
+ 			#{count},
+ 			NOW(),
+ 			NOW()
+ 		)
+ 		ON DUPLICATE KEY UPDATE
+ 			`count` = #{count}
+ 		
+ 	</insert>
  </mapper>

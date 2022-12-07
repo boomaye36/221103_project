@@ -9,24 +9,55 @@
 	<a href="#" class="myBtn ml-5" data-toggle="modal" data-target="#modal" ><img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="50"></a>
 	</div>
 </div>
-	<h3 class="text-info mt-5">주변 헬스장 top5</h3>
-	<div class="d-flex topGym">
+	<h3 class="text-info mt-5">주변 헬스장 top5 & 트레이너 top3</h3>
+	<MARQUEE class="d-flex topGym border border-info text-dark scrolldelay=600">
 		<c:forEach items="${hotGymList}" var="hot" varStatus="status">
-			<div class="m-5  border border-info text-dark">
+			<div class="m-3">
 			<a href="/gym/detail_view?gymId=${hot.id }&location=${hot.location}" class="text-dark">
-			
-				<%-- <c:if items="${status.begin}">
-				<span class="text-warning">1위 </span>
-				</c:if> --%>
+				<c:choose>
+				<c:when test="${status.count == 1}">
+				<span class="text-warning"><img src="https://cdn-icons-png.flaticon.com/512/2545/2545603.png" width="30px" height="30px"> </span>
+				</c:when> 
+				<c:when test="${status.count == 2}">
+				<span class="text-success">2위 </span>
+				</c:when> 
+				<c:when test="${status.count == 3}">
+				<span class="text-info">3위 </span>
+				</c:when>
+				<c:when test="${status.count == 4}">
+				<span class="text-dark">4위 </span>
+				</c:when>
+				<c:when test="${status.count == 5}">
+				<span class="text-dark">5위 </span>
+				</c:when>
 				
-				<c:out value="${status.count }"/>위 <br>
+				</c:choose>
+				
 				<b>${hot.name }</b><br>
 				<img src="/static/${ hot.image}" width="150" height="100">
 				</a>
-			</div>
 			
+			</div>
 		</c:forEach>
-	</div>
+		<c:forEach items="${hotTrainerList}" var="hot" varStatus="status">
+			<a href="/trainer/trainer_detail_view?trainerId=${hot.id }" class="text-dark">
+		
+			<c:choose>
+				<c:when test="${status.count == 1}">
+				<span class="text-warning"><img src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png" width="30px" height="30px"> </span>
+				</c:when> 
+				<c:when test="${status.count == 2}2">
+				<span class="text-warning"><img src="https://cdn-icons-png.flaticon.com/128/2583/2583319.png" width="30px" height="30px"> </span>
+				</c:when> 
+				<c:when test="${status.count == 3}">
+				<span class="text-warning"><img src="https://cdn-icons-png.flaticon.com/128/2583/2583434.png" width="30px" height="30px"> </span>
+				</c:when> 
+			</c:choose>
+			${hot.name }<br>
+			<img src="/static/${ hot.image}" width="150" height="100">
+			</a>
+		</c:forEach>
+	</MARQUEE>
 
 	<div class="d-flex align-items-center mt-5 reviewManageBox">
 		<button type="button" class="btn btn-success " id="cart-btn">장바구니  </button>

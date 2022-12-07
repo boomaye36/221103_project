@@ -8,6 +8,7 @@
 			<h2 class="bg-light text-info">제목 : ${title }</h2>
 		</div>
 		<div class="mt-5 bg-light">
+			<h2>Q.</h2>
 			<h3>${content }</h3>
 			
 		</div>
@@ -17,7 +18,7 @@
 		</div>
 		
 		<div class="m-5">
-			<b>##댓글목록##</b>
+			<h3>A.</h3>
 		</div>			
 			
   <c:forEach items="${answerViewList }" var="answer" >

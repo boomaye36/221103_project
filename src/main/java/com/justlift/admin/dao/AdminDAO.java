@@ -25,4 +25,7 @@ public interface AdminDAO {
 			@Param("imagePath")String imagePath);
 
 	public int insertGoods(@Param("name") String name, @Param("category") String category, @Param("price") int price,@Param("imagePath") String imagePath);
+	
+	public void insertStock(@Param("goodsId")int goodsId, @Param("count") int count);
+
 }

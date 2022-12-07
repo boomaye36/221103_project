@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.justlift.goods.bo.GoodsBO;
-import com.justlift.goods.model.Buy;
 import com.justlift.goods.model.BuyView;
 import com.justlift.goods.model.Cart;
 import com.justlift.goods.model.CartView;
 import com.justlift.goods.model.Goods;
+import com.justlift.goods.model.GoodsView;
 
 @Controller
 @RequestMapping("/goods")
@@ -33,6 +33,8 @@ public class GoodsController {
 	@GetMapping("/goods_List_view")
 	public String goodsList(Model model,@RequestParam("category") String category ) {
 		List<Goods> goodsList = goodsBO.getGoodsList(category);
+		List<GoodsView>goodsViewList = goodsBO.getGoodsView(category);
+		model.addAttribute("goodsViewList", goodsViewList);
 		model.addAttribute("goodsList", goodsList);
 		model.addAttribute("viewName", "goods/goodsList");
 		return "template/layout";

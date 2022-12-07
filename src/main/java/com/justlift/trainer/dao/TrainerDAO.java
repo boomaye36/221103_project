@@ -21,5 +21,8 @@ public interface TrainerDAO {
 	public Trainer getTrainerIdByTrainerId(@Param("trainerId") int trainerId);
 
 	public List<Trainer> selectTrainerListByUserIdAndFromQna(@Param("userId") int userId);
+	
+	public List<Trainer> getTrainerList();
+
 
 }

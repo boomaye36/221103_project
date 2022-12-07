@@ -184,4 +184,42 @@
  		AND
  			`id` = #{id}
  	</delete>
+ 	<select id="selectStockListByGoodsId" parameterType="map" resultType="com.justlift.goods.model.Stock">
+ 		SELECT 
+ 			`goodsId`
+ 			,`count`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`stock`
+ 		WHERE
+ 			`goodsId` = #{goodsId}
+ 	</select>
+ 	
+ 	<update id="UpdateStockCountByGoodsId" parameterType="map" >
+ 		UPDATE
+ 			`stock`
+ 		SET 
+ 			`count` = `count` - #{quantity}
+ 		WHERE
+ 			`goodsId` = #{goodsId}
+ 	</update>
+ 	
+ 	<select id="getGoodsByGoodsID" parameterType="map" resultType="boolean">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`stock`
+ 		WHERE
+ 			`goodsId` = #{goodsId}
+ 	</select>
+ 	
+ 	<select id="getStockByGoodsId" parameterType="map" resultType="com.justlift.goods.model.Stock">
+ 		SELECT
+ 			*
+ 		FROM
+ 			`stock`
+ 		WHERE
+ 			`goodsId` = #{goodsId}
+ 	</select>
  </mapper>
