@@ -59,4 +59,26 @@
  			`id` = #{userId}
  		
  	</select>
+ 	
+ 	<select id="selectLoginIdByEmailAndPhoneNumber" parameterType="map" resultType="com.justlift.user.model.User">
+ 		SELECT
+ 			*
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`name` = #{name}
+ 		AND
+ 			`email` = #{email}
+ 		AND
+ 			`phoneNumber` = #{phoneNumber}
+ 	</select>
+ 	
+ 	<update id="updateUserPw">
+ 		UPDATE
+ 			`user`
+ 		SET
+ 			`password` = #{password}
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 	</update>
  </mapper>

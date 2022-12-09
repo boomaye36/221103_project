@@ -29,4 +29,11 @@ public class UserBO {
 		
 	}
 	
+	public User getLoginIdByEmailAndPhoneNumber(String name, String email, String phoneNumber) {
+		return userDAO.selectLoginIdByEmailAndPhoneNumber(name, email, phoneNumber);
+	}
+	public void updateUserPw(String loginId, String password) {
+		userDAO.updateUserPw(loginId, password);
+	}
+	
 }

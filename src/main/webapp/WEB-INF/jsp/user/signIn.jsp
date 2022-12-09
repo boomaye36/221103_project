@@ -21,8 +21,14 @@
 		<a class="btn btn-warning ml-5" href="/user/sign_up_view">회원가입 </a>
 		</div>
 	</form>
+		
 	</div>
+	
 </div>
+		<div class="d-flex justify-content-center align-items-center mt-5">
+		<a href="/user/find_id"><U>아이디 / </U></a>
+		<a href="/user/reset_pw"><U>비밀번호 찾기 </U></a>
+		</div>
 
 <script>
 $(document).ready(function(){

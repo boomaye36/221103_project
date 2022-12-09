@@ -109,5 +109,14 @@ public class TimelineController {
 		return "template/layout";
 
 	}
+	@RequestMapping("/timeline_search")
+	public String searchView(Model model, @RequestParam("name") String name) {
+		List<Gym> searchList = gymBO.getSearchList(name);
+		int count = gymBO.getSearchCount(name);
+		model.addAttribute("count", count);
+		model.addAttribute("searchList", searchList);
+		model.addAttribute("viewName", "timeline/search");
+		return "template/layout";
+	}
 	
 }

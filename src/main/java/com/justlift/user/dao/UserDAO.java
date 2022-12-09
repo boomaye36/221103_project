@@ -15,5 +15,10 @@ public interface UserDAO {
 			@Param ("password") String password);
 	
 	public int selectDdayFromUser(@Param("userId") int userId);
+	
+	public User selectLoginIdByEmailAndPhoneNumber(@Param("name") String name, @Param("email") String email,@Param("phoneNumber") String phoneNumber);
+
+
+	public void updateUserPw(@Param("loginId") String loginId, @Param("password") String password);
 
 }

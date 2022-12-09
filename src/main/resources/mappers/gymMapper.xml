@@ -197,5 +197,19 @@
 		select * from `gym` where `id` in (select `workoutId`from `like` where `type` = 'gym' order by (select count(*) from `like` where `type` = 'gym')) limit 5
 		
 	</select>
+	<select id="selectSearchList" parameterType="map" resultType="com.justlift.gym.model.Gym">
+		SELECT 
+			`name`, `image`, `phoneNumber` ,`rank`
+		FROM
+			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%')
+	</select>
+	
+	<select id="selectSearchCount" parameterType="map" resultType="int">
+		
+	SELECT 
+			count(*)
+		FROM
+			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%')
+	</select>
 </mapper>
  

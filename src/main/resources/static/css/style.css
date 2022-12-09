@@ -103,6 +103,19 @@
 .modal-content-box{margin-top:-150px;}
 .topGym{margin-bottom:-200px;}
 #reviewDetailBox{background:#ebe7ad; margin:100px;width:600px; height:400px;}
+
+.emailInput, .phoneNumberInput, .nameInput{display: inline-block;
+      height: 40px;
+      padding: 0 10px;
+      vertical-align: middle;
+      border: 1px solid #dddddd;
+      width: 60%;
+      color: #999999;
+      border-radius: 5px;
+      border-top:none;
+      border-left:none;
+      border-right:none;
+      border-bottom:3px solid black;}
 /* html, body { height: 100%; }
  */
 /* body {

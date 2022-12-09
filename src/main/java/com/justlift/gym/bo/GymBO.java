@@ -69,4 +69,12 @@ public class GymBO {
 	public List<Gym> getHotGymList(){
 		return gymDAO.getHotGymList();
 	}
+	
+	public List<Gym> getSearchList(String name){
+		return gymDAO.selectSearchList(name);
+	}
+	
+	public int getSearchCount(String name) {
+		return gymDAO.selectSearchCount(name);
+	}
 }

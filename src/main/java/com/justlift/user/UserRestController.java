@@ -79,5 +79,17 @@ public class UserRestController {
 		return result;
 		
 	}
+	@PostMapping("/pw_reset")
+	public Map<String, Object> resetPw(@RequestParam("password") String password, @RequestParam("loginId") String loginId){
+		String encryptPassword = EncryptUtils.md5(password);
+
+		
+		userBO.updateUserPw(loginId, encryptPassword);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+		return result;
+		
+	}
+	
 	
 }

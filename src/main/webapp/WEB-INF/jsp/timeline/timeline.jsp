@@ -16,7 +16,8 @@
 					<option value="mapo">마포구</option>
 					<option value="seongdong">성동구</option>
 				</select>
-
+				<input type="text" class="ml-5" id="searchName" >
+				<button class="search-btn btn btn-success ml-2">검색하기 </button>
 				<div class="mypagebox d-flex justify-content-end">
 					<a href="/timeline/timeline_mypage_view" id="mypageBtn"
 						class="ml-5"><img width="100" height="100"
@@ -165,6 +166,13 @@
 				$('.goodsBtn').on('click', function(e){
 					e.preventDefault();
 					document.location.href="/goods/select_view";
+				});
+				
+				$('.search-btn').on('click', function(e){
+					e.preventDefault();
+					let name = $('#searchName').val().trim();
+					//let location = $("#selectedRegion option:selected").text();
+					document.location.href="/timeline/timeline_search?name=" + name;
 				});
 
 			});
