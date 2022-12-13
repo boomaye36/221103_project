@@ -70,11 +70,11 @@ public class GymBO {
 		return gymDAO.getHotGymList();
 	}
 	
-	public List<Gym> getSearchList(String name){
-		return gymDAO.selectSearchList(name);
+	public List<Gym> getSearchList(String name, String switchstatus){
+		return gymDAO.selectSearchList(name, switchstatus);
 	}
 	
-	public int getSearchCount(String name) {
-		return gymDAO.selectSearchCount(name);
+	public int getSearchCount(String name, String switchstatus) {
+		return gymDAO.selectSearchCount(name, switchstatus);
 	}
 }

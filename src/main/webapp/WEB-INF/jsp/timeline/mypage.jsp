@@ -59,10 +59,10 @@
 		</c:forEach>
 	</MARQUEE>
 
-	<div class="d-flex align-items-center mt-5 reviewManageBox">
-		<button type="button" class="btn btn-success " id="cart-btn">장바구니  </button>
-		<button type="button" class="btn btn-warning " id="buy-btn">구매목록  </button>
-		<button type="button" class="btn btn-info" id="review-manage-btn">리뷰 관리 </button>
+	<div class="d-flex align-items-center m3-5 reviewManageBox">
+		<a class="btn" id="cart-btn"><img src="https://cdn-icons-png.flaticon.com/128/8739/8739522.png"><br>장바구니  </a>
+		<a class="btn" id="buy-btn"><img src="https://cdn-icons-png.flaticon.com/128/8739/8739368.png"><br>구매목록  </a>
+		<a class="btn" id="review-manage-btn"><img src="https://cdn-icons-png.flaticon.com/128/2065/2065161.png"><br>리뷰 관리 </a>
 	</div>
 </div>
 

@@ -39,9 +39,9 @@ public interface GymDAO {
 
 	public List<Gym> getHotGymList();
 	
-	public List<Gym> selectSearchList(@Param("name") String name);
+	public List<Gym> selectSearchList(@Param("name") String name, @Param("switchstatus") String switchstatus);
 	
-	public int selectSearchCount(@Param("name") String name);
+	public int selectSearchCount(@Param("name") String name, @Param("switchstatus") String switchstatus);
 
 
 

@@ -110,9 +110,10 @@ public class TimelineController {
 
 	}
 	@RequestMapping("/timeline_search")
-	public String searchView(Model model, @RequestParam("name") String name) {
-		List<Gym> searchList = gymBO.getSearchList(name);
-		int count = gymBO.getSearchCount(name);
+	public String searchView(Model model, @RequestParam("name") String name, @RequestParam("switchstatus") String switchstatus) {
+		List<Gym> searchList = gymBO.getSearchList(name, switchstatus);
+		int count = gymBO.getSearchCount(name, switchstatus);
+		model.addAttribute("switchstatus", switchstatus);
 		model.addAttribute("count", count);
 		model.addAttribute("searchList", searchList);
 		model.addAttribute("viewName", "timeline/search");

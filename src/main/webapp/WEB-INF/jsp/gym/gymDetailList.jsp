@@ -69,9 +69,9 @@
 			<li class="list-group-item">${gymLocation }</li>
 		</ul>
 		<div class="d-flex detailgymBox">
-			<button type="button" class="btn btn-info reviewViewBtn">리뷰보기</button>
-			<button type="button" class="btn btn-success qnaBtn"
-				data-toggle="modal" data-target="#modal">qna쓰기</button>
+			<a class="btn reviewViewBtn"><img src="https://cdn-icons-png.flaticon.com/128/8743/8743831.png"><br>리뷰보기</a>
+			<a  class="btn qnaBtn"
+				data-toggle="modal" data-target="#modal"><img src="https://www.iconninja.com/files/160/730/465/qna-icon.png"><br>qna쓰기</a>
 		</div>
 	</div>
 

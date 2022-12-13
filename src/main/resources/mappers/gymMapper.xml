@@ -198,18 +198,54 @@
 		
 	</select>
 	<select id="selectSearchList" parameterType="map" resultType="com.justlift.gym.model.Gym">
-		SELECT 
+	<!-- 	SELECT 
 			`name`, `image`, `phoneNumber` ,`rank`
 		FROM
-			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%')
+			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%') -->
+			
+		<if test="switchstatus == 'true'">
+			SELECT
+				*
+			FROM
+				`gym`
+			where 
+				`name` like concat ('%', #{name},'%')
+		</if>
+		<if test="switchstatus == 'false'">
+			SELECT
+				*
+			FROM
+				`trainer`
+			where 
+				`name` like concat ('%', #{name},'%')
+		</if>
 	</select>
 	
 	<select id="selectSearchCount" parameterType="map" resultType="int">
 		
-	SELECT 
+	<!-- SELECT 
 			count(*)
 		FROM
-			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%')
+			(select `name`, `image`, `phoneNumber` ,`rank` from `gym`  union  select `name`, `image`, `phoneNumber` ,`rank` from `trainer`) c where `name` like concat ('%', #{name},'%') -->
+		<if test="switchstatus == 'true'">
+			SELECT
+				count(1)
+			FROM
+				`gym`
+			WHERE
+			`name` like concat ('%', #{name},'%')
+			
+		</if>
+		
+		<if test="switchstatus == 'false'">
+			SELECT
+				count(1)
+			FROM
+				`trainer`
+			WHERE
+				`name` like concat ('%', #{name},'%')
+			
+		</if>
 	</select>
 </mapper>
  

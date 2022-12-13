@@ -5,21 +5,50 @@
  
     <c:if test="${type == 'gym'}">
     <h2>관심 체육관 : ${LikeCount}개 </h2>
+    	
+    	
+    <c:set var="i" value="0" />
+	<c:set var="j" value="2" />
+	<table class="table">
     	<c:forEach items="${LikeGymList}" var="gymlike" varStatus="status">
+	    <c:if test="${i%j == 0 }">
+	    <tr>
+	    </c:if>
+	     <td class="mr-5">	    <a class="text-dark" href="/gym/detail_view?gymId= ${gymlike.id }&location= ${gymlike.location}">
+	     ${gymlike.name }<br>전화번호 : ${gymlike.phoneNumber }<br>평점 : ${gymlike.rank }</a></td>
+	       <td class="ml-5"><a href="/gym/detail_view?gymId= ${gymlike.id }&location= ${gymlike.location}"><img src="/static/${gymlike.image }"></a></td>
+	    <c:if test="${i%j == j-1 }">
+	    </tr>
+	    </c:if>
+	    <c:set var="i" value="${i+1 }" />
+	  </c:forEach>
+	</table>
+    	</c:if>
+    <c:if test="${type == 'trainer'}">
+    <h2>관심 트레이너 : ${LikeCount}명</h2>
     	
-    	<div class="flip-conver-gym">
-    		<a href="#" class="btn myGym-detail-btn text-dark" data-gym-id="${gymlike.id}" data-location="${gymlike.location}">
-    		
-    		<br>
-    		${gymlike.name }<br>
-    		<img src="/static/${gymlike.image }"><br>
+    	
+    <c:set var="i" value="0" />
+	<c:set var="j" value="2" />
+	<table class="table">
+    	<c:forEach items="${LikeTrainerList}" var="trainerlike" varStatus="status">
+	    <c:if test="${i%j == 0 }">
+	    <tr>
+	    </c:if>
+	     <td class="mr-5">	    <a class="text-dark" href="/trainer/trainer_detail_view?trainerId=${trainerlike.id }">
+	     ${trainerlike.name }<br>전화번호 : ${trainerlike.phoneNumber }<br>평점 : ${trainerlike.rank }</a></td>
+	       <td class="ml-5"><a href="/trainer/trainer_detail_view?trainerId=${trainerlike.id }"><img src="/static/${trainerlike.image }"></a></td>
+	    <c:if test="${i%j == j-1 }">
+	    </tr>
+	    </c:if>
+	    <c:set var="i" value="${i+1 }" />
+	  </c:forEach>
+	</table>
+    	</c:if>
     	
     		
-    		</a>
-    		</div>
-    	</c:forEach>
-  </c:if>
-	<c:if test="${type == 'trainer'}">
+    		
+	<%-- <c:if test="${type == 'trainer'}">
 	<h2>관심 트레이너 : ${LikeCount}명 </h2>
 		<c:forEach items="${LikeTrainerList}" var="trainerlike">
 			<div>
@@ -28,7 +57,7 @@
 
 			</div>
 		</c:forEach>
-	</c:if>
+	</c:if> --%>
 </div> 
  
  <script>
