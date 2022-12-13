@@ -10,7 +10,7 @@ import com.justlift.enroll.model.Enroll;
 @Repository
 public interface EnrollDAO {
 	public void insertEnroll(@Param("month") int month, @Param("userId") int userId, @Param("gymId") int gymId,
-			@Param("newMonth") int newMonth);
+			@Param("newMonth") int newMonth, @Param("dateString") String dateString);
 
 	public List<Enroll> selectMyEnrollList(@Param("userId") int userId);
 

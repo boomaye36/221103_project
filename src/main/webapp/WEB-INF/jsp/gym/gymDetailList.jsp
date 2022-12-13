@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <h1 class="bg-info font-weight-bold p-3 mt-5">${gymName}</h1>
 <div class="container mt-5">
 	<div class="d-flex justify-content-between">
@@ -41,7 +42,12 @@
 					<option value="9">9개월</option>
 					<option value="12">12개월</option>
 				</select><br>
+				
 			</div>
+			<div class="d-flex justify-content-center align-items-center">
+			  <span class="text-info mr-5">시작일</span>
+                <input type=text class="form-control col-4 mt-3" id="startDate">
+            </div>
 			<div class="d-flex align-items-center justify-content-center">
 
 				<button type="button" class="btn btn-success trainer_view_btn"
@@ -109,25 +115,35 @@
 	$(document)
 			.ready(function(e) {
 				$('.enrollBtn').on('click',function(e) {
-											e.preventDefault();
-											let month = $(
-													'.selectMonth option:selected')
-													.val();
-											let gymId = ${gymId};
-											alert(month);
+						e.preventDefault();
+						let month = $('.selectMonth option:selected').val();
+						let gymId = ${gymId};
+						
+						let jsDate = $('#startDate').datepicker('getDate');
+						if (jsDate !== null) { // if any date selected in datepicker
+						    jsDate instanceof Date; // -> true
+						    jsDate.getDate();
+						    jsDate.getMonth();
+						    jsDate.getFullYear();
+						}
+						let dateString = $.datepicker.formatDate("yy-mm-dd ", jsDate);
+
+						//alert(dateString);
+
 
 											$.ajax({
 														type : 'POST',
 														url : '/enroll/create',
 														data : {
 															"month" : month,
-															"gymId" : gymId
+															"gymId" : gymId,
+															"dateString" : dateString
 														},
 														success : function(data) {
 															if (data.code == 100) {
 																alert("등록 되었습니다");
-																document.location.href = "/gym/gym_view?location=${location}&categoryId=${categoryId}";
-
+																//document.location.href = "/gym/gym_view?location=${location}&categoryId=${categoryId}";
+																location.reload(true);
 															}
 														},
 														error : function(e) {
@@ -244,5 +260,30 @@
 				}
 			});
 		});
+		
+		$.datepicker.setDefaults({
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] // 요일을 한글로 변경
+            , dateFormat: 'yy-mm-dd'
+        });
+
+        // 오늘 날짜로 이동하는 함수
+        $.datepicker._gotoToday = function(id) {
+            $(id).datepicker('setDate', new Date()).datepicker('hide').blur();
+        };
+
+		
+        $('#startDate').datepicker({
+            showButtonPanel: true // 오늘 버튼 노출
+            , minDate:0 // 오늘과 그 이후만 선택 가능
+
+            // 시작일이 선택되는 순간 종료일의 minDate 변경
+            , onSelect:function(dateText) {
+                $('#endDate').datepicker('option', 'minDate', dateText);
+            }
+        });
+
+        $('#endDate').datepicker({
+            minDate:0 
+        });
 					});
 </script>

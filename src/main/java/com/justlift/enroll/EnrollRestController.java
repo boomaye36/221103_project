@@ -21,13 +21,14 @@ public class EnrollRestController {
 	private EnrollBO enrollBO;
 	@RequestMapping("/create")
 	public Map<String, Object> createEnroll(@RequestParam("month") int month,@RequestParam("gymId") int gymId,
+			@RequestParam("dateString") String dateString,
 			HttpSession session) {
 		//Integer gymId = (Integer)session.getAttribute("gymId");
 		
 		Integer userId = (Integer)session.getAttribute("userId");
 		Map<String, Object> result = new HashMap<>();
 		int newMonth = month;
-		enrollBO.addEnroll(month, userId, gymId, newMonth);
+		enrollBO.addEnroll(month, userId, gymId, newMonth, dateString);
 		result.put("code", 100);
 		return result;
 	}

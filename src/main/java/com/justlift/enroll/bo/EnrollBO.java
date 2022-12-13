@@ -12,7 +12,7 @@ import com.justlift.enroll.model.Enroll;
 public class EnrollBO {
 	@Autowired
 	private EnrollDAO enrollDAO;
-	public void addEnroll(int month,int userId, Integer gymId, int newMonth ) {
+	public void addEnroll(int month,int userId, Integer gymId, int newMonth, String dateString) {
 		boolean gymCount = enrollDAO.selectGymByGymIdAndUserId(gymId, userId);
 //		Enroll enrollMonth = enrollDAO.seletMonthByUserIdAndGymId(userId, gymId);
 //		month = enrollMonth.getMonth();
@@ -21,7 +21,7 @@ public class EnrollBO {
 			month = enrollMonth.getMonth();
 			newMonth += month;
 		}
-		enrollDAO.insertEnroll(month, userId, gymId, newMonth);
+		enrollDAO.insertEnroll(month, userId, gymId, newMonth, dateString);
 	}
 	public List<Enroll> getMyEnrollList(int userId){
 		return enrollDAO.selectMyEnrollList(userId);

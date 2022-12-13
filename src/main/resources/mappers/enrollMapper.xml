@@ -18,7 +18,7 @@
 			#{month},
 			#{gymId},
 			#{userId},
-			NOW(),
+			#{dateString},
 			NOW()	
 		)
 		 ON DUPLICATE KEY UPDATE
