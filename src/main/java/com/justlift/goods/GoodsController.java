@@ -69,6 +69,7 @@ public class GoodsController {
 		//int amountPrice = amount;
 		Integer amountPrice = goodsBO.getAmountBuyPriceByUserId(userId);
 
+		model.addAttribute("amount", amountPrice);
 		model.addAttribute("amountPrice", amount);
 		
 		return "template/layout";

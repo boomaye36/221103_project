@@ -14,8 +14,11 @@
 		
 	</c:forEach>
 	<h3 class="text-info"> 배송비 : 2500원 <br><br> 
-							<c:if test="${amountPrice ne null}">
+							<c:if test="${amountPrice != null}">
 							총 결제금액 : ${amountPrice + 2500 }원 
+							</c:if> 
+							<c:if test="${amountPrice == null}">
+							총 결제금액 : ${amount + 2500 }원 
 							</c:if> 
 							
 						

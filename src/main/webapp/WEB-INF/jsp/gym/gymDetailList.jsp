@@ -34,9 +34,9 @@
 			</div>
 
 
-			<div class="d-flex align-items-center justify-content-center">
+			<div class="d-flex align-items-center justify-content-center mt-3">
 				<h3>등록 개월을 선택하세요</h3>
-				<select class="ml-5 selectMonth mt-5">
+				<select class="ml-5 selectMonth ">
 					<option value="3">3개월</option>
 					<option value="6">6개월</option>
 					<option value="9">9개월</option>
@@ -44,9 +44,11 @@
 				</select><br>
 				
 			</div>
-			<div class="d-flex justify-content-center align-items-center">
-			  <span class="text-info mr-5">시작일</span>
+			<div class="d-flex justify-content-center align-items-center mt-3">
+                <label for="startDate"><img class="mr-3 mt-3" src="https://cdn-icons-png.flaticon.com/128/3652/3652191.png" width="50px">
+                </label>
                 <input type=text class="form-control col-4 mt-3" id="startDate">
+                
             </div>
 			<div class="d-flex align-items-center justify-content-center">
 

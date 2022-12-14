@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+.header-box{height:300px;}
 .gymname {  width:300px;}
 #selectedRegion{width:150px;height:100px;}
 #mypageBtn{width:150px;height:200px;justify-content:flex-end;}
@@ -176,6 +176,18 @@ input{
 }
 
 
+h1.fifth {
+  font-weight: 400;
+  text-shadow: 
+    3px 3px 0
+    dodgerblue;
+  transition: all 0.2s ease ;
 
+}
+
+h1.fifth:hover {
+  text-shadow: 0 0 0 red;
+  
+}
 
 

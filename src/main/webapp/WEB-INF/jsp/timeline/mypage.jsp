@@ -118,7 +118,7 @@
 			let amount = 0;
 			
 			//alert (amount);
-			document.location.href="/goods/buy_view?amount=" + amount;
+			document.location.href="/goods/buy_view";
 		});
 		$('#cart-btn').on('click', function(e){
 			e.preventDefault();
