@@ -8,7 +8,10 @@
 		<div class="m-5">
 			<h3>${card.goods.name }</h3>
 			<img src="/static/${card.goods.image }" width="300px" height="200px">
+			<div class="d-flex mt-3">
 			<b>${card.goods.price }원 X ${card.buy.count} 개  = ${card.goods.price * card.buy.count }</b>
+			<button class="goods-return-btn btn btn-dark ml-3"  data-goods-id="${card.goods.id }" data-buy-id="${card.buy.id }" data-buy-count='${card.buy.count }'>반품하기 </button>
+			</div>
 		</div>
 		<button class="goods-info-btn btn d-none"  data-buy-id="${card.buy.id }"> </button>
 		
@@ -44,6 +47,29 @@
 					if (data.code == 100){
 						location.reload(true);
 						alert("구매 확정되었습니다. ");
+					}
+				}
+			});
+		});
+		$('.goods-return-btn').on('click', function(e){
+			e.preventDefault();
+			let id = $(this).data('buy-id');
+			let goodsId = $(this).data('goods-id');
+			
+			let count = $(this).data('buy-count');
+		//alert(id);
+		//	alert(count);
+			//alert(goodsId);
+			$.ajax({
+				type : 'post',
+				url : "/goods/buy_return",
+				data : {"id" : id,
+						"goodsId" : goodsId,
+						"count" : count},
+				success:function(data){
+					if (data.code == 100){
+						location.reload(true);
+						alert("반품되었습니다.");
 					}
 				}
 			});

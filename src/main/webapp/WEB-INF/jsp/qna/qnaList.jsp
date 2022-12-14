@@ -39,13 +39,13 @@
 			
 				<tbody>
 					<tr>
-						<td>${userLoginId }</td>
+						<td class="qna">${userLoginId }</td>
 						<td><a href="#" class="qna-detail-btn" data-qna-id="${qna.id}">${qna.title }</a></td>
 						
 		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qna.createdAt }"/></td>
-		<td><button type="button" class="btn btn-danger review-delete-btn" data-qna-id="${qna.id}">삭제하기 </button></td>		
+		<td><a  class="btn review-delete-btn" data-qna-id="${qna.id}"><img src="https://cdn-icons-png.flaticon.com/128/3687/3687412.png" width="30px" class="mb-4"></a></td>		
 		<td>
-			<button type="button" class="btn btn-warning review-update-btn" data-qna-id="${qna.id}" data-toggle="modal" data-target="#modal">수정하기 </button>
+			<button type="button" class="btn btn-warning review-update-btn" data-qna-id="${qna.id}" data-toggle="modal" data-target="#modal"><small class="qna-text">수정하기</small> </button>
 		</td>
 				</tr>
 				
@@ -70,7 +70,7 @@
 				<c:forEach items="${gymQnaList}" var="gym">
 			
 			<tr>
-				<td>${gym.name }</td>
+				<td class="qna">${gym.name }</td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -91,16 +91,15 @@
 		<c:if test="${qna.type == 'gym'}">
 			
 				<tbody>
-					<tr>
-						<td>${userLoginId }</td>
+					<tr >
+						<td >${userLoginId }</td>
 						<td><a href="#" class="qna-detail-btn" data-qna-id="${qna.id}">${qna.title }</a></td>
 						
 		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qna.createdAt }"/></td>
+				<td><a  class="btn review-delete-btn" data-qna-id="${qna.id}"><img src="https://cdn-icons-png.flaticon.com/128/3687/3687412.png" width="30px" class="mb-4"></a></td>		
+	
 		<td>
-			<button type="button" class="btn btn-danger review-delete-btn" data-qna-id="${qna.id}">삭제하기 </button>
-		</td>		
-		<td>
-			<button type="button" class="btn btn-warning review-update-btn" data-qna-id="${qna.id}" data-toggle="modal" data-target="#modal">수정하기 </button>
+			<button type="button" class="btn btn-warning review-update-btn" data-qna-id="${qna.id}" data-toggle="modal" data-target="#modal"><small class="qna-text">수정하기 </small></button>
 		</td>		
 				
 				</tr>

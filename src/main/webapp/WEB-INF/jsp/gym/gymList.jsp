@@ -47,7 +47,7 @@ ${location }</h1>
 			e.preventDefault();
 			let gymId = $(this).data('gym-id');
 			let location = $(this).data('gym-location');
-			alert(location);
+			//alert(location);
 			//alert(gymId);
 			document.location.href = "/gym/detail_view?gymId=" + gymId +"&location=" + location;
 		});

@@ -137,5 +137,8 @@ public class GoodsBO {
 	public Stock getStockByGoodsId(int goodsId) {
 		return goodsDAO.getStockByGoodsId(goodsId);
 	}
+	public void UpdateStockReturnByGoodsIdAndUserId(int goodsId, int count) {
+		goodsDAO.UpdateStockReturnByGoodsIdAndUserId(goodsId, count);
+	}
 	
 }

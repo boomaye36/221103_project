@@ -18,6 +18,7 @@ import com.justlift.goods.bo.GoodsBO;
 public class GoodsRestController {
 	@Autowired
 	private GoodsBO goodsBO;
+
 	@RequestMapping("/cart_insert")
 	public Map<String, Object> InsertCart(@RequestParam("goodsId") int goodsId, HttpSession session){
 		Integer userId = (Integer)session.getAttribute("userId");
@@ -61,6 +62,16 @@ public class GoodsRestController {
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 100);
 
+		return result;
+	}
+	@PostMapping("/buy_return")
+	public Map<String, Object>returnBuy(@RequestParam("id") int id,@RequestParam("goodsId") int goodsId, @RequestParam("count") int count, HttpSession session){
+		Integer userId = (Integer)session.getAttribute("userId");
+		goodsBO.deleteBuyByUserIdAndId(userId, id);
+		goodsBO.UpdateStockReturnByGoodsIdAndUserId(goodsId, count);
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 100);
+		
 		return result;
 	}
 //	@PostMapping("/price")

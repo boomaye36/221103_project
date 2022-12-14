@@ -48,6 +48,7 @@ public interface GoodsDAO {
 	
 	public Stock getStockByGoodsId(int goodsId);
 
+	public void UpdateStockReturnByGoodsIdAndUserId(@Param("goodsId") int goodsId, @Param("count") int count);
 
 
 

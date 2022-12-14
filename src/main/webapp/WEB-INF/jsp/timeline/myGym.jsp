@@ -6,12 +6,12 @@
     
     
 <div class="container p-3">
-	<div class="d-flex justify-content-center m-5 " >
-		<div class="d-flex justify-content-center">
+	<div class="d-flex justify-content-center m-5" >
+		<div class="d-flex justify-content-center  w-30">
 		<h3 class="serviceNo">이용중인 서비스 ${enrollCount}개</h3>
 		</div>
 	<div class="p-4 m-5">
-	<div class="d-flex justify-content-center mt-5">
+	<div class="d-flex justify-content-center mt-5 servicebox">
 	<table class="table">
 		<thead>
 			<tr>

@@ -222,4 +222,12 @@
  		WHERE
  			`goodsId` = #{goodsId}
  	</select>
+ 	<update id="UpdateStockReturnByGoodsIdAndUserId" parameterType="map">
+ 		UPDATE
+ 			`stock`
+ 		SET 
+ 			`count` = `count` + #{count}
+ 		WHERE
+ 			`goodsId` = #{goodsId}
+ 	</update>
  </mapper>

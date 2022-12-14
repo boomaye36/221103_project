@@ -52,7 +52,7 @@
 					//alert(rank);
 				}
 			}
-			alert(rank);
+			//alert(rank);
 			$.ajax({
 				type:'post',
 				url : '/review/create',
